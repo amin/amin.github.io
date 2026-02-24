@@ -1,31 +1,99 @@
-export function slideInNavLink() {
-  window.addEventListener("resize", () => {
-    const menuItems = document.querySelectorAll("nav.primary ul li a");
-    if (window.innerWidth >= 740) {
-      menuItems.forEach((menuItem) =>
-        menuItem.classList.remove("activeSlideIn"),
-      );
-    }
-  });
+// Constants
+const BREAKPOINT = 740;
+const SLIDE_IN_CLASS = "activeSlideIn";
+const ACTIVE_CLASS = "active";
+const ANIMATION_STAGGER_MS = 85;
 
-  const burger = document.querySelector(".burger");
+// Selectors
+const SELECTORS = {
+  burger: ".burger",
+  links: "nav.primary ul li a",
+};
 
-  burger.addEventListener("click", (e) => {
-    let menuItems = document.querySelectorAll("nav.primary ul li a");
-    const reverse = Array.from(menuItems).every((link) =>
-      link.classList.contains("activeSlideIn"),
-    );
+/**
+ * Initializes navigation: burger menu toggle, link click handling, and resize behavior.
+ */
+export default function initializeNavigation() {
+  const burger = document.querySelector(SELECTORS.burger);
+  const links = document.querySelectorAll(SELECTORS.links);
 
-    if (reverse) {
-      menuItems = [...menuItems].reverse();
-    }
+  burger.addEventListener("click", (e) => toggleNav(e.currentTarget, links));
 
-    burger.classList.toggle("active");
-    menuItems.forEach((menuItem, i) => {
-      setTimeout(
-        () => menuItem.classList.toggle("activeSlideIn"),
-        (i + 1) * 150,
-      );
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (window.innerWidth < BREAKPOINT) {
+        toggleNav(burger, links);
+      }
+      const target = link.getAttribute("data-target");
+      scrollToTarget(target);
     });
   });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= BREAKPOINT) {
+      links.forEach((link) => link.classList.remove(SLIDE_IN_CLASS));
+    }
+  });
+}
+
+/**
+ * Toggles the burger button and animates menu items in or out with a stagger effect.
+ */
+function toggleNav(burger, links) {
+  burger.classList.toggle(ACTIVE_CLASS);
+
+  const allActive = [...links].every((link) =>
+    link.classList.contains(SLIDE_IN_CLASS),
+  );
+
+  const orderedItems = allActive ? [...links].reverse() : [...links];
+
+  orderedItems.forEach((item, i) => {
+    setTimeout(
+      () => item.classList.toggle(SLIDE_IN_CLASS),
+      (i + 1) * ANIMATION_STAGGER_MS,
+    );
+  });
+}
+
+/**
+ * Scrolls smoothly to the element matching the given CSS selector.
+ */
+function scrollToTarget(selector) {
+  const element = document.querySelector(selector);
+
+  if (!element) {
+    console.warn(`scrollToTarget: No element found for selector "${selector}"`);
+    return;
+  }
+
+  animateScroll(element.offsetTop, 600);
+}
+
+/**
+ * Smoothly animates the window scroll position to a target using an ease-in-out cubic curve.
+ */
+function animateScroll(targetPosition, duration = 500) {
+  const easeInOutCubic = (t) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  const startTime = performance.now();
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeInOutCubic(progress);
+
+    window.scrollTo(0, startPosition + distance * easedProgress);
+
+    if (elapsed < duration) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
 }

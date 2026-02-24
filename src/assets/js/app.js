@@ -1,2 +1,2 @@
-import { slideInNavLink } from "./includes/partials/_nav";
-slideInNavLink();
+import initializeNavigation from "./includes/partials/_nav";
+initializeNavigation();
