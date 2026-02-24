@@ -1,0 +1,45 @@
+@use "../../utils/mq";
+
+nav.primary {
+    position: fixed;
+    min-width: 100%;
+    max-height: 0px;
+    left: 100%;
+
+    transition: max-height 300ms ease-in-out;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        background-color: red;
+        padding: 0.5rem 0;
+        transition: transform 500ms ease-in-out;
+
+        &.activeSlideIn {
+            transform: translateX(-100%);
+        }
+    }
+
+    @include mq.mq($from: tablet) {
+        position: relative;
+        min-width: auto;
+        max-height: fit-content;
+        left: auto;
+        a {
+            transform: none;
+        }
+
+        &.activeSlideIn {
+            transform: none;
+        }
+        ul {
+            display: flex;
+            gap: 3rem;
+        }
+    }
+}

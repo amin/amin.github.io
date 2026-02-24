@@ -1,0 +1,45 @@
+@use "../utils/mq";
+
+header {
+    &.primary {
+        background-color: #ccc;
+    }
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .burger {
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        background: none;
+        border: 0;
+    }
+
+    @include mq.mq($until: tablet) {
+        .header-container {
+            padding: 0 1.5rem;
+        }
+
+        .wrapper {
+            padding: 0;
+        }
+    }
+    @include mq.mq($from: tablet) {
+        .header-container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+        }
+        .burger {
+            display: none;
+        }
+    }
+}
