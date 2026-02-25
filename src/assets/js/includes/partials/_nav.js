@@ -11,6 +11,10 @@ const SELECTORS = {
   sections: "section.section",
 };
 
+// State management
+let isScrolling = false;
+let scrollingTimer = null;
+
 /**
  * Initializes navigation: burger menu toggle, link click handling, and resize behavior.
  */
@@ -52,9 +56,6 @@ export default function initializeNavigation() {
 /**
  * Initialize observers to update link state if relevant section is in viewport
  */
-
-let isScrolling = false;
-let scrollingTimer = null;
 
 function initializeObserver() {
   const sections = document.querySelectorAll(SELECTORS.sections);
