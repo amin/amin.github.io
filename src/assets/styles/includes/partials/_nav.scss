@@ -14,6 +14,9 @@ nav.primary {
     }
 
     a {
+        &[data-in-viewport="true"] {
+            background-color: purple;
+        }
         display: block;
         text-align: center;
         background-color: red;

@@ -8,6 +8,7 @@ const ANIMATION_STAGGER_MS = 85;
 const SELECTORS = {
   burger: ".burger",
   links: "nav.primary ul li a",
+  sections: "section.section",
 };
 
 /**
@@ -16,24 +17,72 @@ const SELECTORS = {
 export default function initializeNavigation() {
   const burger = document.querySelector(SELECTORS.burger);
   const links = document.querySelectorAll(SELECTORS.links);
+  initializeObserver();
 
   burger.addEventListener("click", (e) => toggleNav(e.currentTarget, links));
 
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
+      clearTimeout(scrollingTimer);
+      isScrolling = true;
+
+      links.forEach((link) => (link.dataset.inViewport = "false"));
+      link.dataset.inViewport = "true";
 
       if (window.innerWidth < BREAKPOINT) {
         toggleNav(burger, links);
       }
       const target = link.getAttribute("data-target");
       scrollToTarget(target);
+
+      scrollingTimer = setTimeout(() => {
+        isScrolling = false;
+      }, 650);
     });
   });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= BREAKPOINT) {
       links.forEach((link) => link.classList.remove(SLIDE_IN_CLASS));
+    }
+  });
+}
+
+/**
+ * Initialize observers to update link state if relevant section is in viewport
+ */
+
+let isScrolling = false;
+let scrollingTimer = null;
+
+function initializeObserver() {
+  const sections = document.querySelectorAll(SELECTORS.sections);
+  const links = document.querySelectorAll(SELECTORS.links); // cache once
+
+  const callback = (entries) => {
+    if (isScrolling) return;
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        links.forEach((link) => (link.dataset.inViewport = "false"));
+        toggleLink(links, entry.target.dataset.linkId);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.4,
+  });
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+function toggleLink(links, id) {
+  links.forEach((link) => {
+    if (link.dataset.linkId === id) {
+      link.dataset.inViewport = "true";
     }
   });
 }
