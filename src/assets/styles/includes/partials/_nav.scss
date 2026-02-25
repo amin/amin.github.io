@@ -14,12 +14,14 @@ nav.primary {
     }
 
     a {
+        text-transform: uppercase;
+        letter-spacing: 1px;
         &[data-in-viewport="true"] {
             background-color: purple;
         }
         display: block;
         text-align: center;
-        background-color: red;
+        background-color: #fff;
         padding: 0.5rem 0;
         transition: transform 500ms ease-in-out;
 
@@ -35,6 +37,15 @@ nav.primary {
         left: auto;
         a {
             transform: none;
+            background-color: transparent;
+
+            &:hover {
+                border-bottom: 2px solid #00939e;
+            }
+            &[data-in-viewport="true"] {
+                background-color: transparent;
+                border-bottom: 2px solid #00939e;
+            }
         }
 
         &.activeSlideIn {

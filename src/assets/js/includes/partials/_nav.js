@@ -1,7 +1,7 @@
 // Constants
 const BREAKPOINT = 740;
 const SLIDE_IN_CLASS = "activeSlideIn";
-const ACTIVE_CLASS = "active";
+const ACTIVE_CLASS = "burger-active";
 const ANIMATION_STAGGER_MS = 85;
 
 // Selectors
@@ -20,10 +20,17 @@ let scrollingTimer = null;
  */
 export default function initializeNavigation() {
   const burger = document.querySelector(SELECTORS.burger);
+  const logotype = document.querySelector(".logotype-svg");
   const links = document.querySelectorAll(SELECTORS.links);
   initializeObserver();
 
   burger.addEventListener("click", (e) => toggleNav(e.currentTarget, links));
+  logotype.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = e.currentTarget.getAttribute("data-target");
+
+    scrollToTarget(target);
+  });
 
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -74,7 +81,7 @@ function initializeObserver() {
   const observer = new IntersectionObserver(callback, {
     root: null,
     rootMargin: "0px",
-    threshold: 0.4,
+    threshold: 0.55,
   });
 
   sections.forEach((section) => observer.observe(section));
