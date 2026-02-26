@@ -167,10 +167,10 @@ function animateScroll(targetPosition, duration = 500) {
  * Toggles the "is-sticky" class on an element once it has reached its stuck position in the viewport
  */
 
-window.addEventListener(
-  "scroll",
-  throttle(() => {
-    const element = document.querySelector("header.primary");
-    if (element) determineStickyState(element);
-  }, 20),
-);
+// window.addEventListener(
+//   "scroll",
+//   throttle(() => {
+//     const element = document.querySelector("header.primary");
+//     if (element) determineStickyState(element);
+//   }, 20),
+// );

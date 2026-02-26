@@ -3,6 +3,7 @@
 header {
     transition: background-color 150ms ease-in-out;
     letter-spacing: 0.075rem;
+    background-color: #fff;
     &.is-sticky {
         background-color: #fff;
     }
