@@ -9,6 +9,7 @@ const SELECTORS = {
   burger: ".burger",
   links: "nav.primary ul li a",
   sections: "section.section",
+  header: "header.primary",
 };
 
 // State management
@@ -20,7 +21,7 @@ let scrollingTimer = null;
  */
 export default function initializeNavigation() {
   const burger = document.querySelector(SELECTORS.burger);
-  const logotype = document.querySelector(".logotype-svg");
+  const logotype = document.querySelector(".logotype a");
   const links = document.querySelectorAll(SELECTORS.links);
   initializeObserver();
 
@@ -120,13 +121,14 @@ function toggleNav(burger, links) {
  */
 function scrollToTarget(selector) {
   const element = document.querySelector(selector);
+  const headerHeight = document.querySelector(SELECTORS.header).offsetHeight;
 
   if (!element) {
     console.warn(`scrollToTarget: No element found for selector "${selector}"`);
     return;
   }
 
-  animateScroll(element.offsetTop, 600);
+  animateScroll(element.offsetTop - headerHeight, 600);
 }
 
 /**
