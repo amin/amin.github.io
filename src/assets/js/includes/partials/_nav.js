@@ -88,7 +88,7 @@ function initializeObserver() {
   const observer = new IntersectionObserver(callback, {
     root: null,
     rootMargin: "0px",
-    threshold: 0.55,
+    threshold: 0.7,
   });
 
   sections.forEach((section) => observer.observe(section));

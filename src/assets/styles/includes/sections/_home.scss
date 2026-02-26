@@ -1,42 +1,57 @@
 @use "../../utils/mq";
 
 section#home {
-    padding: 2rem 0;
-    .banner {
+    .hero {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 2rem 0;
 
-        .banner-image {
-            margin-bottom: 2rem;
-            img {
-                border-radius: 2rem;
-                max-width: 400px;
-                height: auto;
-                object-fit: cover;
+        &-copy {
+            h1 {
+                font-family: "EB Garamond", serif;
+                font-size: 2.25rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: 1.15rem;
+                font-weight: 400;
+                line-height: 2rem;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        &-image img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        @include mq.mq($until: tablet) {
+            text-align: center;
+
+            &-image {
+                margin-bottom: 2rem;
+
+                img {
+                    max-width: 400px;
+                }
             }
         }
 
         @include mq.mq($from: tablet) {
-            .banner {
-                justify-content: space-between;
-                &-text {
-                    width: 40%;
-                }
-
-                &-image {
-                    margin-bottom: 0;
-                    width: 50%;
-
-                    img {
-                        max-width: 100%;
-                    }
-                }
-            }
             flex-direction: row-reverse;
-            align-items: center;
             justify-content: space-between;
+            padding: 3rem 0;
+
+            &-copy {
+                width: 45%;
+            }
+            &-image {
+                width: 50%;
+            }
         }
     }
 }
