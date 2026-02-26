@@ -1,9 +1,31 @@
 @use "../utils/mq";
 
 header {
+    &.topbar {
+        background-color: transparent;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+
+        .topbar-list {
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            display: flex;
+
+            a {
+                color: #abaaaa;
+                text-transform: uppercase;
+                &:hover {
+                    color: #000;
+                }
+            }
+        }
+    }
     &.primary {
         margin-bottom: 2rem;
-        margin-top: 2rem;
         background-color: #f5f5f5;
         position: sticky;
         top: 0;
