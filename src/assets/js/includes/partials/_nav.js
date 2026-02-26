@@ -1,3 +1,8 @@
+// Utils
+
+import { determineStickyState } from "../../utils/_determineStickyState";
+import { throttle } from "../../utils/_throttle";
+
 // Constants
 const BREAKPOINT = 740;
 const SLIDE_IN_CLASS = "activeSlideIn";
@@ -157,3 +162,15 @@ function animateScroll(targetPosition, duration = 500) {
 
   requestAnimationFrame(step);
 }
+
+/**
+ * Toggles the "is-sticky" class on an element once it has reached its stuck position in the viewport
+ */
+
+window.addEventListener(
+  "scroll",
+  throttle(() => {
+    const element = document.querySelector("header.primary");
+    if (element) determineStickyState(element);
+  }, 20),
+);
