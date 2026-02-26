@@ -4,8 +4,8 @@ title: amin.sh
 
 {% extends "src/_layouts/base.njk" %}
 {% block content %}
-    <section class="section" data-link-id="1" id="home" style="height:100vh;width:100%; background:yellow">hello world</section>
-    <section class="section" data-link-id="2" id="projects" style="height:100vh;width:100%; background:red">hello world</section>
-    <section class="section" data-link-id="3" id="about" style="height:100vh;width:100%; background:blue">hello world</section>
-    <section class="section" data-link-id="4" id="connect" style="height:100vh;width:100%; background:green">hello world</section>
+    {% include "_sections/home.njk"%}
+    {% include "_sections/projects.njk"%}
+    {% include "_sections/about.njk"%}
+    {% include "_sections/connect.njk"%}
 {% endblock %}
