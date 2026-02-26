@@ -2,8 +2,9 @@
 
 header {
     transition: background-color 150ms ease-in-out;
+    letter-spacing: 0.075rem;
     &.is-sticky {
-        background-color: #f4f4f4;
+        background-color: #fff;
     }
     &.topbar {
         background-color: transparent;
@@ -46,6 +47,7 @@ header {
     .header-inner {
         flex-direction: row-reverse;
         align-items: center;
+        border-bottom: 1px solid gainsboro;
     }
 
     .header-container {
@@ -108,12 +110,13 @@ header {
         .header-container {
             flex-direction: row;
             justify-content: space-between;
-            padding: 1rem 0;
+            padding: 1.25rem 0;
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
         }
         .burger {
             display: none;
