@@ -13,16 +13,27 @@ nav.primary {
         padding: 0;
     }
 
+    @include mq.mq($until: tablet) {
+        a {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f5f5f5;
+            &[data-in-viewport="true"] {
+                background-color: #f27b50;
+                color: #fff;
+            }
+        }
+    }
+
     a {
         text-transform: uppercase;
         letter-spacing: 1px;
-        &[data-in-viewport="true"] {
-            background-color: purple;
-        }
+        font-weight: 400;
+        letter-spacing: 1px;
+
         display: block;
         text-align: center;
         background-color: #fff;
-        padding: 0.5rem 0;
+
         transition: transform 500ms ease-in-out;
 
         &.activeSlideIn {
@@ -38,13 +49,11 @@ nav.primary {
         a {
             transform: none;
             background-color: transparent;
+            padding-bottom: 0.5rem;
 
             &:hover,
             &[data-in-viewport="true"] {
                 border-bottom: 2px solid #f27b50;
-            }
-            &[data-in-viewport="true"] {
-                background-color: transparent;
             }
         }
 
