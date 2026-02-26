@@ -7,6 +7,10 @@ header {
         display: flex;
         align-items: center;
 
+        @include mq.mq($until: tablet) {
+            padding: 0 1.5rem;
+        }
+
         .topbar-list {
             justify-content: flex-start;
             align-items: center;

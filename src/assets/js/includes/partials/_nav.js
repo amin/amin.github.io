@@ -56,6 +56,7 @@ export default function initializeNavigation() {
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= BREAKPOINT) {
+      burger.classList.remove(ACTIVE_CLASS);
       links.forEach((link) => link.classList.remove(SLIDE_IN_CLASS));
     }
   });
