@@ -14,10 +14,9 @@
     <body>
         {% include "header.njk" %}
         <main>
-            <div class="wrapper"> {% block content %}{% endblock %}
-                </div>
-            </main>
-            {% include "footer.njk" %}
-            <script src="/assets/js/app.js"></script>
-        </body>
-    </html>
+            {% block content %}{% endblock %}
+        </main>
+        {% include "footer.njk" %}
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

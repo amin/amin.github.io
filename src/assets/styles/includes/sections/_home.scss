@@ -1,0 +1,42 @@
+@use "../../utils/mq";
+
+section#home {
+    padding: 2rem 0;
+    .banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .banner-image {
+            margin-bottom: 2rem;
+            img {
+                border-radius: 2rem;
+                max-width: 400px;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+
+        @include mq.mq($from: tablet) {
+            .banner {
+                justify-content: space-between;
+                &-text {
+                    width: 40%;
+                }
+
+                &-image {
+                    margin-bottom: 0;
+                    width: 50%;
+
+                    img {
+                        max-width: 100%;
+                    }
+                }
+            }
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
