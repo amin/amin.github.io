@@ -9,9 +9,31 @@ section#home {
         padding: 2rem 0;
 
         &-copy {
+            .typewriter {
+                border-right: 2px solid black; // blinking cursor
+                padding-right: 2px; // optional spacing
+                white-space: nowrap;
+                word-break: keep-all;
+                overflow: hidden;
+                flex-shrink: 0;
+
+                @keyframes blink {
+                    0%,
+                    50%,
+                    100% {
+                        border-color: black;
+                    }
+                    25%,
+                    75% {
+                        border-color: transparent;
+                    }
+                }
+
+                animation: blink 2600ms step-end infinite;
+            }
             h1 {
                 font-family: "EB Garamond", serif;
-                font-size: 2.25rem;
+                font-size: 2.5rem;
                 margin-bottom: 1rem;
             }
 
@@ -42,8 +64,8 @@ section#home {
                     max-width: 400px;
                     object-fit: cover;
 
-                    height: 175px;
-                    width: 175px;
+                    height: 200px;
+                    width: 200px;
                 }
             }
         }
@@ -53,8 +75,11 @@ section#home {
             justify-content: space-around;
             padding: 3rem 0;
 
+            .break-mobile {
+                display: none;
+            }
             &-copy {
-                width: 45%;
+                width: 55%;
             }
             &-image {
                 width: auto;
