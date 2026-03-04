@@ -1,5 +1,4 @@
 // Utils
-
 import { determineStickyState } from "../../utils/_determineStickyState";
 import { throttle } from "../../utils/_throttle";
 
@@ -20,6 +19,7 @@ const SELECTORS = {
 // State management
 let isScrolling = false;
 let scrollingTimer = null;
+let lastScrollY = window.scrollY;
 
 /**
  * Initializes navigation: burger menu toggle, link click handling, and resize behavior.
@@ -28,13 +28,14 @@ export default function initializeNavigation() {
   const burger = document.querySelector(SELECTORS.burger);
   const logotype = document.querySelector(".logotype a");
   const links = document.querySelectorAll(SELECTORS.links);
+
+  setInitialActive(links);
   initializeObserver();
 
   burger.addEventListener("click", (e) => toggleNav(e.currentTarget, links));
   logotype.addEventListener("click", (e) => {
     e.preventDefault();
     const target = e.currentTarget.getAttribute("data-target");
-
     scrollToTarget(target);
   });
 
@@ -50,11 +51,13 @@ export default function initializeNavigation() {
       if (window.innerWidth < BREAKPOINT) {
         toggleNav(burger, links);
       }
+
       const target = link.getAttribute("data-target");
       scrollToTarget(target);
 
       scrollingTimer = setTimeout(() => {
         isScrolling = false;
+        lastScrollY = window.scrollY;
       }, 650);
     });
   });
@@ -68,27 +71,61 @@ export default function initializeNavigation() {
 }
 
 /**
- * Initialize observers to update link state if relevant section is in viewport
+ * Sets the active link on page load based on scroll position.
  */
+function setInitialActive(links) {
+  const sections = Array.from(document.querySelectorAll(SELECTORS.sections));
 
+  const active = sections.reduce((closest, section) => {
+    const rect = section.getBoundingClientRect();
+    const prevRect = closest.getBoundingClientRect();
+    return Math.abs(rect.top) < Math.abs(prevRect.top) ? section : closest;
+  });
+
+  links.forEach((link) => (link.dataset.inViewport = "false"));
+  toggleLink(links, active.dataset.linkId);
+}
+
+/**
+ * Initialize observers to update link state if relevant section is in viewport.
+ */
 function initializeObserver() {
-  const sections = document.querySelectorAll(SELECTORS.sections);
-  const links = document.querySelectorAll(SELECTORS.links); // cache once
+  const sections = Array.from(document.querySelectorAll(SELECTORS.sections));
+  const links = document.querySelectorAll(SELECTORS.links);
+  let isInitialLoad = true;
 
   const callback = (entries) => {
+    if (isInitialLoad) {
+      isInitialLoad = false;
+      return;
+    }
+
     if (isScrolling) return;
+
+    const scrollingDown = window.scrollY > lastScrollY;
+    lastScrollY = window.scrollY;
+
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (scrollingDown && entry.isIntersecting) {
         links.forEach((link) => (link.dataset.inViewport = "false"));
         toggleLink(links, entry.target.dataset.linkId);
+      } else if (!scrollingDown && !entry.isIntersecting) {
+        const index = sections.indexOf(entry.target);
+        const prevSection = sections[index - 1];
+
+        links.forEach((link) => (link.dataset.inViewport = "false"));
+
+        if (prevSection) {
+          toggleLink(links, prevSection.dataset.linkId);
+        }
       }
     });
   };
 
   const observer = new IntersectionObserver(callback, {
     root: null,
-    rootMargin: "0px",
-    threshold: 0.7,
+    rootMargin: "-10% 0px -85% 0px",
+    threshold: 0,
   });
 
   sections.forEach((section) => observer.observe(section));
@@ -162,15 +199,3 @@ function animateScroll(targetPosition, duration = 500) {
 
   requestAnimationFrame(step);
 }
-
-/**
- * Toggles the "is-sticky" class on an element once it has reached its stuck position in the viewport
- */
-
-// window.addEventListener(
-//   "scroll",
-//   throttle(() => {
-//     const element = document.querySelector("header.primary");
-//     if (element) determineStickyState(element);
-//   }, 20),
-// );

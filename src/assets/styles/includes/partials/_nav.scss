@@ -49,6 +49,10 @@ nav.primary {
             background-color: transparent;
             padding-bottom: 0.5rem;
 
+            &[data-in-viewport="false"] {
+                border-bottom: 2px solid transparent;
+            }
+
             &:hover,
             &[data-in-viewport="true"] {
                 border-bottom: 2px solid #f27b50;

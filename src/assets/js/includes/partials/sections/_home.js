@@ -1,7 +1,7 @@
 import { randomInt } from "../../../utils/_randomNumber";
 
 const WORDS = [
-  "Reality",
+  "code",
   "PHP",
   "JavaScript",
   "HTML",
