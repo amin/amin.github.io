@@ -22,3 +22,12 @@ h2 {
 p {
     font-size: 1.25rem;
 }
+
+span.section-label {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    display: block;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+}

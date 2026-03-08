@@ -1,17 +1,11 @@
 @use "../../utils/mq";
 
 section#connect {
-    .label {
-        text-transform: uppercase;
-        font-size: 1.25rem;
-        display: block;
-        margin-bottom: 1rem;
-        letter-spacing: 2px;
-        font-weight: 500;
-        color: #a05033;
-    }
     text-align: center;
     background: #f27b50;
+    .section-label {
+        color: #a05033;
+    }
 
     h2 {
         margin-bottom: 1rem;
