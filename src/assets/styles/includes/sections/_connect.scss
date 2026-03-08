@@ -1,0 +1,98 @@
+@use "../../utils/mq";
+
+section#connect {
+    .label {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        display: block;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #a05033;
+    }
+    text-align: center;
+    background: #f27b50;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+    .connect-content {
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 2.2px dashed #a05033;
+        @include mq.mq($from: tablet) {
+            p {
+                width: 70%;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .connect-platforms {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin: auto;
+
+        @include mq.mq($from: tablet) {
+            width: 70%;
+        }
+
+        .email {
+            font-size: 1.75rem;
+            letter-spacing: 1px;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .platforms {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 10rem;
+
+            @include mq.mq($from: tablet) {
+                width: 12rem;
+            }
+        }
+    }
+
+    .platform {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &-name {
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        &-logo svg {
+            width: 2.75rem;
+            height: 2.75rem;
+        }
+    }
+
+    .linkedIn-logo,
+    .github-logo {
+        fill: #a05033;
+    }
+
+    .platform-logo-github:hover {
+        .github-logo {
+            fill: #fff;
+        }
+    }
+
+    .platform-logo-linkedIn:hover {
+        .linkedIn-logo {
+            fill: #0a66c2;
+        }
+    }
+}
