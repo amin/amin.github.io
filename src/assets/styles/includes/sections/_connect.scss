@@ -1,19 +1,24 @@
 @use "../../utils/mq";
 
+$connect-accent: #a05033;
+
 section#connect {
     text-align: center;
     background: #f27b50;
+
     .section-label {
-        color: #a05033;
+        color: $connect-accent;
     }
 
     h2 {
         margin-bottom: 1rem;
     }
+
     .connect-content {
         margin-bottom: 3rem;
         padding-bottom: 3rem;
-        border-bottom: 2.2px dashed #a05033;
+        border-bottom: 2.2px dashed $connect-accent;
+
         @include mq.mq($from: tablet) {
             p {
                 width: 70%;
@@ -32,24 +37,29 @@ section#connect {
         @include mq.mq($from: tablet) {
             width: 70%;
         }
+    }
 
-        .email {
-            font-size: 1.75rem;
-            letter-spacing: 1px;
-            &:hover {
-                text-decoration: underline;
-            }
+    .email {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+
+        &:hover {
+            text-decoration: underline;
         }
 
-        .platforms {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 10rem;
+        @include mq.mq($from: tablet) {
+            font-size: 1.75rem;
+        }
+    }
 
-            @include mq.mq($from: tablet) {
-                width: 12rem;
-            }
+    .platforms {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 7.5rem;
+
+        @include mq.mq($from: tablet) {
+            width: 12rem;
         }
     }
 
@@ -57,6 +67,7 @@ section#connect {
         display: flex;
         flex-direction: column;
         align-items: center;
+
         &:hover {
             text-decoration: underline;
         }
@@ -68,25 +79,26 @@ section#connect {
         }
 
         &-logo svg {
-            width: 2.75rem;
-            height: 2.75rem;
+            width: 2.25rem;
+            height: 2.25rem;
+
+            @include mq.mq($from: tablet) {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
         }
     }
 
     .linkedIn-logo,
     .github-logo {
-        fill: #a05033;
+        fill: $connect-accent;
     }
 
-    .platform-logo-github:hover {
-        .github-logo {
-            fill: #fff;
-        }
+    .platform-logo-github:hover .github-logo {
+        fill: #fff;
     }
 
-    .platform-logo-linkedIn:hover {
-        .linkedIn-logo {
-            fill: #0a66c2;
-        }
+    .platform-logo-linkedIn:hover .linkedIn-logo {
+        fill: #0a66c2;
     }
 }
