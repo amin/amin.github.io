@@ -6,6 +6,7 @@ import { throttle } from "../../utils/_throttle";
 const BREAKPOINT = 740;
 const SLIDE_IN_CLASS = "activeSlideIn";
 const ACTIVE_CLASS = "burger-active";
+const NAV_OPEN_CLASS = "nav-open";
 const ANIMATION_STAGGER_MS = 85;
 
 // Selectors
@@ -65,6 +66,9 @@ export default function initializeNavigation() {
   window.addEventListener("resize", () => {
     if (window.innerWidth >= BREAKPOINT) {
       burger.classList.remove(ACTIVE_CLASS);
+      document
+        .querySelector(SELECTORS.header)
+        .classList.remove(NAV_OPEN_CLASS);
       links.forEach((link) => link.classList.remove(SLIDE_IN_CLASS));
     }
   });
@@ -144,6 +148,7 @@ function toggleLink(links, id) {
  */
 function toggleNav(burger, links) {
   burger.classList.toggle(ACTIVE_CLASS);
+  document.querySelector(SELECTORS.header).classList.toggle(NAV_OPEN_CLASS);
 
   const allActive = [...links].every((link) =>
     link.classList.contains(SLIDE_IN_CLASS),
