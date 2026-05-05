@@ -20,7 +20,6 @@ const SELECTORS = {
 // State management
 let isScrolling = false;
 let scrollingTimer = null;
-let lastScrollY = window.scrollY;
 
 /**
  * Initializes navigation: burger menu toggle, link click handling, and resize behavior.
@@ -30,8 +29,7 @@ export default function initializeNavigation() {
   const logotype = document.querySelector(".logotype a");
   const links = document.querySelectorAll(SELECTORS.links);
 
-  setInitialActive(links);
-  initializeObserver();
+  initializeSectionTracking(links);
 
   burger.addEventListener("click", (e) => toggleNav(e.currentTarget, links));
   logotype.addEventListener("click", (e) => {
@@ -58,7 +56,6 @@ export default function initializeNavigation() {
 
       scrollingTimer = setTimeout(() => {
         isScrolling = false;
-        lastScrollY = window.scrollY;
       }, 650);
     });
   });
@@ -75,64 +72,58 @@ export default function initializeNavigation() {
 }
 
 /**
- * Sets the active link on page load based on scroll position.
+ * Tracks the active section by computing it from scroll position on each scroll.
+ *
+ * The active section is the latest section whose top has scrolled past an
+ * activation line at 40% of the viewport. When the page is at the bottom
+ * (last section can't scroll its top past the line), the last section wins.
  */
-function setInitialActive(links) {
+function initializeSectionTracking(links) {
   const sections = Array.from(document.querySelectorAll(SELECTORS.sections));
 
-  const active = sections.reduce((closest, section) => {
-    const rect = section.getBoundingClientRect();
-    const prevRect = closest.getBoundingClientRect();
-    return Math.abs(rect.top) < Math.abs(prevRect.top) ? section : closest;
-  });
-
-  links.forEach((link) => (link.dataset.inViewport = "false"));
-  toggleLink(links, active.dataset.linkId);
-}
-
-/**
- * Initialize observers to update link state if relevant section is in viewport.
- */
-function initializeObserver() {
-  const sections = Array.from(document.querySelectorAll(SELECTORS.sections));
-  const links = document.querySelectorAll(SELECTORS.links);
-  let isInitialLoad = true;
-
-  const callback = (entries) => {
-    if (isInitialLoad) {
-      isInitialLoad = false;
-      return;
-    }
-
+  const updateActive = () => {
     if (isScrolling) return;
 
-    const scrollingDown = window.scrollY > lastScrollY;
-    lastScrollY = window.scrollY;
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    const vh = window.innerHeight;
 
-    entries.forEach((entry) => {
-      if (scrollingDown && entry.isIntersecting) {
-        links.forEach((link) => (link.dataset.inViewport = "false"));
-        toggleLink(links, entry.target.dataset.linkId);
-      } else if (!scrollingDown && !entry.isIntersecting) {
-        const index = sections.indexOf(entry.target);
-        const prevSection = sections[index - 1];
-
-        links.forEach((link) => (link.dataset.inViewport = "false"));
-
-        if (prevSection) {
-          toggleLink(links, prevSection.dataset.linkId);
+    let active;
+    if (vh + scrollY >= docHeight - 2) {
+      active = sections[sections.length - 1];
+    } else {
+      const activationLine = scrollY + vh * 0.4;
+      active = sections[0];
+      for (const section of sections) {
+        if (section.offsetTop <= activationLine) {
+          active = section;
+        } else {
+          break;
         }
       }
-    });
+    }
+
+    const targetId = active.dataset.linkId;
+    const currentLink = document.querySelector(
+      'nav.primary a[data-in-viewport="true"]',
+    );
+    if (currentLink?.dataset.linkId === targetId) return;
+
+    links.forEach((link) => (link.dataset.inViewport = "false"));
+    toggleLink(links, targetId);
   };
 
-  const observer = new IntersectionObserver(callback, {
-    root: null,
-    rootMargin: "-10% 0px -85% 0px",
-    threshold: 0,
+  let scheduled = false;
+  window.addEventListener("scroll", () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => {
+      updateActive();
+      scheduled = false;
+    });
   });
 
-  sections.forEach((section) => observer.observe(section));
+  updateActive();
 }
 
 function toggleLink(links, id) {
