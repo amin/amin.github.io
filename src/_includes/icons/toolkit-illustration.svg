@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g>
+        <rect x="125" y="95" width="230" height="210" rx="12" fill="#fff" stroke="#00939e" stroke-width="2.5"/>
+        <path d="M 125 107 Q 125 95 137 95 L 343 95 Q 355 95 355 107 L 355 130 L 125 130 Z" fill="#00939e"/>
+        <circle cx="143" cy="113" r="4.5" fill="#f27b50"/>
+        <circle cx="158" cy="113" r="4.5" fill="#fff" opacity="0.7"/>
+        <circle cx="173" cy="113" r="4.5" fill="#fff" opacity="0.5"/>
+
+        <g stroke-linecap="round" stroke-width="4">
+            <line x1="143" y1="158" x2="178" y2="158" stroke="#f27b50"/>
+            <line x1="188" y1="158" x2="248" y2="158" stroke="#00939e" opacity="0.65"/>
+            <line x1="163" y1="180" x2="225" y2="180" stroke="#00939e" opacity="0.5"/>
+            <line x1="163" y1="202" x2="290" y2="202" stroke="#00939e" opacity="0.65"/>
+            <line x1="163" y1="224" x2="200" y2="224" stroke="#f27b50" opacity="0.8"/>
+            <line x1="210" y1="224" x2="265" y2="224" stroke="#00939e" opacity="0.5"/>
+            <line x1="143" y1="246" x2="178" y2="246" stroke="#f27b50"/>
+            <line x1="188" y1="246" x2="295" y2="246" stroke="#00939e" opacity="0.65"/>
+            <line x1="143" y1="268" x2="220" y2="268" stroke="#00939e" opacity="0.5"/>
+            <line x1="143" y1="285" x2="195" y2="285" stroke="#00939e" opacity="0.4"/>
+        </g>
+    </g>
+
+    <svg x="20" y="85" width="60" height="60">{% include "icons/brand/nodejs.svg" %}</svg>
+    <svg x="398" y="118" width="64" height="64">{% include "icons/brand/react.svg" %}</svg>
+    <svg x="26" y="311" width="68" height="68">{% include "icons/brand/docker.svg" %}</svg>
+    <svg x="401" y="261" width="58" height="58">{% include "icons/brand/git.svg" %}</svg>
+</svg>
