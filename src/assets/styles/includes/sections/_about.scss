@@ -1,7 +1,66 @@
+@use "../../utils/mq";
+
 section#about {
     background-color: #00939e;
     color: #fff;
+
     h2 {
         font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        @include mq.mq($from: tablet) {
+            flex-direction: row;
+            gap: 5rem;
+            align-items: flex-start;
+        }
+    }
+
+    .about-bio {
+        flex: 1;
+        min-width: 0;
+
+        p {
+            max-width: 54ch;
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .about-facts {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @include mq.mq($from: tablet) {
+            flex-shrink: 0;
+            width: 36%;
+            max-width: 320px;
+        }
+    }
+
+    .about-fact-label {
+        display: block;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.9rem;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .about-fact p {
+        font-size: 1.05rem;
+        line-height: 1.55;
     }
 }

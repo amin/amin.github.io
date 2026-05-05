@@ -20,8 +20,8 @@
         </g>
     </g>
 
-    <svg x="20" y="85" width="60" height="60">{% include "icons/brand/nodejs.svg" %}</svg>
-    <svg x="398" y="118" width="64" height="64">{% include "icons/brand/react.svg" %}</svg>
-    <svg x="26" y="311" width="68" height="68">{% include "icons/brand/docker.svg" %}</svg>
-    <svg x="401" y="261" width="58" height="58">{% include "icons/brand/git.svg" %}</svg>
+    <svg x="20" y="85" width="60" height="60">{% include "icons/brand/nextjs.svg" %}</svg>
+    <svg x="400" y="120" width="60" height="60">{% include "icons/brand/laravel.svg" %}</svg>
+    <svg x="31" y="316" width="58" height="58">{% include "icons/brand/claude.svg" %}</svg>
+    <svg x="401" y="261" width="58" height="58">{% include "icons/brand/typescript.svg" %}</svg>
 </svg>
