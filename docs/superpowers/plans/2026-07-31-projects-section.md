@@ -329,15 +329,20 @@ const tiles = (html.match(/class="project-tile"/g) || []).length;
 if (tiles !== 7) throw new Error("expected 7 palette tiles, got " + tiles);
 const strip = (html.match(/project-strip/g) || []).length;
 if (strip !== 1) throw new Error("expected 1 palette strip, got " + strip);
-const tech = (html.match(/React 19|Express 5|MongoDB|LinkedIn OAuth|Tailwind v4|Turborepo/g) || []).length;
-if (tech !== 6) throw new Error("expected 6 tech pills, got " + tech);
+const stripSwatches = ((html.match(/<div class="project-strip">.*?<\/div>/s) || [""])[0].match(/<span/g) || []).length;
+if (stripSwatches !== 7) throw new Error("expected 7 strip swatches, got " + stripSwatches);
+const scope = (html.match(/<ul class="project-tech">.*?<\/ul>/s) || [""])[0];
+const tech = (scope.match(/<li>/g) || []).length;
+if (tech !== 6) throw new Error("expected 6 tech pills in the list, got " + tech);
 const marks = (html.match(/<title>Yrco<\/title>/g) || []).length;
 if (marks !== 2) throw new Error("expected the mark twice (tile + lockup), got " + marks);
-console.log("ok counts: 7 tiles, 1 strip, 6 tech, 2 marks");
+console.log("ok counts: 7 tiles, 7 strip swatches, 1 strip, 6 tech pills, 2 marks");
 '
 ```
 
 Expected: fourteen `ok` lines plus the counts line.
+
+The tech-pill count **must** be scoped to `<ul class="project-tech">`. A page-wide count of the tech strings picks up `MongoDB` and `Turborepo` from the Skills section and `MongoDB` and `LinkedIn OAuth` from the role sentence, giving 12 instead of 6.
 
 - [ ] **Step 4: Commit**
 
