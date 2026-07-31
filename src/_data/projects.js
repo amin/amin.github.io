@@ -20,9 +20,10 @@ export default [
   },
   {
     name: "Loopland",
-    // Mark only — no wordmark, so the name is set beside it. Yrco uses `logo`
-    // instead, because its SVG already contains the wordmark.
-    mark: "icons/brand/loopland.svg",
+    // The real logo is a raster badge, so it goes through eleventy-img as an
+    // <img> rather than being inlined. Yrco uses `logo` instead — a true vector
+    // small enough to inline.
+    logoImage: "/assets/images/loopland.png",
     description:
       "A digital amusement park. Visitors activate an account, play the park's amusements, and earn stamps as they go — then trade matching sets for in-game currency and compete on an end-of-showdown leaderboard. Third-party games plug into the park's Centralbank API to authenticate players and award stamps without ever seeing their credentials.",
     tech: [

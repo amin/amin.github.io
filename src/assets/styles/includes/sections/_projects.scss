@@ -22,8 +22,16 @@ section#projects {
     .project-logo {
         margin-bottom: 1.75rem;
 
+        // A wide wordmark lockup (Yrco is 147:49) sizes by width.
         svg {
             width: 9.5rem;
+            height: auto;
+        }
+
+        // A raster badge is near-square (Loopland is 832:750), so the same width
+        // would tower over the lockup. Sized narrower to even out the heights.
+        img {
+            width: 7.5rem;
             height: auto;
         }
 
@@ -31,40 +39,14 @@ section#projects {
             svg {
                 width: 11.5rem;
             }
-        }
-    }
 
-    // For a brand whose mark carries no wordmark, the name is set beside it in
-    // the page's own serif. Sized to land at roughly the height of a .project-logo
-    // lockup so the two entries carry equal weight.
-    .project-lockup {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        margin-bottom: 1.75rem;
-
-        svg {
-            width: 3rem;
-            height: 3rem;
-        }
-
-        span {
-            font-size: 2.25rem;
-        }
-
-        @include mq.mq($from: tablet) {
-            svg {
-                width: 3.6rem;
-                height: 3.6rem;
-            }
-
-            span {
-                font-size: 2.6rem;
+            img {
+                width: 9rem;
             }
         }
     }
 
-    // Fallback heading for a project with no logo or mark. Sized here so such an
+    // Fallback heading for a project with no logo at all. Sized here so such an
     // entry is not left at the browser default the moment one is added.
     .project-name {
         font-size: 1.6rem;
