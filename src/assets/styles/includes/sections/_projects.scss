@@ -19,61 +19,24 @@ section#projects {
         gap: 4rem;
     }
 
-    .project {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        @include mq.mq($from: tablet) {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 3.5rem;
-
-            &:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-        }
-    }
-
-    .project-mark {
-        flex-shrink: 0;
+    .project-logo {
+        margin-bottom: 1.75rem;
 
         svg {
-            width: 7rem;
-            height: 7rem;
+            width: 12rem;
+            height: auto;
         }
 
         @include mq.mq($from: tablet) {
             svg {
-                width: 9rem;
-                height: 9rem;
+                width: 15rem;
             }
         }
-    }
-
-    .project-copy {
-        flex: 1;
-        min-width: 0;
-    }
-
-    h3 {
-        font-size: 1.6rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 0.9rem;
     }
 
     .project-description {
         max-width: 60ch;
         line-height: 1.65;
-        margin-bottom: 1rem;
-    }
-
-    .project-role {
-        font-size: 1.05rem;
-        line-height: 1.55;
-        max-width: 60ch;
-        color: #6a6a6a;
     }
 
     .project-tech {

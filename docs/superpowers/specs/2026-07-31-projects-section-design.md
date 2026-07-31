@@ -213,13 +213,27 @@ Superseded by this revision:
 
 | Was | Now |
 | --- | --- |
-| Visual column: 4×2 grid of palette tiles + caption | Visual column: the coloured mark with the project name beneath, left of the copy |
+| Two-column row, visual beside copy, alternating by `nth-child(even)` | A single stacked block. No columns, no alternation |
+| Visual column: 4×2 grid of palette tiles + caption | Removed |
 | Palette strip above the copy | Removed |
-| Name lockup inside the copy column | Removed — the mark now names the project from the left column, so it appears once, not twice |
+| Name lockup in the copy column, plus an `h3` tagline | One thing: the full wordmark lockup as the `h3`, above the description |
 | Tech as six dashed pills | `Built with` label + interpunct-separated line, styled as a near-copy of `.skills-group-label` |
-| Role with a `#dbd56e` left border | Plain muted paragraph |
-| `palette` field in the data file | Removed — nothing rendered it |
+| Role paragraph with a `#dbd56e` left border | Removed entirely, along with the `role` field |
+| `palette` and `tagline` fields | Removed — nothing rendered them |
+| `logomark` field (the three-capsule mark alone) | `logo` — the full lockup |
 
-`links`, `tech`, `role`, `tagline`, `description` and `logomark` are unchanged, as is the
-alternating `nth-child(even)` row direction for future projects. Yrco's colour now enters
-the page through exactly one object: the three-capsule mark.
+The final entry is: **lockup → description → Built with → links.** Yrco's colour enters the
+page through exactly one object, the lockup's three capsules.
+
+### The lockup asset
+
+`src/_includes/icons/brand/yrco.svg` is composed, not exported whole. Figma's
+`wordmark+logomark` symbol draws the logomark as one merged black path, which cannot carry
+three colours. The file therefore combines the four wordmark letter paths from that symbol
+(black) with the three capsule paths from `logomark-individual`. Both occupy the same 34×34
+box in the same coordinate space, so the capsules drop in exactly where the merged path was.
+`viewBox="0 0 147 49"`, backing rect stripped.
+
+Structure is `<h3 class="project-logo">` wrapping the SVG: the heading level survives for
+document outline, and the SVG's `role="img"` plus `<title>Yrco</title>` supplies the
+accessible name.
