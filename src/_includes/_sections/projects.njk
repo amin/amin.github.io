@@ -9,10 +9,11 @@
                 <h3 class="project-logo">{% include project.logo %}</h3>
                 {% endif %}
                 <p class="project-description">{{ project.description }}</p>
-                <div class="project-tech">
-                    <span class="project-tech-label">Built with</span>
-                    <p>{{ project.tech | join(" · ") }}</p>
-                </div>
+                <ul class="project-tech">
+                    {% for icon in project.tech %}
+                    <li>{% include icon %}</li>
+                    {% endfor %}
+                </ul>
                 <div class="project-links">
                     {% if project.links.live %}
                     <a href="{{ project.links.live }}" target="_blank" rel="noopener noreferrer">{{ project.links.live | replace("https://", "") }}</a>
