@@ -5,43 +5,20 @@
         <ul class="projects-list">
             {% for project in projects %}
             <li class="project">
-                {% if project.palette %}
-                <div class="project-visual">
-                    <div class="project-tiles">
-                        {% for colour in project.palette %}
-                        <span class="project-tile" style="background:{{ colour }}"></span>
-                        {% endfor %}
-                        <span class="project-tile project-tile--mark">
-                            {% if project.logomark %}{% include project.logomark %}{% endif %}
-                        </span>
-                    </div>
-                    <p class="project-caption">Seven traits &rarr; one palette</p>
+                <div class="project-mark">
+                    {% if project.logomark %}{% include project.logomark %}{% endif %}
+                    <span class="project-name">{{ project.name }}</span>
                 </div>
-                {% endif %}
                 <div class="project-copy">
-                    {% if project.palette %}
-                    <div class="project-strip">
-                        {% for colour in project.palette %}
-                        <span style="background:{{ colour }}"></span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    <div class="project-lockup">
-                        {% if project.logomark %}
-                        <span class="project-logomark">{% include project.logomark %}</span>
-                        {% endif %}
-                        <span class="project-name">{{ project.name }}</span>
-                    </div>
                     <h3>{{ project.tagline }}</h3>
                     <p class="project-description">{{ project.description }}</p>
                     {% if project.role %}
                     <p class="project-role">{{ project.role }}</p>
                     {% endif %}
-                    <ul class="project-tech">
-                        {% for item in project.tech %}
-                        <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
+                    <div class="project-tech">
+                        <span class="project-tech-label">Built with</span>
+                        <p>{{ project.tech | join(" · ") }}</p>
+                    </div>
                     <div class="project-links">
                         {% if project.links.live %}
                         <a href="{{ project.links.live }}" target="_blank" rel="noopener noreferrer">{{ project.links.live | replace("https://", "") }}</a>

@@ -198,3 +198,28 @@ No test suite exists — this is an Eleventy static site. Verification is:
 ## Open items
 
 None. Colourway and heading text were author-approved decisions recorded above.
+
+---
+
+## Revision, 2026-07-31 — stripped back to the page's vocabulary
+
+Seeing the section rendered in place, the author judged it heavier than the rest of the
+page. That was correct: every other section is plain text whose only decorative device is a
+1px dashed rule. This section had filled colour tiles, a rounded palette strip, six
+border-pilled tech items and a coloured left-border — it was the only section on the page
+carrying chrome.
+
+Superseded by this revision:
+
+| Was | Now |
+| --- | --- |
+| Visual column: 4×2 grid of palette tiles + caption | Visual column: the coloured mark with the project name beneath, left of the copy |
+| Palette strip above the copy | Removed |
+| Name lockup inside the copy column | Removed — the mark now names the project from the left column, so it appears once, not twice |
+| Tech as six dashed pills | `Built with` label + interpunct-separated line, styled as a near-copy of `.skills-group-label` |
+| Role with a `#dbd56e` left border | Plain muted paragraph |
+| `palette` field in the data file | Removed — nothing rendered it |
+
+`links`, `tech`, `role`, `tagline`, `description` and `logomark` are unchanged, as is the
+alternating `nth-child(even)` row direction for future projects. Yrco's colour now enters
+the page through exactly one object: the three-capsule mark.
