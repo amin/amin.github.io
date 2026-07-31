@@ -12,9 +12,10 @@ section#projects {
         padding: 0;
         display: grid;
         gap: 4rem;
-        // The shared h2 rule gives 1rem, which suits a heading followed by text
-        // but crowds a logo. Collapses with that margin rather than adding to it.
-        margin-top: 3rem;
+        // Collapses with the shared h2 rule's 1rem rather than adding to it, so
+        // the gap is 1rem. Stated here so the section owns its own spacing if
+        // that shared rule ever changes.
+        margin-top: 1rem;
 
         // Two abreast once there is room for a readable measure in each column.
         // Held back to desktop rather than tablet, where the columns would be
