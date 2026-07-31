@@ -23,13 +23,13 @@ section#projects {
         margin-bottom: 1.75rem;
 
         svg {
-            width: 12rem;
+            width: 9.5rem;
             height: auto;
         }
 
         @include mq.mq($from: tablet) {
             svg {
-                width: 15rem;
+                width: 11.5rem;
             }
         }
     }
