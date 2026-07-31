@@ -28,20 +28,16 @@ section#projects {
             height: auto;
         }
 
-        // A raster badge is near-square (Loopland is 832:750), so the same width
-        // would tower over the lockup. Sized narrower to even out the heights.
+        // A raster badge is near-square (Loopland is 832:750), so it holds one
+        // width throughout rather than growing with the lockup.
         img {
-            width: 7.5rem;
+            width: 9.5rem;
             height: auto;
         }
 
         @include mq.mq($from: tablet) {
             svg {
                 width: 11.5rem;
-            }
-
-            img {
-                width: 9rem;
             }
         }
     }
