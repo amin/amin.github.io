@@ -6,7 +6,7 @@ export default [
     // small enough to inline.
     logoImage: "/assets/images/loopland.png",
     description:
-      "A digital amusement park. Visitors activate an account, play the park's amusements, and earn stamps as they go — then trade matching sets for in-game currency and compete on an end-of-showdown leaderboard. Third-party games plug into the park's Centralbank API to authenticate players and award stamps without ever seeing their credentials.",
+      "A digital amusement park, built around Centralbank — a Laravel API we wrote for the rest of our class to plug their own games into. Each game registers for its own key, then authenticates players and handles the payments made to it through the API, without ever touching a player's credentials. Players earn stamps as they play, trade matching sets for currency, and finish on a shared leaderboard.",
     tech: [
       "icons/php.svg",
       "icons/laravel.svg",
