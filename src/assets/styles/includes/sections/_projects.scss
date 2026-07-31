@@ -18,6 +18,21 @@ section#projects {
         // roughly 340px and the descriptions would get cramped.
         @include mq.mq($from: desktop) {
             grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto auto auto;
+            column-gap: 4rem;
+            row-gap: 0;
+
+            // Each entry opts into the parent's rows, so logo, description,
+            // stack row and links line up across both columns no matter how
+            // much longer one description runs than the other. Vertical spacing
+            // comes from the children's own margins, hence row-gap: 0.
+            // Browsers without subgrid ignore this and fall back to each column
+            // flowing independently — the layout before this rule.
+            > li {
+                display: grid;
+                grid-row: span 4;
+                grid-template-rows: subgrid;
+            }
         }
     }
 
@@ -43,13 +58,13 @@ section#projects {
             }
         }
 
-        // Side by side, a near-square badge (~8.6rem tall) and a wide lockup
-        // (~3.8rem) would start their descriptions at different heights. Sitting
-        // both on a shared baseline lines the columns up.
+        // Side by side, a near-square badge and a wide lockup have very
+        // different heights. The subgrid row sizes to the taller of the two and
+        // both headings stretch to fill it, so bottom-aligning sits them on a
+        // shared baseline without needing a hardcoded min-height.
         @include mq.mq($from: desktop) {
             display: flex;
             align-items: flex-end;
-            min-height: 8.75rem;
         }
     }
 
