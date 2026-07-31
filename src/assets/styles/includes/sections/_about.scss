@@ -59,6 +59,17 @@ section#about {
         line-height: 1.55;
     }
 
+    // The range sits on its own line and never splits, so the dash can't end up
+    // stranded at a line break. Abbreviated months keep it inside the 320px
+    // column with room to spare.
+    .about-fact-dates {
+        display: block;
+        white-space: nowrap;
+        margin-top: 0.3rem;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
     // Dashed underline, matching the rules above each fact and the project
     // links, so an outbound link is discoverable against the teal.
     .about-fact a {
