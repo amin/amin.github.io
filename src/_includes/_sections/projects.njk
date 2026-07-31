@@ -4,9 +4,11 @@
         <h2>Work I'm proud of.</h2>
         <ul class="projects-list">
             {% for project in projects %}
-            <li class="project">
+            <li>
                 {% if project.logo %}
                 <h3 class="project-logo">{% include project.logo %}</h3>
+                {% else %}
+                <h3 class="project-name">{{ project.name }}</h3>
                 {% endif %}
                 <p class="project-description">{{ project.description }}</p>
                 <ul class="project-tech">

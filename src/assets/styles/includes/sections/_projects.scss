@@ -34,6 +34,13 @@ section#projects {
         }
     }
 
+    // Fallback heading for a project with no logo. Sized here so such an entry
+    // is not left at the browser default the moment one is added.
+    .project-name {
+        font-size: 1.6rem;
+        margin-bottom: 1.75rem;
+    }
+
     .project-description {
         max-width: 60ch;
         line-height: 1.65;
