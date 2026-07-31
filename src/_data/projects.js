@@ -2,7 +2,6 @@ export default [
   {
     name: "Yrco",
     logomark: "icons/brand/yrco.svg",
-    tagline: "Where first impressions come in full colour.",
     description:
       "A networking app for the evening Yrgo's design and web development students meet the industry. Everyone who attends picks seven traits that define them, and those traits become a palette that is theirs alone — so you can read the room by colour, find the people who complement you, and leave with the connections worth keeping.",
     role: "A four-person school project. I built the application end to end — React front end, Express API, MongoDB, and LinkedIn OAuth.",

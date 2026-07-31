@@ -5,12 +5,11 @@
         <ul class="projects-list">
             {% for project in projects %}
             <li class="project">
-                <div class="project-mark">
-                    {% if project.logomark %}{% include project.logomark %}{% endif %}
-                    <span class="project-name">{{ project.name }}</span>
-                </div>
+                {% if project.logomark %}
+                <div class="project-mark">{% include project.logomark %}</div>
+                {% endif %}
                 <div class="project-copy">
-                    <h3>{{ project.tagline }}</h3>
+                    <h3>{{ project.name }}</h3>
                     <p class="project-description">{{ project.description }}</p>
                     {% if project.role %}
                     <p class="project-role">{{ project.role }}</p>
