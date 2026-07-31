@@ -1,0 +1,11 @@
+<section class="section" data-link-id="4" id="projects">
+    <div class="wrapper">
+        <span class="section-label">Projects</span>
+        <h2>Work I'm proud of.</h2>
+        <ul class="projects-list">
+            {% for project in projects %}
+            <li class="project">{{ project.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
