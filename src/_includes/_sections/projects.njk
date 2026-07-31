@@ -7,6 +7,8 @@
             <li>
                 {% if project.logo %}
                 <h3 class="project-logo">{% include project.logo %}</h3>
+                {% elif project.mark %}
+                <h3 class="project-lockup">{% include project.mark %}<span>{{ project.name }}</span></h3>
                 {% else %}
                 <h3 class="project-name">{{ project.name }}</h3>
                 {% endif %}

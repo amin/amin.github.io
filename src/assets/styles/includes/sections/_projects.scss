@@ -34,8 +34,38 @@ section#projects {
         }
     }
 
-    // Fallback heading for a project with no logo. Sized here so such an entry
-    // is not left at the browser default the moment one is added.
+    // For a brand whose mark carries no wordmark, the name is set beside it in
+    // the page's own serif. Sized to land at roughly the height of a .project-logo
+    // lockup so the two entries carry equal weight.
+    .project-lockup {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        margin-bottom: 1.75rem;
+
+        svg {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        span {
+            font-size: 2.25rem;
+        }
+
+        @include mq.mq($from: tablet) {
+            svg {
+                width: 3.6rem;
+                height: 3.6rem;
+            }
+
+            span {
+                font-size: 2.6rem;
+            }
+        }
+    }
+
+    // Fallback heading for a project with no logo or mark. Sized here so such an
+    // entry is not left at the browser default the moment one is added.
     .project-name {
         font-size: 1.6rem;
         margin-bottom: 1.75rem;
