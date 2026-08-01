@@ -5,7 +5,15 @@ footer.site-footer {
 
     // Text stays the default near-black, as it is on the Connect section above.
     // White would only reach 3.76:1 against this background, short of AA.
+    //
+    // Flex rather than a plain space between the two sentences, so the gap is
+    // controllable and they stack cleanly instead of running together when the
+    // line is too narrow for both.
     p {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem 1.75rem;
         font-size: 1.25rem;
         letter-spacing: 1px;
     }
