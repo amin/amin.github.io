@@ -1,10 +1,13 @@
 export default [
   {
     name: "Loopland",
-    // The real logo is a raster badge, so it goes through eleventy-img as an
-    // <img> rather than being inlined. Yrco uses `logo` instead — a true vector
-    // small enough to inline.
-    logoImage: "/assets/images/loopland.png",
+    // Redrawn as vector geometry. The only wordmark that ships with the project
+    // is baked into an illustrated badge, with a rollercoaster painted over one
+    // of its letters, so it could not be cropped or repaired. This is built to
+    // the original's measured proportions — stroke is 0.21 of cap height — in
+    // its sampled colours. Replace it if a clean export ever comes out of the
+    // Affinity source.
+    logo: "icons/brand/loopland.svg",
     description:
       "A digital amusement park, built around Centralbank — a Laravel API we wrote so the rest of our class could plug in their own amusements, the games and attractions that fill the park. Each is issued an API key and runs its transactions through Centralbank, acting on a player's behalf with a short-lived identity token rather than their credentials. Players earn stamps as they play, exchange matching sets for currency, and finish on a shared leaderboard.",
     tech: [
@@ -15,6 +18,7 @@ export default [
       "icons/tailwind.svg",
       "icons/sql.svg",
       "icons/turborepo.svg",
+      "icons/pnpm.svg",
     ],
     links: {
       live: "https://loopland.se",

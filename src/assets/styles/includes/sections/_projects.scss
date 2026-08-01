@@ -43,22 +43,17 @@ section#projects {
     .project-logo {
         margin-bottom: 1.75rem;
 
-        // A wide wordmark lockup (Yrco is 147:49) sizes by width.
+        // Sized by height, not width, so wordmarks of different aspect ratios
+        // sit at the same optical size. Yrco is 147:49 and Loopland 483:122, so
+        // matching widths would leave one noticeably taller than the other.
         svg {
-            width: 9.5rem;
-            height: auto;
-        }
-
-        // A raster badge is near-square (Loopland is 832:750), so it holds one
-        // width throughout rather than growing with the lockup.
-        img {
-            width: 9.5rem;
-            height: auto;
+            height: 3.2rem;
+            width: auto;
         }
 
         @include mq.mq($from: tablet) {
             svg {
-                width: 11.5rem;
+                height: 3.85rem;
             }
         }
 
