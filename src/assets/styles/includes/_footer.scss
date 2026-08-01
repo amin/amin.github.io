@@ -1,0 +1,23 @@
+footer.site-footer {
+    padding: 1.5rem 0;
+    text-align: center;
+    background: #d66036;
+
+    // Text stays the default near-black, as it is on the Connect section above.
+    // White would only reach 3.76:1 against this background, short of AA.
+    p {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+    }
+
+    // Dashed underline that goes solid on hover, matching the project links and
+    // the Yrgo link in About.
+    a {
+        border-bottom: 1px dashed currentColor;
+        padding-bottom: 0.15rem;
+
+        &:hover {
+            border-bottom-style: solid;
+        }
+    }
+}
