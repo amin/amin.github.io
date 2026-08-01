@@ -5,6 +5,14 @@ import esbuild from "esbuild";
 import * as sass from "sass";
 
 export default async function (eleventyConfig) {
+  // Static files that must land at the site root untouched. Without this they
+  // never reach the output directory at all — nothing else copies them.
+  eleventyConfig.addPassthroughCopy({
+    "src/favicon.svg": "favicon.svg",
+    "src/apple-touch-icon.png": "apple-touch-icon.png",
+    "src/og.png": "og.png",
+  });
+
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
     formats: ["avif", "webp", "jpeg", "png"],
     inputDir: "src",

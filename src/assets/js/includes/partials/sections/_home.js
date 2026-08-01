@@ -12,6 +12,13 @@ const WORDS = [
 
 export default function typewriter() {
   const typewriter = document.querySelector(".typewriter");
+  if (!typewriter) return;
+
+  // Anyone who has asked for reduced motion keeps the word already in the
+  // markup instead. "I translate visions into reality." stands on its own, so
+  // nothing is lost by not animating it.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
   let wordIndex = 0;
 
   function erase(callback) {
