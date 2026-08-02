@@ -11,6 +11,9 @@ export default async function (eleventyConfig) {
     "src/favicon.svg": "favicon.svg",
     "src/apple-touch-icon.png": "apple-touch-icon.png",
     "src/og.png": "og.png",
+    // Lives at the repo root, but Pages only sees what the build publishes, so
+    // without this the custom domain is dropped on every deploy.
+    CNAME: "CNAME",
   });
 
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
