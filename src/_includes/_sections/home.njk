@@ -2,7 +2,30 @@
     <div class="wrapper">
         <div class="hero">
             <div class="hero-image">
-                <img src="/assets/images/hero-bw.jpeg" alt="">
+                {#
+                    Overrides three plugin defaults, all of which are wrong for
+                    the one image above the fold.
+
+                    formats drops png: the global list ends with it, and since
+                    every browser supports png a browser without avif or webp
+                    stopped there and took 937KB of lossless photograph, leaving
+                    the jpeg in <img> unreachable. logo.svg still needs png, so
+                    this is per-image rather than a config change.
+
+                    loading and fetchpriority undo the global lazy, which was
+                    deferring the LCP element.
+
+                    widths follow the rendered width, not the box. object-fit:
+                    cover on a square scales a 3:2 source by height, so a 250px
+                    box paints 375px of image and a 375px box paints 563px —
+                    doubled again for 2x screens.
+                #}
+                <img src="/assets/images/hero-bw.jpeg" alt=""
+                    eleventy:formats="avif,webp,jpeg"
+                    eleventy:widths="375,563,750,1125"
+                    sizes="(max-width: 46.24em) 375px, 563px"
+                    loading="eager"
+                    fetchpriority="high">
             </div>
             <div class="hero-copy">
                 <h1>I translate
