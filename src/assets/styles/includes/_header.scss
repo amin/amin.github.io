@@ -1,3 +1,4 @@
+@use "../utils/colors";
 @use "../utils/mq";
 
 header {
@@ -90,7 +91,7 @@ header {
 
         &-active {
             .burger-line {
-                background-color: #f27b50;
+                background-color: colors.$orange-ink;
             }
             .burger-line-top {
                 top: 50%;

@@ -1,3 +1,4 @@
+@use "../../utils/colors";
 @use "../../utils/mq";
 
 nav.primary {
@@ -42,7 +43,7 @@ nav.primary {
             }
 
             &[data-in-viewport="true"] {
-                color: #f27b50;
+                color: colors.$orange-ink;
             }
         }
     }
@@ -68,7 +69,7 @@ nav.primary {
 
             &:hover,
             &[data-in-viewport="true"] {
-                border-bottom-color: #f27b50;
+                border-bottom-color: colors.$orange-ink;
             }
         }
     }

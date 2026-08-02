@@ -1,0 +1,13 @@
+// The orange has two jobs and one value cannot do both.
+//
+// #f27b50 works as a surface — black on it is 7.72:1, which is what carries the
+// Connect section. As a foreground on white it is 2.72:1, under every threshold
+// that applies to it: 3:1 for the hero word and the UI marks, 4.5:1 for the
+// active nav link. The active link was the worst of it, rendering the current
+// section less legible than the four around it.
+//
+// #c65124 is the smallest darkening that clears 4.5:1 (it lands at 4.56:1);
+// #c85528 misses by 0.11. Both foreground contexts are white — the mobile nav
+// panel included — so one value covers them.
+$orange-surface: #f27b50;
+$orange-ink: #c65124;

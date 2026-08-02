@@ -1,3 +1,4 @@
+@use "../../utils/colors";
 @use "../../utils/mq";
 
 // Darkened from #a05033, which was 2.09:1 against the orange and unreadable as
@@ -7,7 +8,7 @@ $connect-accent: #4d2314;
 
 section#connect {
     text-align: center;
-    background: #f27b50;
+    background: colors.$orange-surface;
 
     .section-label {
         color: $connect-accent;

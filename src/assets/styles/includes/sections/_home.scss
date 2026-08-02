@@ -1,3 +1,4 @@
+@use "../../utils/colors";
 @use "../../utils/mq";
 
 section#home {
@@ -10,6 +11,12 @@ section#home {
         padding: 2rem 0;
 
         &-copy {
+            // Was an inline style on the span, so the value could not follow
+            // the variable when the orange had to darken.
+            .hero-accent {
+                color: colors.$orange-ink;
+            }
+
             .typewriter {
                 border-right: 2px solid black; // blinking cursor
                 padding-right: 2px; // optional spacing
