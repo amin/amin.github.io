@@ -6,11 +6,11 @@ My portfolio — a single page about who I am, what I build with, and what I hav
 
 Static from end to end. No client framework, no runtime, no server: Eleventy renders one HTML file at build time and GitHub Pages serves it.
 
-[![Eleventy](https://img.shields.io/badge/Eleventy-3-00808C?logo=eleventy&logoColor=white)](https://www.11ty.dev/)
-[![Sass](https://img.shields.io/badge/Sass-C65124?logo=sass&logoColor=white)](https://sass-lang.com/)
-[![esbuild](https://img.shields.io/badge/esbuild-C65124?logo=esbuild&logoColor=white)](https://esbuild.github.io/)
-[![pnpm](https://img.shields.io/badge/pnpm-00808C?logo=pnpm&logoColor=white)](https://pnpm.io/)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-00808C?logo=githubpages&logoColor=white)](https://amin.sh)
+[![Eleventy](https://img.shields.io/badge/Eleventy-3-222222?logo=eleventy&logoColor=white)](https://www.11ty.dev/)
+[![Sass](https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white)](https://sass-lang.com/)
+[![esbuild](https://img.shields.io/badge/esbuild-FFCF00?logo=esbuild&logoColor=black)](https://esbuild.github.io/)
+[![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-222222?logo=githubpages&logoColor=white)](https://amin.sh)
 
 </div>
 
@@ -59,19 +59,6 @@ amin.github.io/
     └── deploy.yml        Build, upload public/ as a Pages artifact, deploy
 ```
 
-## Colour Roles
-
-Two values that look like the same orange do different jobs, and the distinction is load-bearing:
-
-| Token | Value | Use |
-| --- | --- | --- |
-| `$orange-surface` | `#f27b50` | Backgrounds only. Black on it is 7.7:1. |
-| `$orange-ink` | `#c65124` | Text and UI marks on white. `#f27b50` is 2.7:1 there and fails every threshold. |
-
-The teal `#00808c` was darkened from `#00939e` for the same reason — white on the original reached only 3.7:1, and no text colour fixes a background that light.
-
-Logos are exempt from contrast rules, which is why the `./` mark keeps its pale `#d4d4d4` slash in all four places it appears.
-
 ---
 
 ## Getting Started
@@ -105,25 +92,3 @@ Serves on `http://localhost:8080` with live reload. No environment variables —
 | --- | --- |
 | `pnpm dev` | Eleventy with `--serve`, watching templates, Sass and JS |
 | `pnpm build` | Production build into `public/` |
-
-## Deployment
-
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `public/` as a Pages artifact.
-
-```
-push to main
-      │
-      v
-pnpm install --frozen-lockfile → pnpm build
-      │
-      v
-upload-pages-artifact (path: public)
-      │
-      v
-deploy-pages → GitHub Pages CDN → Cloudflare → amin.sh
-```
-
-Two things worth knowing before changing any of it:
-
-- **`dir.output` in `.eleventy.js` and `path:` in the workflow must agree.** Pages never sees the directory name — the artifact's *contents* are published at the site root — so the coupling is only enforced by those two lines matching.
-- **Repository Settings → Pages → Source must be "GitHub Actions".** Pointed at a branch instead, the workflow runs green and publishes nothing.
