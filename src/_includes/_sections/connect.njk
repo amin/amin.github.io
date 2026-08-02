@@ -11,10 +11,11 @@
                 <a href="mailto:hello@amin.sh">hello@amin.sh</a>
             </div>
             <div class="platforms">
-                {# Labelled because the visible text is only the handle, which
-                   never says which platform it belongs to. The visible "@amin"
-                   stays inside the name, so speech input still matches it. #}
-                <a href="https://github.com/amin" target="_blank" rel="noopener noreferrer" class="platform" aria-label="GitHub — @amin">
+                {# .platform-name is visually hidden, not removed, so it still
+                   names each link — no aria-label needed, and speech input can
+                   match the words a user would say. Both names must lead with
+                   the platform; the logos are aria-hidden and say nothing. #}
+                <a href="https://github.com/amin" target="_blank" rel="noopener noreferrer" class="platform">
                     <div class="platform-logo platform-logo-github">
                         <svg
                             aria-hidden="true"
@@ -70,7 +71,7 @@
                                 id="path833"/>
                         </svg>
                     </div>
-                    <div class="platform-name">@amin</div>
+                    <div class="platform-name">GitHub — @amin</div>
                 </a>
                 <a href="https://www.linkedin.com/in/aminelrifai/" target="_blank" rel="noopener noreferrer" class="platform">
                     <div class="platform-logo platform-logo-linkedIn">
