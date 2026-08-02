@@ -61,7 +61,8 @@ section#about {
         font-weight: 500;
         padding-bottom: 0.75rem;
         margin-bottom: 0.9rem;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        // Solid, like .skills-group-label. Dashes are reserved for links.
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .about-fact p {
@@ -82,8 +83,10 @@ section#about {
         color: #fff;
     }
 
-    // Dashed underline, matching the rules above each fact and the project
-    // links, so an outbound link is discoverable against the teal.
+    // Dashed underline, matching the project and footer links, so an outbound
+    // link is discoverable against the teal. Dashed is what marks something as
+    // a link across the site; the rule above each fact is solid because it is
+    // structure, not a target.
     .about-fact a {
         border-bottom: 1px dashed rgba(255, 255, 255, 0.6);
         padding-bottom: 0.1rem;
