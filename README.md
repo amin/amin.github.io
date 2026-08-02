@@ -37,6 +37,9 @@ amin.github.io/
 ├── CNAME                 Custom domain, passthrough-copied so the artifact carries it
 ├── src/
 │   ├── index.njk         The only page
+│   ├── cv.pdf            Generated CV, committed and passthrough-copied to /cv.pdf
+│   ├── cv/
+│   │   └── amin_cv.tex   CV source — the only file to edit
 │   ├── _data/
 │   │   ├── projects.js   Project list — adding one is a single object
 │   │   └── site.js       URL, OG title, meta description
@@ -55,6 +58,8 @@ amin.github.io/
 │       │   └── includes/ Per-section stylesheets, mirroring _sections/
 │       ├── js/           Nav and the hero typewriter
 │       └── images/
+├── scripts/
+│   └── build-cv.sh       Compiles the CV in a TeX Live container
 └── .github/workflows/
     └── deploy.yml        Build, upload public/ as a Pages artifact, deploy
 ```
@@ -86,9 +91,22 @@ Serves on `http://localhost:8080` with live reload. No environment variables —
 
 ---
 
+## CV
+
+The CV is written in LaTeX and served at [amin.sh/cv.pdf](https://amin.sh/cv.pdf). Edit `src/cv/amin_cv.tex`, then:
+
+```bash
+pnpm cv
+```
+
+That compiles it inside a TeX Live container — podman or docker, whichever is installed — and writes `src/cv.pdf`. Commit the `.tex` and the `.pdf` together; the build only copies the PDF, so a LaTeX error can never reach the deploy.
+
+---
+
 ## Scripts
 
 | Command | Description |
 | --- | --- |
 | `pnpm dev` | Eleventy with `--serve`, watching templates, Sass and JS |
 | `pnpm build` | Production build into `public/` |
+| `pnpm cv` | Compiles `src/cv/amin_cv.tex` into `src/cv.pdf` |

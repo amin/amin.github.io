@@ -11,6 +11,9 @@ export default async function (eleventyConfig) {
     "src/favicon.svg": "favicon.svg",
     "src/apple-touch-icon.png": "apple-touch-icon.png",
     "src/og.png": "og.png",
+    // Built from src/cv/amin_cv.tex by `pnpm run cv` and committed, so the
+    // deploy never needs a LaTeX toolchain.
+    "src/cv.pdf": "cv.pdf",
     // Lives at the repo root, but Pages only sees what the build publishes, so
     // without this the custom domain is dropped on every deploy.
     CNAME: "CNAME",
