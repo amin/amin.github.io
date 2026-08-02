@@ -41,5 +41,13 @@ footer.site-footer {
             height: 1.25rem;
             fill: currentColor;
         }
+
+        // The 11ty mark is a wordmark standing in for the word itself, not a
+        // glyph in a square, so it is set at a text size and keeps its own
+        // proportions. Height is the number to nudge if it sits heavy.
+        .eleventy-mark {
+            width: auto;
+            height: 1em;
+        }
     }
 }
