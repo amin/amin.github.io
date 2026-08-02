@@ -20,12 +20,26 @@ footer.site-footer {
 
     // Dashed underline that goes solid on hover, matching the project links and
     // the Yrgo link in About.
+    //
+    // inline-flex so the GitHub mark sitting mid-sentence centres against the
+    // text rather than dropping to the baseline. It also makes the words either
+    // side anonymous flex items, so one gap spaces the mark evenly on both
+    // sides. Same treatment as the project links, which carry the same mark.
     a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
         border-bottom: 1px dashed currentColor;
         padding-bottom: 0.15rem;
 
         &:hover {
             border-bottom-style: solid;
+        }
+
+        svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: currentColor;
         }
     }
 }
