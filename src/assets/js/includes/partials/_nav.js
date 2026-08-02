@@ -1,7 +1,3 @@
-// Utils
-import { determineStickyState } from "../../utils/_determineStickyState";
-import { throttle } from "../../utils/_throttle";
-
 // Constants
 const BREAKPOINT = 740;
 const SLIDE_IN_CLASS = "activeSlideIn";
