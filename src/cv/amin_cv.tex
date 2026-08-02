@@ -1,172 +1,139 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[a4paper,left=1.8cm,right=1.8cm,top=1.6cm,bottom=1.6cm]{geometry}
+\usepackage[a4paper,left=1.9cm,right=1.9cm,top=1.5cm,bottom=1.4cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{microtype}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 
 \definecolor{accentteal}{HTML}{00808C}
-\definecolor{accentorange}{HTML}{C65124}
+\definecolor{ink}{HTML}{1A1A1A}
+\definecolor{inkmeta}{HTML}{5A5A5A}
+\definecolor{rulegrey}{HTML}{D6D6D6}
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
+\color{ink}
 
-% Consistent section spacing
-\newcommand{\sectionbefore}{\vspace{0.50cm}}
-\newcommand{\sectionafter}{\vspace{0.35cm}}
+% ---------------------------------------------------------------------------
+% Three levels of hierarchy, and only three: section (teal caps over a rule),
+% role (the only bold in an entry), and supporting detail (grey). Anything
+% that needs to stand out borrows colour or letterspacing rather than size,
+% which is what keeps the whole thing on one page.
+% ---------------------------------------------------------------------------
+
+\newcommand{\sep}{\enspace\textperiodcentered\enspace}
+
+\newcommand{\body}[1]{{\fontsize{11}{14.4}\selectfont #1}\par}
+\newcommand{\detail}[1]{{\fontsize{10.5}{13.5}\selectfont\color{inkmeta} #1}}
+\newcommand{\link}[2]{{\color{accentteal}\href{#1}{#2}}}
+
+% Gap between entries inside a section. Defined once so the rhythm cannot
+% drift the way a dozen hand-tuned \vspace values did.
+\newcommand{\entrygap}{\vspace{0.52cm}}
+
+% \nointerlineskip after each \par suppresses the baseline glue LaTeX would
+% otherwise add, which is what lets the rule sit tight under its label instead
+% of drifting halfway to the content below it.
+\newcommand{\cvsection}[1]{%
+  \par\vspace{0.74cm}%
+  % Keep tracking low. Above roughly 100, pdftotext (and CV-screening tools
+  % that use it) starts reading the gaps as spaces and extracts "E D U C AT I
+  % O N", which destroys keyword matching. 120 was verified to break; 80 and
+  % below were verified clean, so 60 leaves margin for stricter parsers.
+  {\fontsize{11.5}{13}\selectfont\bfseries\color{accentteal}%
+    \textls[60]{\MakeUppercase{#1}}}%
+  \par\nointerlineskip\vspace{0.13cm}%
+  {\color{rulegrey}\rule{\textwidth}{0.5pt}}%
+  \par\nointerlineskip\vspace{0.34cm}%
+}
+
+% Role and dates share a baseline; the organisation sits under the role in
+% grey, so the eye reads role first and never has to weigh two bolds.
+\newcommand{\cventry}[3]{%
+  \noindent\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
+    {\fontsize{12.5}{15}\selectfont\bfseries #1} & \detail{#3}
+  \end{tabular*}%
+  \par\vspace{0.06cm}%
+  \detail{#2}%
+  \par\vspace{0.14cm}%
+}
+
+\newcommand{\cvproject}[4]{%
+  {\fontsize{12.5}{15}\selectfont\bfseries #1}%
+  \par\vspace{0.06cm}%
+  {\fontsize{10.5}{13.5}\selectfont\link{#2}{#3}\color{inkmeta}\sep #4}%
+  \par\vspace{0.14cm}%
+}
 
 \begin{document}
+
 \noindent
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{30}{36}\selectfont\bfseries Amin El-Rifai} &
-{\fontsize{30}{36}\selectfont\bfseries\color{accentteal} CV}
+{\fontsize{26}{30}\selectfont\bfseries Amin El-Rifai} &
+{\fontsize{26}{30}\selectfont\bfseries\color{accentteal} CV}
 \end{tabular*}
 
-\vspace{0.18cm}
+\vspace{0.20cm}
 
-{\fontsize{10.5}{13}\selectfont
-\textbf{Email:} \href{mailto:hello@amin.sh}{hello@amin.sh} \enspace\textbar\enspace
-\textbf{Phone:} \href{tel:+46739657929}{+46 73 965 79 29} \enspace\textbar\enspace
+% The labels the values already imply ("Email:", "Phone:") are dropped — an
+% address with an @ needs no caption, and losing them buys a quieter header.
+{\fontsize{10}{13.5}\selectfont
+\link{mailto:hello@amin.sh}{hello@amin.sh}\sep
+\link{tel:+46739657929}{+46 73 965 79 29}\sep
 Gothenburg, Sweden
 
-\vspace{0.06cm}
+\vspace{0.04cm}
 
-\textbf{Portfolio:} \href{https://amin.sh}{amin.sh} \enspace\textbar\enspace
-\textbf{GitHub:} \href{https://github.com/amin}{github.com/amin} \enspace\textbar\enspace
-\textbf{LinkedIn:} \href{https://www.linkedin.com/in/aminelrifai/}{linkedin.com/in/aminelrifai}
-}
-
-\vspace{0.15cm}
-
-{\fontsize{12}{17}\selectfont
-Eight years in industrial production at Volvo Trucks, most recently as a team leader and union representative. Now studying full-stack web development at Yrgo.
-}
+\link{https://amin.sh}{amin.sh}\sep
+\link{https://github.com/amin}{github.com/amin}\sep
+\link{https://www.linkedin.com/in/aminelrifai/}{linkedin.com/in/aminelrifai}
+\par}
 
 \vspace{0.30cm}
 
-{\fontsize{21}{25}\selectfont\bfseries Education}
+\body{Eight years in industrial production at Volvo Trucks, most recently as a team leader and union representative. Now studying full-stack web development at Yrgo.}
 
-\sectionafter
+\cvsection{Education}
 
-\noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{14}{17}\selectfont\bfseries \href{https://www.yrgo.se/program/webbutvecklare/}{Web Developer}} &
-{\fontsize{12}{15}\selectfont September 2025 - May 2027}
-\end{tabular*}
+\cventry{Web Developer}{\href{https://www.yrgo.se/program/webbutvecklare/}{Yrgo}}{September 2025 - May 2027}
 
-\vspace{0.08cm}
+\entrygap
 
-{\fontsize{12}{15}\selectfont\bfseries Yrgo}
+\cventry{Technology Programme}{NTI Gymnasiet Johanneberg}{August 2011 - June 2014}
 
-\vspace{0.40cm}
+\cvsection{Projects}
 
-\noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{14}{17}\selectfont\bfseries Technology Programme} &
-{\fontsize{12}{15}\selectfont August 2011 - June 2014}
-\end{tabular*}
+\cvproject{Loopland}{https://loopland.se}{loopland.se}{PHP, Laravel, React, TypeScript, SQL}
 
-\vspace{0.08cm}
+\body{A digital amusement park built with two classmates, connecting independently developed attractions through a shared API that synchronised rewards, currency exchange, the park economy, and a common leaderboard.}
 
-{\fontsize{12}{15}\selectfont\bfseries NTI Gymnasiet Johanneberg}
+\entrygap
 
+\cvproject{Yrco}{https://yrco.se}{yrco.se}{React, Node.js, Express, MongoDB, OAuth}
 
-\sectionbefore
+\body{A networking app for an event connecting Yrgo design and web development students with industry professionals. Attendees selected seven traits to create a personal colour palette and find complementary connections.}
 
-{\fontsize{21}{25}\selectfont\bfseries Projects}
+\cvsection{Experience}
 
-\sectionafter
+\cventry{Team Leader}{Volvo Trucks Tuve}{October 2024 - February 2025}
 
-{\fontsize{14}{17}\selectfont\bfseries Loopland}
+\body{Led a production team responsible for assembling interior components for truck cabins, coordinated daily work, supported team members, and contributed to continuous improvement initiatives.}
 
-\vspace{0.05cm}
+\entrygap
 
-{\fontsize{10.5}{13}\selectfont\color{accentteal}\href{https://loopland.se}{loopland.se}} {\fontsize{10.5}{13}\selectfont - PHP, Laravel, React, TypeScript, SQL}
+\cventry{Union Representative}{IF Metall}{September 2022 - October 2024}
 
-\vspace{0.14cm}
+\body{Represented colleagues in workplace and personnel matters, served on a local union board supporting more than 700 members, and helped improve internal efficiency by digitising administrative processes.}
 
-{\fontsize{12}{17}\selectfont
-A digital amusement park built with two classmates, connecting independently developed attractions through a shared API that synchronised rewards, currency exchange, the park economy, and a common leaderboard.
-}
+\entrygap
 
-\vspace{0.5cm}
+\cventry{Truck Assembler}{Volvo Trucks Tuve}{September 2016 - October 2024}
 
-{\fontsize{14}{17}\selectfont\bfseries Yrco}
+\body{Assembled interior components for truck cabins, followed production standards, and worked closely with the team to maintain quality, safety, and an efficient workflow.}
 
-\vspace{0.05cm}
+\cvsection{Languages}
 
-{\fontsize{10.5}{13}\selectfont\color{accentteal}\href{https://yrco.se}{yrco.se}} {\fontsize{10.5}{13}\selectfont - React, Node.js, Express, MongoDB, OAuth}
-
-\vspace{0.14cm}
-
-{\fontsize{12}{17}\selectfont
-A networking app for an event connecting Yrgo design and web development students with industry professionals. Attendees selected seven traits to create a personal colour palette and find complementary connections.
-}
-
-\sectionbefore
-
-{\fontsize{21}{25}\selectfont\bfseries Experience}
-
-\sectionafter
-
-\noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{14}{17}\selectfont\bfseries Team Leader} &
-{\fontsize{12}{15}\selectfont October 2024 - February 2025}
-\end{tabular*}
-
-\vspace{0.08cm}
-
-{\fontsize{12}{15}\selectfont\bfseries Volvo Trucks Tuve}
-
-\vspace{0.18cm}
-
-{\fontsize{12}{17}\selectfont
-Led a production team responsible for assembling interior components for truck cabins, coordinated daily work, supported team members, and contributed to continuous improvement initiatives.
-}
-
-\vspace{0.55cm}
-
-\noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{14}{17}\selectfont\bfseries Union Representative} &
-{\fontsize{12}{15}\selectfont September 2022 - October 2024}
-\end{tabular*}
-
-\vspace{0.08cm}
-
-{\fontsize{12}{15}\selectfont\bfseries IF Metall}
-
-\vspace{0.18cm}
-
-{\fontsize{12}{17}\selectfont
-Represented colleagues in workplace and personnel matters, served on a local union board supporting more than 700 members, and helped improve internal efficiency by digitising administrative processes.
-}
-
-\vspace{0.55cm}
-
-\noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{14}{17}\selectfont\bfseries Truck Assembler} &
-{\fontsize{12}{15}\selectfont September 2016 - October 2024}
-\end{tabular*}
-
-\vspace{0.08cm}
-
-{\fontsize{12}{15}\selectfont\bfseries Volvo Trucks Tuve}
-
-\vspace{0.18cm}
-
-{\fontsize{12}{17}\selectfont
-Assembled interior components for truck cabins, followed production standards, and worked closely with the team to maintain quality, safety, and an efficient workflow.
-}
-
-\sectionbefore
-
-{\fontsize{21}{25}\selectfont\bfseries Languages}
-
-\sectionafter
-
-{\fontsize{12}{15}\selectfont Swedish, English and Arabic}
+\body{Swedish, English and Arabic}
 
 \end{document}
