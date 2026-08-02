@@ -5,10 +5,12 @@
             <div class="header-container">
                 <div class="logotype">
                     <a href="/" data-target="body">
-                        <img class="logotype-image" src="/assets/images/logo.svg" alt="">
+                        <img class="logotype-image" src="/assets/images/logo.svg" alt="amin.sh">
                     </a>
                 </div>
-                <button class="burger">
+                {# The burger is two bare divs, so the label is the only thing
+                   naming it. aria-expanded is kept in step by _nav.js. #}
+                <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
                     <div class="burger-line burger-line-top"></div>
                     <div class="burger-line burger-line-bottom"></div>
                 </button>

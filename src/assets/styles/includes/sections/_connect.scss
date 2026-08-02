@@ -1,6 +1,9 @@
 @use "../../utils/mq";
 
-$connect-accent: #a05033;
+// Darkened from #a05033, which was 2.09:1 against the orange and unreadable as
+// the section label. #4d2314 is 4.93:1, and carries the dashed rule and the
+// platform logos past 3:1 as graphical objects at the same time.
+$connect-accent: #4d2314;
 
 section#connect {
     text-align: center;

@@ -23,8 +23,9 @@
             rel="stylesheet">
     </head>
     <body>
+        <a class="skip-link" href="#main">Skip to content</a>
         {% include "header.njk" %}
-        <main>
+        <main id="main" tabindex="-1">
             {% block content %}{% endblock %}
         </main>
         {% include "footer.njk" %}

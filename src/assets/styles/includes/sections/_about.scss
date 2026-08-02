@@ -1,8 +1,18 @@
 @use "../../utils/mq";
 
+// Darkened from #00939e, where white text only reached 3.71:1. No text colour
+// fixes that — the teal sits high enough that white can never clear AA on it,
+// and the only alternative was inverting the whole section to dark type. At
+// #00808c white is 4.70:1, which also means every piece of text in here has to
+// be full white: ink lands at 3.70:1 and cream at 4.10:1.
 section#about {
-    background-color: #00939e;
+    background-color: #00808c;
     color: #fff;
+
+    // Overrides the global #453c62, which was 2.73:1 against the teal.
+    .section-label {
+        color: #fff;
+    }
 
     .about-grid {
         display: flex;
@@ -67,7 +77,9 @@ section#about {
         white-space: nowrap;
         margin-top: 0.3rem;
         font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.75);
+        // Full white rather than dimmed: 0.75 was 2.73:1 and even 0.9 only
+        // reaches 4.11:1. The smaller size still sets the range apart.
+        color: #fff;
     }
 
     // Dashed underline, matching the rules above each fact and the project

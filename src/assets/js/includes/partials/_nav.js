@@ -44,8 +44,8 @@ export default function initializeNavigation() {
       clearTimeout(scrollingTimer);
       isScrolling = true;
 
-      links.forEach((link) => (link.dataset.inViewport = "false"));
-      link.dataset.inViewport = "true";
+      links.forEach((other) => setInViewport(other, false));
+      setInViewport(link, true);
 
       if (window.innerWidth < BREAKPOINT) {
         toggleNav(burger, links);
@@ -63,6 +63,7 @@ export default function initializeNavigation() {
   window.addEventListener("resize", () => {
     if (window.innerWidth >= BREAKPOINT) {
       burger.classList.remove(ACTIVE_CLASS);
+      burger.setAttribute("aria-expanded", "false");
       document
         .querySelector(SELECTORS.header)
         .classList.remove(NAV_OPEN_CLASS);
@@ -109,7 +110,7 @@ function initializeSectionTracking(links) {
     );
     if (currentLink?.dataset.linkId === targetId) return;
 
-    links.forEach((link) => (link.dataset.inViewport = "false"));
+    links.forEach((link) => setInViewport(link, false));
     toggleLink(links, targetId);
   };
 
@@ -129,9 +130,22 @@ function initializeSectionTracking(links) {
 function toggleLink(links, id) {
   links.forEach((link) => {
     if (link.dataset.linkId === id) {
-      link.dataset.inViewport = "true";
+      setInViewport(link, true);
     }
   });
+}
+
+/**
+ * Marks a link as the section currently on screen, keeping aria-current in step
+ * with the data attribute the styling hangs off.
+ */
+function setInViewport(link, isActive) {
+  link.dataset.inViewport = String(isActive);
+  if (isActive) {
+    link.setAttribute("aria-current", "true");
+  } else {
+    link.removeAttribute("aria-current");
+  }
 }
 
 /**
@@ -139,6 +153,10 @@ function toggleLink(links, id) {
  */
 function toggleNav(burger, links) {
   burger.classList.toggle(ACTIVE_CLASS);
+  burger.setAttribute(
+    "aria-expanded",
+    String(burger.classList.contains(ACTIVE_CLASS)),
+  );
   document.querySelector(SELECTORS.header).classList.toggle(NAV_OPEN_CLASS);
 
   const allActive = [...links].every((link) =>
@@ -174,6 +192,13 @@ function scrollToTarget(selector) {
  * Smoothly animates the window scroll position to a target using an ease-in-out cubic curve.
  */
 function animateScroll(targetPosition, duration = 500) {
+  // Anyone who has asked for reduced motion is put where they asked to go
+  // instead of being taken on a 600ms ride, same as the hero typewriter.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.scrollTo(0, targetPosition);
+    return;
+  }
+
   const easeInOutCubic = (t) =>
     t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 

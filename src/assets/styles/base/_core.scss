@@ -6,3 +6,29 @@ body {
 section.section {
     padding: 4rem 0;
 }
+
+// Off screen until it takes focus, so a keyboard user can get past the header
+// and the five nav links in one tab. Not clipped to zero size, which would let
+// some browsers skip it in the tab order.
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transform: translateY(-150%);
+    padding: 0.75rem 1.25rem;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+
+    &:focus {
+        transform: translateY(0);
+    }
+}
+
+// Focusing <main> from the skip link should move the reading position without
+// drawing a ring around the whole page.
+main:focus {
+    outline: none;
+}
