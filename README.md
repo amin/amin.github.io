@@ -53,8 +53,8 @@ amin.github.io/
 │   │   └── footer.njk
 │   └── assets/
 │       ├── styles/
-│       │   ├── base/     Reset, typography, skip link
-│       │   ├── utils/    Breakpoints, colour roles, wrapper, spacing
+│       │   ├── base/     Typography, skip link, page-level rules
+│       │   ├── utils/    Reset, breakpoints, colour roles, wrapper, spacing
 │       │   └── includes/ Per-section stylesheets, mirroring _sections/
 │       ├── js/           Nav and the hero typewriter
 │       └── images/
@@ -72,6 +72,7 @@ amin.github.io/
 
 - Node.js 22+
 - pnpm
+- podman or docker — only for `pnpm cv`. The site builds and serves without it.
 
 ### 1. Clone and install
 
