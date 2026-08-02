@@ -19,12 +19,20 @@ else
   exit 1
 fi
 
+# pdfTeX stamps the wall clock into /CreationDate, /ModDate and the /ID hash,
+# so rebuilding an unchanged .tex still produced a different PDF and git saw a
+# 119 KB diff for no content change. Pinning the clock to the source's own
+# mtime makes the build reproducible: same .tex in, byte-identical PDF out.
+source_date="$(stat -c %Y "$root/src/cv/amin_cv.tex")"
+
 # -output-directory sends .aux/.log/.out to a container temp dir so only the
 # PDF comes back. :z relabels the bind mount, which SELinux requires on Fedora.
 # The log is held back and printed only on failure, since a successful
 # pdflatex run is several hundred lines of noise.
 "${runtime[@]}" \
   -e HOME=/tmp \
+  -e SOURCE_DATE_EPOCH="$source_date" \
+  -e FORCE_SOURCE_DATE=1 \
   -v "$root/src:/src:z" \
   -w /src \
   "$image" \
