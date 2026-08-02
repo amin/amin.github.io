@@ -1,5 +1,9 @@
 // Constants
-const BREAKPOINT = 740;
+// Must match the desktop breakpoint the header switches on in _nav.scss and
+// _header.scss. sass-mq emits that as ems, so the two drift apart if the
+// browser's default font size is not 16px — the drawer would then close at a
+// slightly different width than the burger disappears at.
+const BREAKPOINT = 980;
 const SLIDE_IN_CLASS = "activeSlideIn";
 const ACTIVE_CLASS = "burger-active";
 const NAV_OPEN_CLASS = "nav-open";

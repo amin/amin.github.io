@@ -1,8 +1,14 @@
 @use "../../utils/colors";
 @use "../../utils/mq";
 
+// The header switches at desktop, not tablet, unlike every section below it.
+// Five uppercase links at 3rem gaps plus the 10rem logotype need roughly
+// 860px; at the tablet breakpoint they had 740px, so .header-container was
+// shrinking while the fixed-width logo inside it refused to, and the logo
+// overlapped the nav for the whole 740–880px band. Keep this in step with
+// BREAKPOINT in _nav.js.
 nav.primary {
-    @include mq.mq($until: tablet) {
+    @include mq.mq($until: desktop) {
         position: absolute;
         top: 100%;
         left: 0;
@@ -48,7 +54,7 @@ nav.primary {
         }
     }
 
-    @include mq.mq($from: tablet) {
+    @include mq.mq($from: desktop) {
         ul {
             list-style: none;
             margin: 0;
@@ -76,7 +82,7 @@ nav.primary {
 }
 
 header.primary.nav-open {
-    @include mq.mq($until: tablet) {
+    @include mq.mq($until: desktop) {
         nav.primary {
             max-height: calc(100vh - 6rem);
         }
