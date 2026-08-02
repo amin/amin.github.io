@@ -2,9 +2,14 @@
 @use "../../utils/mq";
 
 // Darkened from #a05033, which was 2.09:1 against the orange and unreadable as
-// the section label. #4d2314 is 4.93:1, and carries the dashed rule and the
-// platform logos past 3:1 as graphical objects at the same time.
+// the section label. #4d2314 is 4.93:1, and carries the platform logos past
+// 3:1 as graphical objects at the same time.
 $connect-accent: #4d2314;
+
+// The divider is decorative — it separates the pitch from the contact details
+// but carries no meaning of its own, so 1.4.11 does not apply and it is free
+// to sit at 1.38:1 against the surface where the accent would have shouted.
+$connect-rule: #d66036;
 
 section#connect {
     text-align: center;
@@ -17,7 +22,7 @@ section#connect {
     .connect-content {
         margin-bottom: 3rem;
         padding-bottom: 3rem;
-        border-bottom: 1.1px dashed $connect-accent;
+        border-bottom: 1px solid $connect-rule;
 
         @include mq.mq($from: tablet) {
             p {
