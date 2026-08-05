@@ -7,5 +7,5 @@ export default {
   // snippet and the share-card text, not a line someone reads on the page. The
   // two drifted once already when the hero was rewritten and this was not.
   description:
-    "A full-stack developer working across interfaces, services, and infrastructure, with AI throughout the workflow.",
+    "A full-stack developer building dependable web products, from thoughtful interfaces to the APIs that power them.",
 };
