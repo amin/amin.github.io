@@ -9,7 +9,10 @@ export default [
     // Affinity source.
     logo: "icons/brand/loopland.svg",
     description:
-      "Loopland is a digital amusement park built with two classmates. Each group in our class created its own game or attraction, while a shared API connected them all, kept the park’s economy in sync, and let players earn stamps, exchange them for currency, and compete on one leaderboard.",
+      "A digital amusement park assembled from games each group in our class built on its own. Players earn stamps in any of them, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
+    role: "One of three. I led the Centralbank API — the Laravel service, its OpenAPI contract, and the deploys on Railway.",
+    architecture:
+      "Contract-first: the OpenAPI spec was published before any client existed, because the code calling it was being written by other groups. Per-game keys and short-lived identity tokens let a game act for a player without ever seeing their credentials.",
     tech: [
       "icons/php.svg",
       "icons/laravel.svg",
@@ -19,6 +22,7 @@ export default [
       "icons/sql.svg",
       "icons/turborepo.svg",
       "icons/pnpm.svg",
+      "icons/railway.svg",
     ],
     links: {
       live: "https://loopland.se",
@@ -30,6 +34,9 @@ export default [
     logo: "icons/brand/yrco.svg",
     description:
       "A networking app built for an event where Yrgo’s design and web development students meet people from the industry. Attendees choose seven traits that form a personal colour palette, making it easier to find complementary people and meaningful connections.",
+    role: "Built with one classmate. I owned the architecture and most of the implementation, and deployed it on Railway.",
+    architecture:
+      "A layered Express API — routes, controllers, use cases, repositories — with one Zod schema package shared by client and server, so both validate against the same contract. Sessions are opaque DB-backed tokens, not JWTs.",
     tech: [
       "icons/javascript.svg",
       "icons/react.svg",
@@ -38,6 +45,7 @@ export default [
       "icons/tailwind.svg",
       "icons/turborepo.svg",
       "icons/pnpm.svg",
+      "icons/railway.svg",
     ],
     links: {
       live: "https://yrco.se",

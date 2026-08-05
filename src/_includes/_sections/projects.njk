@@ -1,4 +1,4 @@
-<section class="section" data-link-id="4" id="projects">
+<section class="section" data-link-id="3" id="projects">
     <div class="wrapper">
         <span class="section-label">Projects</span>
         <h2>A few things that shipped.</h2>
@@ -12,7 +12,21 @@
                 {% else %}
                 <h3 class="project-name">{{ project.name }}</h3>
                 {% endif %}
+                {# The description carries no label. Sitting directly under the
+                   wordmark it is obviously the description, and labelling it
+                   cost a rule and 51px an entry to say so. Role and
+                   Architecture are not self-evident, so they keep theirs.
+
+                   Each label sits inside its paragraph rather than beside it. A
+                   sibling would add a child per label, and the desktop subgrid
+                   counts children — see the row count in _projects.scss. #}
                 <p class="project-description">{{ project.description }}</p>
+                {% if project.role %}
+                <p class="project-role"><span class="project-label">Role</span>{{ project.role }}</p>
+                {% endif %}
+                {% if project.architecture %}
+                <p class="project-architecture"><span class="project-label">Architecture</span>{{ project.architecture }}</p>
+                {% endif %}
                 <ul class="project-tech">
                     {% for icon in project.tech %}
                     <li>{% include icon %}</li>

@@ -22,19 +22,24 @@ section#projects {
         // roughly 340px and the descriptions would get cramped.
         @include mq.mq($from: desktop) {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: auto auto auto auto;
+            grid-template-rows: auto auto auto auto auto auto;
             column-gap: 4rem;
             row-gap: 0;
 
             // Each entry opts into the parent's rows, so logo, description,
-            // stack row and links line up across both columns no matter how
-            // much longer one description runs than the other. Vertical spacing
-            // comes from the children's own margins, hence row-gap: 0.
+            // role, architecture, stack row and links line up across both
+            // columns no matter how much longer one block runs than the other.
+            // Vertical spacing comes from the children's own margins, hence
+            // row-gap: 0.
             // Browsers without subgrid ignore this and fall back to each column
             // flowing independently — the layout before this rule.
+            //
+            // The row count is the number of children an entry renders. Adding
+            // one without raising both numbers misaligns the columns silently:
+            // the build still passes and only the rendered page shows it.
             > li {
                 display: grid;
-                grid-row: span 4;
+                grid-row: span 6;
                 grid-template-rows: subgrid;
             }
         }
@@ -77,6 +82,51 @@ section#projects {
     .project-description {
         max-width: 60ch;
         line-height: 1.65;
+    }
+
+    // .skills-group-label in the projects accent, at the same size, tracking,
+    // weight and hairline — both sit on white and Projects runs directly into
+    // Skills, so a near-miss on any of those would read as a mistake.
+    //
+    // The padding matches Skills; the margin below the rule does not. Skills
+    // carries one label per group, an entry here carries two, so the same gaps
+    // cost twice as much — the label furniture had reached 28% of an entry's
+    // height against 47% for the text it introduced. Pulling the outer gap in
+    // buys that back without touching the label's own proportions.
+    //
+    // Block, not inline. Inline, the label sat to the left of the first line and
+    // every wrapped line ran back underneath it, which left the text ragged
+    // against two different left edges.
+    .project-label {
+        display: block;
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: $projects-accent;
+        // The paragraph's 1.65 would leave the rule floating well clear of the
+        // label. Padding sets that gap instead, so it is one number to adjust.
+        line-height: 1;
+        padding-bottom: 0.875rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    // The two blocks below About. Role was reintroduced after the 2026-07-31
+    // revision cut it, this time without the coloured left border that made it
+    // the only structural accent on the page; Architecture followed once the
+    // description was carrying engineering detail it was never shaped to hold.
+    //
+    // Both share About's measure and leading, so the three read as one column
+    // of text under three labels rather than three differently set blocks.
+    .project-role,
+    .project-architecture {
+        max-width: 60ch;
+        line-height: 1.65;
+        // Still comfortably wider than the label's own 0.75rem gap, so each
+        // block reads as its own labelled unit rather than one column broken up
+        // by headings — the two numbers have to move together.
+        margin-top: 1.75rem;
     }
 
     .project-tech {

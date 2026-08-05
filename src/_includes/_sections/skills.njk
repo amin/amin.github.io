@@ -1,4 +1,8 @@
-<section class="section" data-link-id="3" id="skills">
+{# Each icon here sits beside a text label that already names it, so the SVG's
+   own <title> is stripped — see the "decorative" filter in .eleventy.js. The
+   projects tech row keeps its titles, because there the icons stand alone. #}
+{% macro icon(path) %}{% set svg %}{% include path %}{% endset %}{{ svg | decorative | safe }}{% endmacro %}
+<section class="section" data-link-id="4" id="skills">
     <div class="wrapper">
         <div class="skills-header">
             <div class="skills-intro">
@@ -12,36 +16,37 @@
             <div class="skills-group">
                 <span class="skills-group-label">Code</span>
                 <ul>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/javascript.svg" %}</span>JavaScript</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/typescript.svg" %}</span>TypeScript</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/nodejs.svg" %}</span>Node.js</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/react.svg" %}</span>React</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/nextjs.svg" %}</span>Next.js</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/tailwind.svg" %}</span>Tailwind</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/php.svg" %}</span>PHP</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/laravel.svg" %}</span>Laravel</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/javascript.svg") }}</span>JavaScript</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/typescript.svg") }}</span>TypeScript</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/nodejs.svg") }}</span>Node.js</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/react.svg") }}</span>React</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/nextjs.svg") }}</span>Next.js</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/tailwind.svg") }}</span>Tailwind</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/php.svg") }}</span>PHP</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/laravel.svg") }}</span>Laravel</li>
                 </ul>
             </div>
             <div class="skills-group">
                 <span class="skills-group-label">Data</span>
                 <ul>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/sql.svg" %}</span>SQL</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/mongodb.svg" %}</span>MongoDB</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/firebase.svg" %}</span>Firebase</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/sql.svg") }}</span>SQL</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/mongodb.svg") }}</span>MongoDB</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/firebase.svg") }}</span>Firebase</li>
                 </ul>
             </div>
             <div class="skills-group">
                 <span class="skills-group-label">Workflow</span>
                 <ul>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/claude.svg" %}</span>Claude</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/fedora.svg" %}</span>Fedora (Linux)</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/figma.svg" %}</span>Figma</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/git.svg" %}</span>Git</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/docker.svg" %}</span>Docker</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/pnpm.svg" %}</span>pnpm</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/turborepo.svg" %}</span>Turborepo</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/cicd.svg" %}</span>CI/CD</li>
-                    <li><span class="skill-icon" aria-hidden="true">{% include "icons/cloudflare.svg" %}</span>Cloudflare</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/claude.svg") }}</span>Claude</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/fedora.svg") }}</span>Fedora (Linux)</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/figma.svg") }}</span>Figma</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/git.svg") }}</span>Git</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/docker.svg") }}</span>Docker</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/pnpm.svg") }}</span>pnpm</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/turborepo.svg") }}</span>Turborepo</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/cicd.svg") }}</span>CI/CD</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/cloudflare.svg") }}</span>Cloudflare</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/railway.svg") }}</span>Railway</li>
                 </ul>
             </div>
         </div>
