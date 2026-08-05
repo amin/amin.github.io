@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ title }}</title>
+        {# One source for both, so the tab title and the share card cannot drift
+           apart. A page may still override with its own `title` front matter. #}
+        <title>{{ title or site.ogTitle }}</title>
         <meta name="description" content="{{ site.description }}">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
