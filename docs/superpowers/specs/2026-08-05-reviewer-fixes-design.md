@@ -51,9 +51,8 @@ Author-ratified wording:
 
 - **Loopland** — One of three. I led the Centralbank API — the Laravel service,
   its OpenAPI contract, and the deploys on Railway.
-- **Yrco** — Built with one classmate. I owned the architecture, most of the
-  implementation — React, Express, MongoDB, LinkedIn OAuth — and the deploys on
-  Railway.
+- **Yrco** — Built with one classmate. I owned the architecture and most of the
+  implementation, and deployed it on Railway.
 
 Deployment is stated in the role line because that is where "what the author did"
 belongs. A `Railway` icon also joins the end of both tech rows, so the platform
@@ -84,14 +83,17 @@ version carried a `2px solid #dbd56e` left border and was the only structural
 accent on the page.
 
 Role carries a block label — `.skills-group-label` in the projects accent, at the
-same 1rem size, tracking, weight, `padding-bottom` and `1px solid #dcdcdc`
+same 1.125rem size, tracking, weight, `padding-bottom` and `1px solid #dcdcdc`
 hairline. Both sit on white and Projects runs directly into Skills, so a
 near-miss on any of those would read as a mistake rather than a decision. It
 differs in two values: colour, and a `margin-bottom` of `0.75rem` against Skills'
 `1.25rem` (see the height pass below).
 
-An earlier pass set the size at `0.8125rem`, which rendered too quiet against the
-body text and the width of its own rule.
+The size was arrived at over three passes: `0.8125rem` read too quiet against the
+body text and the width of its own rule; `1rem` matched the other two labels but
+left each of them smaller than the text underneath; `1.125rem` is where it sits.
+That is the ceiling — `span.section-label` is `1.25rem`, and a sub-label at that
+size stops being subordinate to the section heading above it.
 
 The description carries no label. Sitting directly under the wordmark it is
 self-evidently the description, and labelling it cost a rule and ~51px an entry
@@ -132,18 +134,20 @@ ragged against two different left edges. Block fixes that and matches how every
 other labelled block on the page is built.
 
 Each label is a `display: block` span **inside** its paragraph, not a sibling.
-A sibling would take each entry from five children to seven and silently break
-the desktop subgrid — see below.
+A sibling would add a child per label and silently break the desktop subgrid —
+see below.
 
-Order within an entry: **logo → description → role → tech → links.**
+Order within an entry: **logo → description → role → architecture → tech → links.**
 
 The field degrades like every other: omit `role` and the paragraph is skipped.
 
 ### Subgrid
 
-`_projects.scss` pins each entry to a four-row subgrid so both columns align at
-desktop. A fifth child breaks that silently — the columns simply stop lining up,
-with no error. Both `grid-template-rows` and `grid-row: span 4` move to five.
+`_projects.scss` pins each entry to a subgrid so both columns align at desktop.
+The row count is the number of children an entry renders, and adding one without
+raising both `grid-template-rows` and `grid-row` breaks alignment silently — the
+columns simply stop lining up, with no build error and no console warning. It
+went four → five with `role`, then five → six with `architecture`.
 
 ## 1b. Loopland described as integration work
 
@@ -233,10 +237,10 @@ scroll position, and Connect now carries the labelled contextual one.
 | `src/_includes/partials/nav.njk` | swap items, renumber ids |
 | `src/assets/styles/includes/sections/_projects.scss` | 5-row subgrid, `.project-role`, `.project-label` |
 | `src/assets/styles/includes/sections/_connect.scss` | `.connect-actions` |
-| `src/assets/styles/includes/sections/_about.scss` | `.about-fact-label` to 1rem |
+| `src/assets/styles/includes/sections/_about.scss` | `.about-fact-label` to 1.125rem |
 
 `.about-fact-label`, `.skills-group-label` and `.project-label` now share one
-size. They are the same object on three surfaces — teal, white and white — so a
+size, `1.125rem`. They are the same object on three surfaces — teal, white and white — so a
 size that drifted between them read as an inconsistency rather than a choice.
 About keeps tighter spacing below its rule: three facts stack in a 320px sidebar,
 where the other two labels' `0.875rem` / `1.25rem` would push the last fact past
