@@ -9,7 +9,11 @@
             <p>I’m looking for a LIA internship from <time datetime="2026-11-23">23 November 2026</time> to <time datetime="2027-05-28">28 May 2027</time> — six months where I can contribute to thoughtful software alongside people who care about what they’re building.
             </p>
             <div class="connect-actions">
-                <a class="connect-cv" href="/cv.pdf">Download CV (PDF)</a>
+                {# The label dropped "(PDF)", so the accessible name carries it
+                   instead — a user who cannot see the button still learns what
+                   opens. It contains the visible text verbatim, which is what
+                   WCAG 2.5.3 requires of any aria-label over visible words. #}
+                <a class="connect-cv" href="/cv.pdf" aria-label="View CV (PDF)">View CV</a>
                 <a class="connect-email" href="mailto:hello@amin.sh">hello@amin.sh</a>
             </div>
         </div>
