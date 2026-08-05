@@ -17,68 +17,72 @@
             <div class="skills-illustration">{% include "icons/toolkit-illustration.svg" %}</div>
         </div>
         <div class="skills-groups">
-            {# One axis: which layer of the stack a thing belongs to. An earlier
-               split ran Core / Delivery / Additional experience, which mixed two
-               axes — the first and last measured depth, the middle named a
-               domain — so nothing predicted where an entry would land, and
-               Tailwind and Turborepo ended up filed under "Additional" while
-               shipping in every project.
+            {# Grouped by relationship, not by layer. Four earlier splits
+               partitioned this list by where a thing sits in the stack, and each
+               one broke on the same rock: real tools span layers. TypeScript and
+               JavaScript run on both sides. Next.js renders pages and serves
+               routes. Firebase is a database, an auth service and a host at
+               once. Every attempt needed a footnote excusing an entry, which is
+               the reliable sign of a wrong taxonomy.
+
+               These three ask a question each item can answer on its own — do
+               you write it, work with it, or run on it? Nothing has to be
+               adjudicated against a boundary it straddles.
 
                Depth is Projects' job, not this section's. Two shipped repos
                argue it better than a self-assessment can, and they sit directly
-               above. This answers what is in the toolbox; Projects answers what
-               has been built with it. #}
+               above. This says what is in the toolbox; Projects says what has
+               been built with it.
+
+               Three judgment calls, none of them exceptions to the rule. Node.js
+               is a runtime, filed under Code because readers expect it beside
+               Express. Linux is on Infrastructure as a host, though it is
+               also the daily driver. Docker is Tooling, though it ships as well. #}
+
             <div class="skills-group">
-                <span class="skills-group-label">Frontend</span>
+                <span class="skills-group-label">Code</span>
                 <ul>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/react.svg") }}</span>React</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/tailwind.svg") }}</span>Tailwind</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/nextjs.svg") }}</span>Next.js</li>
-                    {# Sits here rather than with the tooling: the intro above
-                       says design and implementation are one process, so the
-                       design tool belongs beside what it becomes. #}
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/figma.svg") }}</span>Figma</li>
-                </ul>
-            </div>
-            <div class="skills-group">
-                <span class="skills-group-label">Backend</span>
-                <ul>
-                    {# TypeScript and JavaScript lead here, not Frontend. Yrco's
-                       API is JavaScript end to end, and React implies both to
-                       any reader — listing them opposite would understate where
-                       the work actually happens. #}
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/typescript.svg") }}</span>TypeScript</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/javascript.svg") }}</span>JavaScript</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/nodejs.svg") }}</span>Node.js</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/express.svg") }}</span>Express</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/php.svg") }}</span>PHP</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/laravel.svg") }}</span>Laravel</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/react.svg") }}</span>React</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/tailwind.svg") }}</span>Tailwind</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/nextjs.svg") }}</span>Next.js</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/eleventy.svg") }}</span>11ty</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/sql.svg") }}</span>SQL</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/mongodb.svg") }}</span>MongoDB</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/firebase.svg") }}</span>Firebase</li>
+                </ul>
+            </div>
+            <div class="skills-group">
+                <span class="skills-group-label">Tooling</span>
+                <ul>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/claude.svg") }}</span>Claude</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/figma.svg") }}</span>Figma</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/git.svg") }}</span>Git</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/docker.svg") }}</span>Docker</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/turborepo.svg") }}</span>Turborepo</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/pnpm.svg") }}</span>pnpm</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/cicd.svg") }}</span>CI/CD</li>
                 </ul>
             </div>
             <div class="skills-group">
                 <span class="skills-group-label">Infrastructure</span>
                 <ul>
-                    {# Leads the group. The section heading claims an AI-assisted
-                       toolkit and the hero claims AI throughout the workflow —
-                       this is the only entry backing either. It is the one loose
-                       fit in the taxonomy: AI runs across all three layers, and
-                       the hero says as much by placing it outside its triad. #}
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/claude.svg") }}</span>Claude</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/git.svg") }}</span>Git</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/linux.svg") }}</span>Linux</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/docker.svg") }}</span>Docker</li>
-                    {# Kept adjacent: both projects run Turborepo over pnpm
-                       workspaces, and this site is built the same way. #}
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/turborepo.svg") }}</span>Turborepo</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/pnpm.svg") }}</span>pnpm</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/cicd.svg") }}</span>CI/CD</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/mongodb.svg") }}</span>MongoDB</li>
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/firebase.svg") }}</span>Firebase</li>
+                    {# Its own square mark, not brand/github.svg. That one is a
+                       16x16 octicon with no fill, taking its colour from the
+                       footer and project links that use it; here it would paint
+                       black among teal. Both stay. #}
+                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/github.svg") }}</span>GitHub</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/railway.svg") }}</span>Railway</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/cloudflare.svg") }}</span>Cloudflare</li>
                 </ul>
             </div>
+        </div>
         </div>
     </div>
 </section>
