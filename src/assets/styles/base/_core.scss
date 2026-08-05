@@ -7,6 +7,18 @@ section.section {
     padding: 4rem 0;
 }
 
+// Every seam on the page but one puts a white section against a coloured one,
+// where the coloured side's padding sits inside its own block and the visible
+// gap is a single 4rem. Projects and Skills are the only two white sections
+// that meet, so their padding stacks into 8rem — twice every other seam, with
+// no change of colour to account for it.
+//
+// Tied to the order in index.njk. If either section moves, or a coloured one is
+// ever placed between them, this goes with it.
+section#projects + section#skills {
+    padding-top: 0;
+}
+
 // Off screen until it takes focus, so a keyboard user can get past the header
 // and the five nav links in one tab. Not clipped to zero size, which would let
 // some browsers skip it in the tab order.
