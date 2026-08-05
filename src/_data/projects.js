@@ -41,6 +41,9 @@ export default [
       "icons/javascript.svg",
       "icons/react.svg",
       "icons/nodejs.svg",
+      // The architecture line above leads with "A layered Express API", so the
+      // row named the runtime and omitted the framework the entry is about.
+      "icons/express.svg",
       "icons/mongodb.svg",
       "icons/tailwind.svg",
       "icons/turborepo.svg",
