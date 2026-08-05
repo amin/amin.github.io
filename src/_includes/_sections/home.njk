@@ -20,7 +20,11 @@
                     box paints 375px of image and a 375px box paints 563px —
                     doubled again for 2x screens.
                 #}
-                <img src="/assets/images/hero-bw.jpeg" alt=""
+                {# Named, not empty. The portrait is the only thing on the page
+                   that shows who the site belongs to, and the <h1> beside it
+                   never says a name — so alt="" dropped that entirely for
+                   anyone not seeing the image. #}
+                <img src="/assets/images/hero-bw.jpeg" alt="Amin El-Rifai"
                     eleventy:formats="avif,webp,jpeg"
                     eleventy:widths="375,563,750,1125"
                     sizes="(max-width: 46.24em) 375px, 563px"
