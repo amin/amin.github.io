@@ -56,10 +56,12 @@ section#skills {
         }
     }
 
+    // Held at one size with .about-fact-label and .project-label; the ceiling
+    // and the reasoning are recorded at the first of those.
     .skills-group-label {
         display: block;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 1.125rem;
         letter-spacing: 2.5px;
         font-weight: 500;
         color: $skills-accent;

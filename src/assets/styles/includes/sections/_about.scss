@@ -53,15 +53,22 @@ section#about {
         }
     }
 
-    // 1rem, matching .skills-group-label and .project-label. All three are the
-    // same object seen on three surfaces, so they hold one size between them.
-    // The spacing below stays tighter than theirs: three of these stack in a
-    // 320px sidebar, where their 0.875/1.25 would push the last fact down past
-    // the bio it sits beside.
+    // 1.125rem, matching .skills-group-label and .project-label. All three are
+    // the same object seen on three surfaces, so they hold one size between
+    // them — a difference between them reads as drift, not as a decision.
+    //
+    // 1.125rem is the top of the range. span.section-label is 1.25rem, and a
+    // sub-label at that size stops being subordinate to the section heading it
+    // sits under. At 1rem it was smaller than the 1.05rem fact text it
+    // introduces, which is the weakest a label can look.
+    //
+    // The spacing below stays tighter than the other two: three of these stack
+    // in a 320px sidebar, where their 0.875/1.25 would push the last fact down
+    // past the bio it sits beside.
     .about-fact-label {
         display: block;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 1.125rem;
         letter-spacing: 2.5px;
         font-weight: 500;
         padding-bottom: 0.75rem;
