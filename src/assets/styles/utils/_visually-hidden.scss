@@ -1,0 +1,23 @@
+// Text that assistive technology and text extractors read, but nobody sees.
+//
+// Used where a graphic carries meaning a sighted reader gets from the image
+// alone — the project wordmarks, which are headings whose only content was an
+// SVG. Any parser that strips SVG saw an empty <h3>.
+//
+// The graphic beside it must be aria-hidden, or the name is announced twice.
+//
+// clip-path over display: none or visibility: hidden, both of which remove the
+// element from the accessibility tree and defeat the purpose. The 1px box and
+// the negative margin keep it out of layout; white-space: nowrap stops a
+// clipped string from being collapsed into a single character column.
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
