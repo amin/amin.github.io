@@ -27,8 +27,8 @@ where a request goes, what decides who gets in, and how separate parts become
 one reliable product.
 
 That started in high school, when I ran a Minecraft server hosting company for
-paying customers and learned what breaks when no one is watching. Eight years on
-a Volvo assembly line showed me the same thing at scale. Today it draws me
+paying customers and learned what breaks when no one is watching. Eight years at
+Volvo showed me the same thing at scale. Today it draws me
 toward services, integrations, and the infrastructure that connects them.
 ```
 
@@ -48,7 +48,7 @@ sed 's/—/ /g' bio.txt | wc -w
 Original 45 words, cap 67.5. Three drafts were built to hit exactly 67.
 
 **The cap was then lifted by the author**, whose own revision ran to 94 words.
-Shipped copy is 83. It is recorded here because the cap shaped every earlier
+Shipped copy is 82. It is recorded here because the cap shaped every earlier
 draft — including two whose cuts are described below and which now read as
 strangely terse without knowing why.
 
@@ -89,9 +89,17 @@ inert, a gap with nothing attached. Attached to the thesis — the same
 interdependence at industrial scale — they become evidence that the interest
 predates the career change by a decade.
 
-`assembly line`, not `production systems`. To a developer the latter reads as
-prod environments, which would imply software experience at Volvo that the CV
-does not support. The literal truth is both safer and more interesting.
+The clause names no role, after three that each misrepresented something.
+`production systems` reads to a developer as prod environments, implying software
+experience at Volvo the CV does not support. `assembly line` and `building trucks`
+both reduce the eight years to assembling, when `src/cv/amin_cv.tex` also carries
+Union Representative (Sep 2022 – Oct 2024) and Team Leader (Oct 2024 – Feb 2025).
+Naming the union role here would be wrong regardless: it sits under IF Metall, not
+Volvo, and Team Leader falls after the eight years rather than inside them.
+
+The sentence exists for the observation, not the résumé. A role invites the reader
+to weigh it; none keeps the focus on what the years showed, and the CV is one
+click away for the rest.
 
 ## Provenance
 
@@ -124,8 +132,8 @@ Unchanged — `Currently`, `Based in`, `Looking for`, in that order.
 `Looking for` stays last. It is the ask, last is the strongest slot, and anything
 appended after it buries what the page exists for. A template comment records
 this. A `Daily driver — Linux, on everything I own.` entry was added third and
-then removed at the author's direction; Skills keeps `Fedora (Linux)` and is
-untouched.
+then removed at the author's direction. Skills later took `Linux` on its own
+mark, so the distro name no longer appears anywhere.
 
 ## Adjacent fixes
 
