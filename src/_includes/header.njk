@@ -5,7 +5,16 @@
             <div class="header-container">
                 <div class="logotype">
                     <a href="/" data-target="body">
-                        <img class="logotype-image" src="/assets/images/logo.svg" alt="amin.sh">
+                        {# Overrides the plugin's global loading: lazy. This sits
+                           at the top of a sticky header, so it is above the fold
+                           on every page load and deferring it only delays it —
+                           the same reason home.njk overrides lazy on the hero.
+
+                           No fetchpriority here, unlike the hero. That one is
+                           the LCP element and asked for high; raising a 231px
+                           logo to match would put the two in competition for
+                           the same early bandwidth. #}
+                        <img class="logotype-image" src="/assets/images/logo.svg" alt="amin.sh" loading="eager">
                     </a>
                 </div>
                 {# The burger is two bare divs, so the label is the only thing
