@@ -53,10 +53,15 @@ section#about {
         }
     }
 
+    // 1rem, matching .skills-group-label and .project-label. All three are the
+    // same object seen on three surfaces, so they hold one size between them.
+    // The spacing below stays tighter than theirs: three of these stack in a
+    // 320px sidebar, where their 0.875/1.25 would push the last fact down past
+    // the bio it sits beside.
     .about-fact-label {
         display: block;
         text-transform: uppercase;
-        font-size: 0.875rem;
+        font-size: 1rem;
         letter-spacing: 2.5px;
         font-weight: 500;
         padding-bottom: 0.75rem;
