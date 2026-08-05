@@ -32,29 +32,59 @@ section#connect {
         }
     }
 
-    .connect-platforms {
+    // The two things a reader is meant to do, side by side and above the rule.
+    // Previously the email sat alone at the very bottom of the page and the CV
+    // only existed as an unlabelled topbar link, so neither read as an ask.
+    .connect-actions {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
-        margin: auto;
+        gap: 1.25rem 2.5rem;
+        margin-top: 2.5rem;
+    }
 
-        @include mq.mq($from: tablet) {
-            width: 70%;
+    // The only filled control on the site. Everything else marks a link with a
+    // dashed underline, and that is still true one line to the right — but the
+    // CV is the one action worth spending emphasis on, and Connect is already
+    // the one section carrying a surface colour, so the weight belongs here.
+    .connect-cv {
+        background: $connect-accent;
+        color: #fff;
+        padding: 0.9rem 1.75rem;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+
+        &:hover {
+            background: #35180e;
         }
     }
 
-    .email {
+    .connect-email {
         font-size: 1.3rem;
         letter-spacing: 1px;
+        // Dashed, like every other link on the site. Solid on hover.
+        border-bottom: 1px dashed $connect-accent;
+        padding-bottom: 0.2rem;
 
         &:hover {
-            text-decoration: underline;
+            border-bottom-style: solid;
         }
 
         @include mq.mq($from: tablet) {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
         }
+    }
+
+    .connect-platforms {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
     }
 
     .platforms {
