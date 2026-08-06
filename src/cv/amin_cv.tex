@@ -15,6 +15,17 @@
 \setlength{\parindent}{0pt}
 \color{ink}
 
+% A CV is skimmed, not read, and a word split across a line break
+% ("represen-/tative") is a stumble in the paragraph that has the least time to
+% land. Refusing to hyphenate costs slightly looser interword spacing instead,
+% which this measure (~17cm, around 90 characters) has the slack to absorb.
+% \exhyphenpenalty covers the hyphens already in the text, so "front-end" and
+% "El-Rifai" stay whole too, and \emergencystretch gives TeX a last resort so a
+% stubborn line loosens rather than running into the margin.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=2em
+
 % ---------------------------------------------------------------------------
 % Three levels of hierarchy, and only three: section (teal caps over a rule),
 % role (the only bold in an entry), and supporting detail (grey). Anything
@@ -70,7 +81,11 @@
 
 \noindent
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr@{}}
-{\fontsize{26}{30}\selectfont\bfseries Amin El-Rifai} &
+% Bold extended carries a wide word space (0.38 of the font size, against the
+% 0.33 of the roman), which at 26pt opens an obvious hole in the middle of the
+% name. The explicit kern closes it to roughly a quarter of the size — the
+% tighter spacing display type wants anyway — so the two words read as one name.
+{\fontsize{26}{30}\selectfont\bfseries Amin\kern0.25em El-Rifai} &
 {\fontsize{26}{30}\selectfont\bfseries\color{accentteal} CV}
 \end{tabular*}
 
@@ -78,7 +93,10 @@
 
 % The labels the values already imply ("Email:", "Phone:") are dropped — an
 % address with an @ needs no caption, and losing them buys a quieter header.
-{\fontsize{10}{13.5}\selectfont
+% Set at body size rather than the 10pt this started at: these are the lines a
+% reader has to copy a phone number or a URL out of, and they were the smallest
+% type on the page. The 26pt name keeps the hierarchy without their help.
+{\fontsize{11}{14.4}\selectfont
 \link{mailto:hello@amin.sh}{hello@amin.sh}\sep
 \link{tel:+46739657929}{+46 73 965 79 29}\sep
 Gothenburg, Sweden
