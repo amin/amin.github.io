@@ -34,7 +34,7 @@ export default [
     logo: "icons/brand/yrco.svg",
     description:
       "A networking app built for an event where Yrgo’s design and web development students meet people from the industry. Attendees choose seven traits that form a personal colour palette, making it easier to find complementary people and meaningful connections.",
-    role: "Built with one classmate. I owned the architecture and most of the implementation, and deployed it on Railway.",
+    role: "Built in a team of four: two digital designers and two developers. As one of the developers, I owned the architecture and most of the implementation, and deployed the app on Railway.",
     architecture:
       "A layered Express API — routes, controllers, use cases, repositories — with one Zod schema package shared by client and server, so both validate against the same contract. Sessions are opaque DB-backed tokens, not JWTs.",
     tech: [
