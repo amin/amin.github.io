@@ -1,5 +1,10 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[a4paper,left=1.9cm,right=1.9cm,top=1.5cm,bottom=1.4cm]{geometry}
+% The side margins set the measure and are the one dimension not up for
+% negotiation --- widening them past 1.9cm pushes the line length beyond what
+% 11pt reads comfortably at. Top and bottom are the give: bullets under the
+% experience entries cost about six lines, and 0.25cm off the top and 0.25cm
+% off the bottom paid for two of them without touching a word.
+\usepackage[a4paper,left=1.9cm,right=1.9cm,top=1.25cm,bottom=1.15cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{microtype}
@@ -41,13 +46,40 @@
 
 % Gap between entries inside a section. Defined once so the rhythm cannot
 % drift the way a dozen hand-tuned \vspace values did.
-\newcommand{\entrygap}{\vspace{0.52cm}}
+\newcommand{\entrygap}{\vspace{0.40cm}}
+
+% Bullets under an entry, built on the \list primitive rather than itemize:
+% itemize inherits \topsep and \parsep tuned for essays, which opens a hole
+% between the lead line and the first bullet that this page has no room for.
+% The marker is small and grey because it only has to mark where a line begins
+% --- at six of them down one section, a full-size ink dot starts reading as
+% content. An 8pt bullet sits on the 11pt baseline low enough to look like a
+% stray full stop, so \raisebox lifts it back to the middle of the x-height.
+% \leftmargin is set so wrapped lines align under the words rather than under
+% the dot, which is what gives the block a left edge to skim.
+\newenvironment{cvbullets}{%
+  \begin{list}{{\fontsize{8}{8}\selectfont\color{inkmeta}\raisebox{0.55pt}{\textbullet}}}{%
+    \setlength{\labelwidth}{0.55em}%
+    \setlength{\labelsep}{0.45em}%
+    \setlength{\leftmargin}{1.00em}%
+    \setlength{\rightmargin}{0pt}%
+    \setlength{\itemindent}{0pt}%
+    \setlength{\listparindent}{0pt}%
+    \setlength{\topsep}{0.10cm}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemsep}{0.07cm}%
+    \fontsize{11}{14.4}\selectfont
+  }%
+}{%
+  \end{list}%
+}
 
 % \nointerlineskip after each \par suppresses the baseline glue LaTeX would
 % otherwise add, which is what lets the rule sit tight under its label instead
 % of drifting halfway to the content below it.
 \newcommand{\cvsection}[1]{%
-  \par\vspace{0.74cm}%
+  \par\vspace{0.62cm}%
   % Keep tracking low. Above roughly 100, pdftotext (and CV-screening tools
   % that use it) starts reading the gaps as spaces and extracts "E D U C AT I
   % O N", which destroys keyword matching. 120 was verified to break; 80 and
@@ -56,7 +88,7 @@
     \textls[60]{\MakeUppercase{#1}}}%
   \par\nointerlineskip\vspace{0.13cm}%
   {\color{rulegrey}\rule{\textwidth}{0.5pt}}%
-  \par\nointerlineskip\vspace{0.34cm}%
+  \par\nointerlineskip\vspace{0.28cm}%
 }
 
 % Role and dates share a baseline; the organisation sits under the role in
@@ -122,31 +154,49 @@ Gothenburg, Sweden
 
 \cvproject{Loopland}{https://loopland.se}{loopland.se}{PHP, Laravel, React, TypeScript, SQL, Railway}
 
-\body{A digital amusement park assembled from games each group in our class built on its own, integrated through one shared Centralbank API. One of three: I led that API --- a Laravel service published as an OpenAPI contract for other groups to build against, with per-game keys and delegated identity tokens --- and deployed both apps on Railway.}
+\body{A digital amusement park assembled from games each group in our class built on its own, integrated through one shared Centralbank API. In a team of three, I led that API --- a Laravel service published as an OpenAPI contract for other groups to build against, with per-game keys and delegated identity tokens --- and deployed both apps on Railway.}
 
 \entrygap
 
 \cvproject{Yrco}{https://yrco.se}{yrco.se}{React, Node.js, Express, MongoDB, OAuth, Railway}
 
-\body{A networking app for an event connecting Yrgo design and web development students with industry professionals. Attendees selected seven traits to create a personal colour palette and find complementary connections. Built with one classmate: I owned the architecture, most of the implementation, and the Railway deploys.}
+\body{A networking app for an event connecting Yrgo design and web development students with industry professionals. Attendees selected seven traits to create a personal colour palette and find complementary connections. Built with one classmate: I owned the architecture, most of the implementation, and the Railway deployments.}
 
 \cvsection{Experience}
 
 \cventry{Team Leader}{Volvo Trucks Tuve}{October 2024 - February 2025}
 
-\body{Led a production team responsible for assembling interior components for truck cabins, coordinated daily work, supported team members, and contributed to continuous improvement initiatives.}
+\body{Led a production team assembling interior components for truck cabins.}
+
+\begin{cvbullets}
+\item Coordinated the day's work and supported the team through it.
+\item Drove continuous improvement work and held a central role in how the team worked together.
+\end{cvbullets}
 
 \entrygap
 
-\cventry{Union Representative}{IF Metall}{September 2022 - October 2024}
+% The dates overlap the assembly role below because the two genuinely ran
+% together --- a kontaktombud is elected out of the shop floor, not seconded off
+% it. Saying so belongs on the grey organisation line rather than in the body:
+% it is supporting detail, it sits in the reader's eye line at the moment the
+% overlapping dates raise the question, and that line was half empty anyway, so
+% the answer costs no vertical space on a page that has none to give.
+\cventry{Union Representative}{IF Metall\sep held alongside the assembly role}{September 2022 - October 2024}
 
-\body{Represented colleagues in workplace and personnel matters, served on a local union board supporting more than 700 members, and helped improve internal efficiency by digitising administrative processes.}
+\body{Represented colleagues on workplace and personnel matters as their contact representative.}
+
+\begin{cvbullets}
+\item Served on a local ten-person union board answering for the interests of more than 700 members.
+\item Digitised the leave-of-absence process for union training with Adobe Acrobat Sign.
+\item Led a plant-wide workwear survey: I set its structure and the material that drove turnout.
+\item Trained the union on AI communication tools to raise engagement and speed information flow.
+\end{cvbullets}
 
 \entrygap
 
 \cventry{Truck Assembler}{Volvo Trucks Tuve}{September 2016 - October 2024}
 
-\body{Assembled interior components for truck cabins, followed production standards, and worked closely with the team to maintain quality, safety, and an efficient workflow.}
+\body{Assembled interior components for truck cabins, working with the team on quality, safety, and flow.}
 
 \cvsection{Languages}
 
