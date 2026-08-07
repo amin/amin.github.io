@@ -2,9 +2,11 @@
 % The side margins set the measure and are the one dimension not up for
 % negotiation --- widening them past 1.9cm pushes the line length beyond what
 % 11pt reads comfortably at. Top and bottom are the give: bullets under the
-% experience entries cost about six lines, and 0.25cm off the top and 0.25cm
-% off the bottom paid for two of them without touching a word.
-\usepackage[a4paper,left=1.9cm,right=1.9cm,top=1.25cm,bottom=1.15cm]{geometry}
+% experience entries cost about six lines, and the bottom margin gave up 0.25cm
+% of them without touching a word. The top stays wider than the bottom: it is
+% the margin a reader sees first, above a 26pt name that needs the air, and a
+% CV that starts tight against the paper edge reads as one that ran out of room.
+\usepackage[a4paper,left=1.9cm,right=1.9cm,top=1.45cm,bottom=1.15cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{microtype}
@@ -121,7 +123,10 @@
 {\fontsize{26}{30}\selectfont\bfseries\color{accentteal} CV}
 \end{tabular*}
 
-\vspace{0.20cm}
+% A 26pt name needs a gap proportional to itself, not to the 11pt line under
+% it. At 0.20cm the contact details sat close enough to read as a subtitle of
+% the name rather than a block of their own.
+\vspace{0.38cm}
 
 % The labels the values already imply ("Email:", "Phone:") are dropped — an
 % address with an @ needs no caption, and losing them buys a quieter header.
@@ -133,14 +138,17 @@
 \link{tel:+46739657929}{+46 73 965 79 29}\sep
 Gothenburg, Sweden
 
-\vspace{0.04cm}
+% Enough to separate two lines that hold different kinds of thing --- how to
+% reach me, then where to read more --- without opening a gap that would split
+% them into two blocks.
+\vspace{0.12cm}
 
 \link{https://amin.sh}{amin.sh}\sep
 \link{https://github.com/amin}{github.com/amin}\sep
 \link{https://www.linkedin.com/in/aminelrifai/}{linkedin.com/in/aminelrifai}
 \par}
 
-\vspace{0.30cm}
+\vspace{0.38cm}
 
 \body{Eight years in industrial production at Volvo Trucks, most recently as a team leader and union representative. Now studying full-stack web development at Yrgo.}
 
@@ -160,7 +168,7 @@ Gothenburg, Sweden
 
 \cvproject{Yrco}{https://yrco.se}{yrco.se}{React, Node.js, Express, MongoDB, OAuth, Railway}
 
-\body{A networking app for an event connecting Yrgo design and web development students with industry professionals. Attendees selected seven traits to create a personal colour palette and find complementary connections. Built with one classmate: I owned the architecture, most of the implementation, and the Railway deployments.}
+\body{A networking app for an event connecting Yrgo design and web development students with industry professionals. Attendees picked seven traits to form a colour palette and find complementary connections. Built with one classmate: I owned the architecture, most of the implementation, and the deployments.}
 
 \cvsection{Experience}
 
