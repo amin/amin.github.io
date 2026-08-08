@@ -13,10 +13,18 @@ section.section {
 // that meet, so their padding stacks into 8rem — twice every other seam, with
 // no change of colour to account for it.
 //
+// The 4rem is taken off Projects rather than Skills, though either would close
+// the seam to the same gap. Skills is a nav target, and scrollToTarget lands a
+// section's top edge flush under the sticky header — so a section's own
+// padding-top is the only thing holding its first line clear of the nav. Zeroed
+// on Skills, the label sat against the header on every click. Desktop hid it:
+// .skills-header centres the intro against a taller illustration, which reads
+// as space until the header stacks to a column below tablet.
+//
 // Tied to the order in index.njk. If either section moves, or a coloured one is
 // ever placed between them, this goes with it.
-section#projects + section#skills {
-    padding-top: 0;
+section#projects:has(+ section#skills) {
+    padding-bottom: 0;
 }
 
 // Off screen until it takes focus, so a keyboard user can get past the header
