@@ -54,6 +54,32 @@ strangely terse without knowing why.
 
 ## Structure
 
+**Amended 2026-08-08: same structure, new closing sentence.** The section lost
+two sentences and gained one. Both losses were the sentences holding no concrete
+noun — the Volvo clause (see below) and the close, `Today it draws me toward
+services, integrations, and the infrastructure that connects them`, which
+restated sentence one's triad in sentence one's shape two paragraphs later. That
+is the fault the author named, and it is the one this spec's own Register
+section invites: a triad resolving on the general case is the house
+construction, and used twice in one section it reads as a tic rather than a
+voice.
+
+The bio was cut to a single paragraph and then split again within the hour. The
+structure described below survives that round trip intact, and the reason is the
+argument below: without a present-tense close the section ends in high school.
+
+The new close:
+
+```
+Today it points at the whole of a product: the interface, the service under it,
+and the deploy that puts it in front of people.
+```
+
+It lists things rather than ideas, and `the deploy` is the only claim on the
+site made in prose rather than icons — both projects are live at their own
+domains. Pairing an interface with the API behind it was the obvious
+alternative and would have restated `home.njk`.
+
 **Paragraph one answers the heading.** `A developer, end to end.` claims breadth,
 so the first line stays on that axis: `the whole system`, then a triad tracing a
 request across it. An earlier draft opened on `what is underneath`, which
@@ -81,6 +107,14 @@ letter. The diagnosis, which is the durable part of this spec:
   and look at. A career narrative has no such anchor unless it earns one.
 
 ## The Volvo years
+
+**Superseded 2026-08-08: the sentence was cut.** The reasoning below still
+describes why it was written and why it named no role — both hold — but stripped
+of a role it was left asserting an equivalence with nothing under it, and it was
+the only sentence in the paragraph containing no concrete noun. That is what
+made it read as machine-written, which is the fault the author identified. The
+years stay on the CV. Restore them here only with a specific observation
+attached; the rest of this section records what any such sentence must avoid.
 
 Eight years assembling trucks (September 2016 – October 2024, per
 `src/cv/amin_cv.tex`) were cut from an earlier draft and restored here. The cut
@@ -192,7 +226,8 @@ are for. Left alone deliberately.
 `pnpm build`, then in `public/index.html`:
 
 - `<h2>` reads `A developer, end to end.`
-- Two paragraphs inside `.about-bio`, matching Home, Skills and Connect.
+- Two paragraphs inside `.about-bio`, the second closing on `in front of
+  people.` — see the 2026-08-08 amendment under Structure.
 - Exactly three `.about-fact` entries, `Looking for` last. No `Linux` in the
   section.
 - Both `<time>` elements in `Looking for` intact. They pair with identical values
