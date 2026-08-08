@@ -15,8 +15,14 @@ export default function typewriter() {
   if (!typewriter) return;
 
   // Anyone who has asked for reduced motion keeps the word already in the
-  // markup instead. "I translate visions into reality." stands on its own, so
+  // markup instead. "I translate visions into code." stands on its own, so
   // nothing is lost by not animating it.
+  //
+  // That word has to stay WORDS[0]. type() measures progress from whatever is
+  // already in the element, so a markup word longer than the one it starts
+  // typing is overwritten whole on the first tick instead of being erased.
+  // "reality" sat there until this was fixed, and swapped to "code" 150-400ms
+  // in — visible on every load, and the one transition that never animated.
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   let wordIndex = 0;
