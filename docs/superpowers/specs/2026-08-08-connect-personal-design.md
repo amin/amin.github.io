@@ -20,8 +20,8 @@ reader cannot check. It fails the same test About failed in
 
 ```
 I’m looking for a LIA internship from 23 November 2026 to 28 May 2027 — six
-months in a room that expects more of me than I can give yet, alongside people
-who care about what they’re building.
+months of real work in a room that expects more of me than I can give yet,
+alongside people who care about what they’re building.
 ```
 
 Heading unchanged: `Open to what comes next.` Actions, platform links and both
@@ -64,14 +64,20 @@ Two alternatives were written and rejected by the author:
   they work in, so the room is what I’m choosing`) — the most distinctive
   option, at the cost of the section's one-sentence economy.
 
-## What was given up
+## `real work`
 
-The old clause was the only place on the page naming what the author would
-give. The replacement is entirely about what the six months does to him. This
-was raised with the author and accepted: Connect is the ask, and the
-contribution side is argued by Projects and the CV, which can show it rather
-than assert it. A hedge preserving both — `six months of real work in a room
-that expects more of me…` — was offered and declined.
+The first shipped draft dropped the phrase and read `six months in a room that
+expects more of me than I can give yet`, which left the page with nothing
+naming what the author would give: the sentence stated only what the six months
+does to him. `contribute to thoughtful software` had at least pointed that way,
+even while asserting a quality it could not evidence.
+
+`real work` restores the direction in two words without restoring the claim.
+The stretch is still asked of the room, but a host reads someone arriving to do
+the work rather than to be taught — which is what a LIA placement is, and what
+the six months is worth to them.
+
+The quality claim stays gone. Projects and the CV make it with artifacts.
 
 ## Structure
 
