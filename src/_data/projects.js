@@ -10,9 +10,9 @@ export default [
     logo: "icons/brand/loopland.svg",
     description:
       "A digital amusement park assembled from games each group in our class built on its own. Players earn stamps in any of them, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
-    role: "In a team of three, I led the Centralbank API — the Laravel service, its OpenAPI contract, and its Railway deployment alongside the park's React front-end.",
+    role: "In a team of three developers, I led the Centralbank API — the Laravel service, its OpenAPI contract, and its Railway deployment.",
     architecture:
-      "Contract-first: the OpenAPI spec was published before any client existed, because the code calling it was being written by other groups. Per-game keys and short-lived identity tokens let a game act for a player without ever seeing their credentials.",
+      "A Turborepo monorepo — Laravel API, React SPA — built contract-first: the OpenAPI spec was published before any client existed, because the code calling it was being written by other groups. Per-game keys and short-lived identity tokens let a game act for a player without ever seeing their credentials.",
     tech: [
       "icons/php.svg",
       "icons/laravel.svg",
@@ -36,7 +36,7 @@ export default [
       "A networking app built for an event where Yrgo’s design and web development students meet people from the industry. Attendees choose seven traits that form a personal colour palette, making it easier to find complementary people and meaningful connections.",
     role: "Built in a team of four: two digital designers and two developers. As one of the developers, I owned the architecture and most of the implementation, and deployed the app on Railway.",
     architecture:
-      "A layered Express API — routes, controllers, use cases, repositories — with one Zod schema package shared by client and server, so both validate against the same contract. Sessions are opaque DB-backed tokens, not JWTs.",
+      "A Turborepo monorepo: a layered Express API (routes, controllers, use cases, repositories), a React client, and one Zod schema package both apps import. Sessions are opaque DB-backed tokens, not JWTs.",
     tech: [
       "icons/javascript.svg",
       "icons/react.svg",
