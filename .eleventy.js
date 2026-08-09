@@ -14,6 +14,8 @@ export default async function (eleventyConfig) {
     // Built from src/cv/amin_cv.tex by `pnpm run cv` and committed, so the
     // deploy never needs a LaTeX toolchain.
     "src/cv.pdf": "cv.pdf",
+    // Served as a file, not a page — nothing on the site links to it.
+    "src/workwear-survey-poster.pdf": "workwear-survey-poster.pdf",
     // Lives at the repo root, but Pages only sees what the build publishes, so
     // without this the custom domain is dropped on every deploy.
     CNAME: "CNAME",
