@@ -54,5 +54,11 @@ export default [
       live: "https://yrco.se",
       github: "https://github.com/amin/yrco",
     },
+    // A courtesy on the link, not a disclosure about the build. The app was
+    // drawn for phones, and this page is read on a laptop, so the one
+    // invitation to go and look at the work currently sets it up to be seen at
+    // its worst. Named for the link it qualifies rather than as a general
+    // `note`, so it cannot drift into an unbounded field.
+    liveNote: "Mobile only",
   },
 ];

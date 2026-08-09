@@ -159,6 +159,11 @@ section#projects {
             border-bottom: 1px dashed $projects-accent;
             padding-bottom: 0.25rem;
 
+            // Covers both marks a link can carry: GitHub's octicon, and the
+            // phone that prefixes a live link built for one. The phone is
+            // filled rather than stroked so this one rule reaches it too, and
+            // so it does not read a weight lighter than the octicon two
+            // positions along the same row.
             svg {
                 width: 1.25rem;
                 height: 1.25rem;
