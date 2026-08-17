@@ -9,8 +9,8 @@ export default [
     // Affinity source.
     logo: "icons/brand/loopland.svg",
     description:
-      "A digital amusement park assembled from games each group in our class built on its own. Players earn stamps in any of them, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
-    role: "In a team of three developers, I led the Centralbank API — the Laravel service, its OpenAPI contract, and its Railway deployment.",
+      "A digital amusement park bringing together games built independently by groups in our class, all integrated through a central API our team built. Players earn stamps, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
+    role: "In a team of three developers, I was responsible for the Centralbank API — the Laravel service, its OpenAPI contract, and its Railway deployment.",
     architecture:
       "A Turborepo monorepo — Laravel API, React SPA — built contract-first: the OpenAPI spec was published before any client existed, because the code calling it was being written by other groups. Per-game keys and short-lived identity tokens let a game act for a player without ever seeing their credentials.",
     tech: [
