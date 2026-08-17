@@ -87,12 +87,21 @@ section#about {
     // column with room to spare.
     .about-fact-dates {
         display: block;
-        white-space: nowrap;
         margin-top: 0.3rem;
         font-size: 0.95rem;
         // Full white rather than dimmed: 0.75 was 2.73:1 and even 0.9 only
         // reaches 4.11:1. The smaller size still sets the range apart.
         color: #fff;
+
+        // Nowrap moved off the range and onto each date. Spelling the month
+        // out to match Connect added five characters to a line held in a 36%
+        // column, which at the tablet breakpoint leaves only a few pixels
+        // spare — and nowrap on the whole range turns a near miss into an
+        // overflow rather than a second line. Per date, the range may break
+        // at the dash while "23 November 2026" never splits across it.
+        time {
+            white-space: nowrap;
+        }
     }
 
     // Dashed underline, matching the project and footer links, so an outbound
