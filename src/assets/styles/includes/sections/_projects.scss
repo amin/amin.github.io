@@ -146,13 +146,24 @@ section#projects {
                 display: none;
             }
 
-            &:hover {
-                color: $projects-accent-hover;
+            // Gated on a pointer that can actually hover. A tap leaves :hover
+            // applied until the next tap lands somewhere else, so on a phone
+            // the disc stayed filled after the panel had closed — the control
+            // showing a state the section was no longer in. It reads worse
+            // here than on the dashed links below, because filling the disc is
+            // the same emphasis the control uses to say it is being acted on.
+            //
+            // Nothing replaces it for touch. The panel opening or closing is
+            // the feedback, and it arrives on the same tap.
+            @media (hover: hover) {
+                &:hover {
+                    color: $projects-accent-hover;
 
-                svg {
-                    fill: #fff;
-                    background-color: $projects-accent;
-                    border-color: $projects-accent;
+                    svg {
+                        fill: #fff;
+                        background-color: $projects-accent;
+                        border-color: $projects-accent;
+                    }
                 }
             }
 
