@@ -16,8 +16,13 @@
                 {# The label dropped "(PDF)", so the accessible name carries it
                    instead — a user who cannot see the button still learns what
                    opens. It contains the visible text verbatim, which is what
-                   WCAG 2.5.3 requires of any aria-label over visible words. #}
-                <a class="connect-cv" href="/cv.pdf" aria-label="View CV (PDF)">View CV</a>
+                   WCAG 2.5.3 requires of any aria-label over visible words.
+
+                   The new-tab wording is spelled out here rather than included
+                   from partials/new-tab.njk like every other link: an aria-label
+                   replaces the anchor's contents outright, so a span inside this
+                   one would never be read. Keep the two strings in step. #}
+                <a class="connect-cv" href="/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="View CV (PDF, opens in a new tab)">View CV</a>
                 <a class="connect-email" href="mailto:hello@amin.sh">hello@amin.sh</a>
             </div>
         </div>
@@ -83,7 +88,7 @@
                                 id="path833"/>
                         </svg>
                     </div>
-                    <div class="platform-name">GitHub — @amin</div>
+                    <div class="platform-name">GitHub — @amin{% include "partials/new-tab.njk" %}</div>
                 </a>
                 <a href="https://www.linkedin.com/in/aminelrifai/" target="_blank" rel="noopener noreferrer" class="platform">
                     <div class="platform-logo platform-logo-linkedIn">
@@ -97,7 +102,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="platform-name">LinkedIn</div>
+                    <div class="platform-name">LinkedIn{% include "partials/new-tab.njk" %}</div>
                 </a>
             </div>
         </div>

@@ -88,10 +88,10 @@
                            reference to a sibling, so it survives being read out
                            of context. #}
                         {% if project.links.live %}
-                        <a href="{{ project.links.live }}" target="_blank" rel="noopener noreferrer">{% if project.liveNote %}{% include "icons/phone.svg" %}{% endif %}{{ project.links.live | replace("https://", "") }}{% if project.liveNote %}<span class="visually-hidden">, {{ project.liveNote | lower }}</span>{% endif %}</a>
+                        <a href="{{ project.links.live }}" target="_blank" rel="noopener noreferrer">{% if project.liveNote %}{% include "icons/phone.svg" %}{% endif %}{{ project.links.live | replace("https://", "") }}{% if project.liveNote %}<span class="visually-hidden">, {{ project.liveNote | lower }}</span>{% endif %}{% include "partials/new-tab.njk" %}</a>
                         {% endif %}
                         {% if project.links.github %}
-                        <a href="{{ project.links.github }}" target="_blank" rel="noopener noreferrer">{% include "icons/brand/github.svg" %}GitHub</a>
+                        <a href="{{ project.links.github }}" target="_blank" rel="noopener noreferrer">{% include "icons/brand/github.svg" %}GitHub{% include "partials/new-tab.njk" %}</a>
                         {% endif %}
                     </div>
                 </div>

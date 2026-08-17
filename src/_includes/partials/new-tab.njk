@@ -1,0 +1,8 @@
+{# Appended inside every link that opens a new tab, so its accessible name says
+   so. One file rather than the literal string at eight call sites — wording
+   like this gets edited in one spot and then quietly disagrees with itself
+   everywhere else.
+
+   Only works where the name comes from the anchor's content. The Connect CV
+   link sets an aria-label, which replaces everything inside the anchor, so that
+   one carries the same words in the label instead. #}<span class="visually-hidden"> (opens in a new tab)</span>
