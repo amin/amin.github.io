@@ -9,10 +9,10 @@ export default [
     // Affinity source.
     logo: "icons/brand/loopland.svg",
     description:
-      "A digital amusement park bringing together games built independently by groups in our class, all integrated through a central API our team built. Players earn stamps, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
-    role: "In a team of three developers, I was responsible for the Centralbank API — the Laravel service, its OpenAPI contract, and its Railway deployment.",
+      "A digital amusement park bringing together games developed independently by groups in our class, all connected through a central API our team built. Players earn stamps, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
+    role: "In a team of three developers, I was responsible for the Centralbank API: the Laravel service, its OpenAPI contract, and its Railway deployment.",
     architecture:
-      "A Turborepo monorepo — Laravel API, React SPA — built contract-first: the OpenAPI spec was published before any client existed, because the code calling it was being written by other groups. Per-game keys and short-lived identity tokens let a game act for a player without ever seeing their credentials.",
+      "A Turborepo monorepo with a Laravel API and React SPA, built contract-first. The OpenAPI spec was published before any client existed, because the code calling it was being written by other groups. Per-game keys and short-lived identity tokens let a game act for a player without ever seeing their credentials.",
     tech: [
       "icons/php.svg",
       "icons/laravel.svg",
