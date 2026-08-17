@@ -56,7 +56,7 @@
                 <div class="project-body">
                     {% if project.role or project.architecture %}
                     <details class="project-details">
-                        <summary><span class="project-details-open">Read more<span class="visually-hidden"> about {{ project.name }}</span></span><span class="project-details-close">Close<span class="visually-hidden"> {{ project.name }}'s role and architecture</span></span>{% include "icons/chevron.svg" %}</summary>
+                        <summary><span class="project-details-open">Read more<span class="visually-hidden"> about {{ project.name }}</span></span><span class="project-details-close">Read less<span class="visually-hidden"> about {{ project.name }}</span></span>{% include "icons/chevron.svg" %}</summary>
                         {# A single measurable wrapper lets the enhancement
                            animate explicit pixel heights consistently while
                            native <details> remains the no-script fallback. #}
