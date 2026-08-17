@@ -49,7 +49,7 @@ section#about {
         @include mq.mq($from: tablet) {
             flex-shrink: 0;
             width: 36%;
-            max-width: 320px;
+            max-width: 360px;
         }
     }
 
@@ -57,13 +57,12 @@ section#about {
     // the same object seen on three surfaces, so they hold one size between
     // them — a difference between them reads as drift, not as a decision.
     //
-    // 1.125rem is the top of the range. span.section-label is 1.25rem, and a
-    // sub-label at that size stops being subordinate to the section heading it
-    // sits under. At 1rem it was smaller than the 1.05rem fact text it
-    // introduces, which is the weakest a label can look.
+    // 1.125rem is the top of the range. span.section-label and the fact text
+    // are 1.25rem, and a sub-label at that size stops being subordinate to the
+    // content it introduces.
     //
     // The spacing below stays tighter than the other two: three of these stack
-    // in a 320px sidebar, where their 0.875/1.25 would push the last fact down
+    // in a 360px sidebar, where their 0.875/1.25 would push the last fact down
     // past the bio it sits beside.
     .about-fact-label {
         display: block;
@@ -78,17 +77,17 @@ section#about {
     }
 
     .about-fact p {
-        font-size: 1.05rem;
+        font-size: 1.25rem;
         line-height: 1.55;
     }
 
     // The range sits on its own line and never splits, so the dash can't end up
-    // stranded at a line break. Abbreviated months keep it inside the 320px
+    // stranded at a line break. Abbreviated months keep it inside the 360px
     // column with room to spare.
     .about-fact-dates {
         display: block;
         margin-top: 0.3rem;
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         // Full white rather than dimmed: 0.75 was 2.73:1 and even 0.9 only
         // reaches 4.11:1. The smaller size still sets the range apart.
         color: #fff;
