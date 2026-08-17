@@ -1,6 +1,8 @@
 @use "../../utils/mq";
 
 $projects-accent: #453c62;
+// A slightly deeper accent for interactive states.
+$projects-accent-hover: #342d4c;
 
 section#projects {
     .section-label {
@@ -22,15 +24,27 @@ section#projects {
         // roughly 340px and the descriptions would get cramped.
         @include mq.mq($from: desktop) {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: auto auto auto auto auto auto;
+            grid-template-rows: auto auto auto;
             column-gap: 4rem;
             row-gap: 0;
 
-            // Each entry opts into the parent's rows, so logo, description,
-            // role, architecture, stack row and links line up across both
-            // columns no matter how much longer one block runs than the other.
+            // Each entry opts into the parent's rows, so the wordmarks sit on a
+            // shared baseline and both descriptions start on the same line, no
+            // matter which logo is taller or which description runs longer.
             // Vertical spacing comes from the children's own margins, hence
             // row-gap: 0.
+            //
+            // Three rows, not one per element: logo, description, and
+            // everything below it. The third is still shared and still sized to
+            // whichever entry is taller, but it holds a block rather than a
+            // single element, so a shut entry packs its control, stack row and
+            // links together at the top of it and lets the leftover height fall
+            // away underneath, off the end of the column where nobody reads it.
+            //
+            // Giving the stack row and the links rows of their own aligns them
+            // across the columns, which sounds better and looks like a fault:
+            // open one entry and the other's links are stranded most of a
+            // screen below the control they belong to, under empty space.
             // Browsers without subgrid ignore this and fall back to each column
             // flowing independently — the layout before this rule.
             //
@@ -39,7 +53,7 @@ section#projects {
             // the build still passes and only the rendered page shows it.
             > li {
                 display: grid;
-                grid-row: span 6;
+                grid-row: span 3;
                 grid-template-rows: subgrid;
             }
         }
@@ -84,6 +98,129 @@ section#projects {
         line-height: 1.65;
     }
 
+    // The fold, the stack row and the links, in the one element the desktop
+    // subgrid hands its third row to.
+    //
+    // Flex rather than a plain block for two reasons. It packs its children at
+    // the top when the row it sits in is taller than they are, which is the
+    // whole point of the wrapper; and it stops .project-details' top margin
+    // collapsing out through the wrapper's own edge, which would move the
+    // wrapper instead of the gap under the description.
+    .project-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    // Holds Role and Architecture folded away.
+    //
+    // The margin is the one .project-role used to carry, moved out to the
+    // wrapper so the gap under the description is unchanged whether the entry
+    // is open or shut.
+    .project-details {
+        margin-top: 1.75rem;
+
+        // A quiet typographic disclosure rather than a conventional filled
+        // button. The uppercase label borrows the nav and section-label
+        // language; the small outlined disc distinguishes the action from the
+        // dashed outbound links below without introducing a large new shape.
+        summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            width: fit-content;
+            min-height: 2.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 1.75px;
+            text-transform: uppercase;
+            color: $projects-accent;
+            transition: color 150ms ease;
+            // The native disclosure triangle, twice: list-style for Firefox and
+            // current Chrome, the pseudo-element for older WebKit. The chevron
+            // in the markup replaces it.
+            list-style: none;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &:hover {
+                color: $projects-accent-hover;
+
+                svg {
+                    fill: #fff;
+                    background-color: $projects-accent;
+                    border-color: $projects-accent;
+                }
+            }
+
+            &:focus-visible {
+                outline: 2px solid $projects-accent;
+                outline-offset: 3px;
+            }
+
+            svg {
+                box-sizing: border-box;
+                width: 1.75rem;
+                height: 1.75rem;
+                padding: 0.4rem;
+                fill: $projects-accent;
+                background-color: transparent;
+                // 3.21:1 against white, so the control outline remains
+                // perceivable without becoming as heavy as the label.
+                border: 1px solid #928da1;
+                border-radius: 50%;
+                transition:
+                    transform 250ms ease,
+                    fill 150ms ease,
+                    background-color 150ms ease,
+                    border-color 150ms ease;
+
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+        }
+
+        // Which of the two labels is in the document, rather than which one is
+        // painted — the hidden half must leave the accessibility tree with it,
+        // so display is the right tool and .visually-hidden is not.
+        .project-details-close {
+            display: none;
+        }
+
+        // The measured-height enhancement animates this wrapper. Overflow
+        // clips the paragraphs while it grows and also contains their margins,
+        // making scrollHeight an accurate endpoint. With no script, native
+        // <details> simply opens and closes it without motion.
+        .project-details-content {
+            overflow: hidden;
+        }
+
+        // .is-closing is set by the height enhancement for as long as a close
+        // is still animating, because [open] cannot come off until the panel
+        // has finished collapsing. Excluding it turns the label and the chevron
+        // at the start of the close, matching the start of the open.
+        //
+        // The class only ever exists while that script is running, so with no
+        // script this is [open] on its own and behaves exactly as it reads.
+        &[open]:not(.is-closing) {
+            .project-details-open {
+                display: none;
+            }
+
+            .project-details-close {
+                display: inline;
+            }
+
+            summary svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
     // .skills-group-label in the projects accent, at the same size, tracking,
     // weight and hairline — both sit on white and Projects runs directly into
     // Skills, so a near-miss on any of those would read as a mistake.
@@ -126,6 +263,10 @@ section#projects {
         // Still comfortably wider than the label's own 0.75rem gap, so each
         // block reads as its own labelled unit rather than one column broken up
         // by headings — the two numbers have to move together.
+        //
+        // Role's measures from the summary now rather than from the
+        // description, and is the same number it always was, so the rhythm
+        // inside an open entry is the rhythm the entry had before it folded.
         margin-top: 1.75rem;
     }
 

@@ -26,38 +26,74 @@
                    cost a rule and 51px an entry to say so. Role and
                    Architecture are not self-evident, so they keep theirs.
 
-                   Each label sits inside its paragraph rather than beside it. A
-                   sibling would add a child per label, and the desktop subgrid
-                   counts children — see the row count in _projects.scss. #}
+                   Each label sits inside its paragraph rather than beside it,
+                   so a block is one element and the two read as one column of
+                   text under two headings rather than four stacked boxes. #}
                 <p class="project-description">{{ project.description }}</p>
-                {% if project.role %}
-                <p class="project-role"><span class="project-label">Role</span>{{ project.role }}</p>
-                {% endif %}
-                {% if project.architecture %}
-                <p class="project-architecture"><span class="project-label">Architecture</span>{{ project.architecture }}</p>
-                {% endif %}
-                <ul class="project-tech">
-                    {% for icon in project.tech %}
-                    <li>{% include icon %}</li>
-                    {% endfor %}
-                </ul>
-                <div class="project-links">
-                    {# The caveat is the mark itself, prefixing the link the same
-                       way GitHub's octicon prefixes its own — no wrapper, no
-                       second element, and the entry stays at six children.
+                {# Role and Architecture start folded away. The description is
+                   what the entry is selling; the two blocks under it are
+                   engineering detail a reader should be able to ask for rather
+                   than scroll past.
 
-                       It still has to say something to anything not looking at
-                       it, so the words ride along hidden and land in the link's
-                       accessible name: "yrco.se, mobile only". That is better
-                       than the aria-describedby it replaces — the description
-                       is now part of the link rather than a reference to a
-                       sibling, so it survives being read out of context. #}
-                    {% if project.links.live %}
-                    <a href="{{ project.links.live }}" target="_blank" rel="noopener noreferrer">{% if project.liveNote %}{% include "icons/phone.svg" %}{% endif %}{{ project.links.live | replace("https://", "") }}{% if project.liveNote %}<span class="visually-hidden">, {{ project.liveNote | lower }}</span>{% endif %}</a>
+                   A native <details> and no script. It works with JS off, the
+                   browser owns the keyboard handling and the expanded state,
+                   and find-in-page opens it to reach the text inside — three
+                   things a class-toggling button would have had to earn back.
+
+                   Both state labels are real text nodes swapped by display,
+                   not CSS content: generated content is not reliably announced
+                   and browser translation never touches it. Each carries the
+                   project name hidden, because two entries offering nothing
+                   but "Read more" are two identical controls in a list with no
+                   way to tell them apart. #}
+                {# Everything below the description travels together in one
+                   wrapper, because everything below the description has to move
+                   together when the fold opens. The desktop subgrid gives an
+                   entry three rows — logo, description, this — so the wordmarks
+                   and the descriptions stay aligned across the columns while
+                   the stack row and links follow their own entry's fold rather
+                   than the taller neighbour's. #}
+                <div class="project-body">
+                    {% if project.role or project.architecture %}
+                    <details class="project-details">
+                        <summary><span class="project-details-open">Read more<span class="visually-hidden"> about {{ project.name }}</span></span><span class="project-details-close">Close<span class="visually-hidden"> {{ project.name }}'s role and architecture</span></span>{% include "icons/chevron.svg" %}</summary>
+                        {# A single measurable wrapper lets the enhancement
+                           animate explicit pixel heights consistently while
+                           native <details> remains the no-script fallback. #}
+                        <div class="project-details-content">
+                            {% if project.role %}
+                            <p class="project-role"><span class="project-label">Role</span>{{ project.role }}</p>
+                            {% endif %}
+                            {% if project.architecture %}
+                            <p class="project-architecture"><span class="project-label">Architecture</span>{{ project.architecture }}</p>
+                            {% endif %}
+                        </div>
+                    </details>
                     {% endif %}
-                    {% if project.links.github %}
-                    <a href="{{ project.links.github }}" target="_blank" rel="noopener noreferrer">{% include "icons/brand/github.svg" %}GitHub</a>
-                    {% endif %}
+                    <ul class="project-tech">
+                        {% for icon in project.tech %}
+                        <li>{% include icon %}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="project-links">
+                        {# The caveat is the mark itself, prefixing the link the
+                           same way GitHub's octicon prefixes its own — no
+                           wrapper, no second element.
+
+                           It still has to say something to anything not looking
+                           at it, so the words ride along hidden and land in the
+                           link's accessible name: "yrco.se, mobile only". That
+                           is better than the aria-describedby it replaces — the
+                           description is now part of the link rather than a
+                           reference to a sibling, so it survives being read out
+                           of context. #}
+                        {% if project.links.live %}
+                        <a href="{{ project.links.live }}" target="_blank" rel="noopener noreferrer">{% if project.liveNote %}{% include "icons/phone.svg" %}{% endif %}{{ project.links.live | replace("https://", "") }}{% if project.liveNote %}<span class="visually-hidden">, {{ project.liveNote | lower }}</span>{% endif %}</a>
+                        {% endif %}
+                        {% if project.links.github %}
+                        <a href="{{ project.links.github }}" target="_blank" rel="noopener noreferrer">{% include "icons/brand/github.svg" %}GitHub</a>
+                        {% endif %}
+                    </div>
                 </div>
             </li>
             {% endfor %}
