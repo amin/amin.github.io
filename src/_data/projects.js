@@ -33,7 +33,7 @@ export default [
     name: "Yrco",
     logo: "icons/brand/yrco.svg",
     description:
-      "A networking app built for an event where Yrgo’s design and web development students meet people from the industry. Attendees choose seven traits that form a personal colour palette, making it easier to find complementary people and meaningful connections.",
+      "A mobile-only networking app designed for an in-person event where Yrgo’s design and web development students meet people from the industry. Attendees choose seven traits that form a personal colour palette, making it easier to find complementary people and meaningful connections.",
     role: "Built in a team of four: two digital designers and two developers. As one of the developers, I owned the architecture and most of the implementation, and deployed the app on Railway.",
     architecture:
       "A Turborepo monorepo: a layered Express API (routes, controllers, use cases, repositories), a React client, and one Zod schema package both apps import.",
@@ -54,11 +54,9 @@ export default [
       live: "https://yrco.se",
       github: "https://github.com/amin/yrco",
     },
-    // A courtesy on the link, not a disclosure about the build. The app was
-    // drawn for phones, and this page is read on a laptop, so the one
-    // invitation to go and look at the work currently sets it up to be seen at
-    // its worst. Named for the link it qualifies rather than as a general
-    // `note`, so it cannot drift into an unbounded field.
-    liveNote: "Mobile only",
+    // This was an intentional product decision for the event rather than a
+    // platform limitation. Named for the link it qualifies rather than as a
+    // general `note`, so it cannot drift into an unbounded field.
+    liveNote: "Mobile-only by design for an in-person networking event",
   },
 ];

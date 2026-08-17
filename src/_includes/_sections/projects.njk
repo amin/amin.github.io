@@ -76,13 +76,13 @@
                         {% endfor %}
                     </ul>
                     <div class="project-links">
-                        {# The caveat is the mark itself, prefixing the link the
+                        {# The scope cue is the mark itself, prefixing the link the
                            same way GitHub's octicon prefixes its own — no
                            wrapper, no second element.
 
                            It still has to say something to anything not looking
                            at it, so the words ride along hidden and land in the
-                           link's accessible name: "yrco.se, mobile only". That
+                           link's accessible name alongside the URL. That
                            is better than the aria-describedby it replaces — the
                            description is now part of the link rather than a
                            reference to a sibling, so it survives being read out
