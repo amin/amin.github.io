@@ -20,17 +20,15 @@ detail one click from anyone who wants it.
 
 ## Form
 
-A native `<details>` wrapping both blocks, with the summary drawn as a filled
-block in the projects accent.
+A native `<details>`, with the summary drawn as a typographic disclosure: the
+label in accent caps, the chevron inside a small outlined disc.
 
 ```
 A digital amusement park assembled from
 games each group in our class built on
 its own.
 
-┏━━━━━━━━━━━━━━━━━┓
-┃  Read more   ⌄  ┃   #453c62, white text
-┗━━━━━━━━━━━━━━━━━┛
+R E A D  M O R E   (⌄)
 
 [php][laravel][react][ts][…]
 
@@ -38,19 +36,35 @@ loopland.se     GitHub
 ‧‧‧‧‧‧‧‧‧‧‧     ‧‧‧‧‧‧
 ```
 
-**Native `<details>`, not a scripted toggle.** The button version has to earn
-back three things the element gives away: it works with JavaScript off, the
-browser owns the keyboard handling and the expanded state, and find-in-page
-opens it to reach the text inside. Nothing about this control is unusual enough
-to pay for that.
+**Native `<details>` at the base.** The element is the control; script only
+adds a height transition on top of it. That keeps three things nothing had to
+be written for: it works with JavaScript off, the browser owns the keyboard
+handling and the expanded state, and find-in-page opens it to reach the text
+inside.
 
-**A filled block, arrived at by exhausting the alternatives.** Three drafts
-wore the dashed underline before this one, and the sequence is the argument.
+**The label is uppercase, at the smallest of the section's three cap sizes.**
+1rem, 1.75px tracking, weight 500, in `$projects-accent`. That is the nav's
+size with slightly tighter tracking and one weight more. `.project-label`
+(ROLE, ARCHITECTURE) is 1.125rem at 2.5px, and `span.section-label` is 1.25rem
+at 2px — so the control sits below both. It speaks the page's uppercase
+language without competing with the two labels it reveals.
 
-- *Short, sized to its two words.* It borrowed the exact size, colour, tracking
-  and underline of `.project-links`, so it landed two lines above two links
-  drawn identically — and, being the shortest of the three, the entry's primary
-  action was the least conspicuous thing in the column.
+**The disc is what makes it a control.** A 1.75rem circle, 1px `#928da1`, the
+chevron inset by `0.4rem`. The border is deliberately lighter than the label:
+3.21:1 against white, perceivable without carrying the weight of a filled
+object. On hover the disc fills with the accent and the chevron flips to white
+— the one place the control raises its voice, and only for as long as the
+pointer is on it.
+
+### The four drafts before it
+
+The sequence is the useful part, because each failure was a different one.
+
+- *Short, dashed underline, sized to its two words.* It borrowed the exact
+  size, colour, tracking and underline of `.project-links`, so it landed two
+  lines above two links drawn identically — and, being the shortest of the
+  three, the entry's primary action was the least conspicuous thing in the
+  column.
 - *The same underline running the `60ch` measure, chevron pushed to the far
   end.* Width was meant to do the separating. Instead the mark ended up some
   700px from its label and the row stopped reading as one thing: a heading, a
@@ -61,21 +75,21 @@ wore the dashed underline before this one, and the sequence is the argument.
   fixed and the underlying fault was not: a full-measure dashed line above the
   stack row reads as a divider between the control and what it opens, and the
   control still wore the links' clothes.
+- *A filled block in the accent, white label, 2px corners.* This one solved the
+  problem it was aimed at — nothing could confuse it with a link — and
+  introduced a worse one. It is a large new shape in a section built from
+  hairlines, dashed underlines and letterspaced caps, and at that size it
+  competed with the wordmark above it for the entry's first look. Emphasis was
+  never the actual requirement; distinctness was.
 
-The fault common to all three is that a treatment borrowed from the links
-cannot be made to outrank the links. No amount of width or weight changes what
-kind of object a dashed accent underline is on this page.
+The first three share one fault: a treatment borrowed from the links cannot be
+made to outrank the links. No amount of width changes what kind of object a
+dashed accent underline is on this page. The fourth overcorrected — it stopped
+being a link by becoming a button, which this section has no vocabulary for.
 
-A solid surface is not foreign to the site, only to this section: About is a
-teal band, Connect an orange one, and the stack row directly below the control
-carries filled tiles of its own. What is new here is the scale, not the device.
-White on `#453c62` is 10.1:1, `#342d4c` on hover deepens it, and the corner
-radius is 2px — enough to take the bite off, not enough to read as a pill
-borrowed from another design system.
-
-It is sized to its content rather than to the measure. A block of accent
-running the full `60ch` would outweigh the wordmark above it, and the wordmark
-is what names the entry.
+Caps plus a disc is the resolution. The type is drawn entirely from language
+the page already speaks, and the disc — small, outlined, hollow — is the only
+new mark, doing the one job the type cannot: saying this is a thing you press.
 
 ## Desktop alignment
 
@@ -109,11 +123,13 @@ one entry's fold shift the other's wordmark.
 
 ## Copy
 
-`Read more` closed, `Close` open. Mirrors were considered and passed over —
-"Read less" reads as the same control in two states, "Close" names the action
-and is shorter on the way out. `Role and architecture` as the closed label,
-which would tell the reader what is behind the fold before they open it, was
-offered and declined.
+`Read more` closed, `Read less` open. `Close` held the open state for a while,
+on the reasoning that naming the action is shorter on the way out; the mirror
+won because it reads as one control in two states rather than two controls, and
+because only the mirror lets both states take the same hidden tail — "Read more
+about Loopland", "Read less about Loopland". `Role and architecture` as the
+closed label, which would tell the reader what is behind the fold before they
+open it, was offered and declined.
 
 ## Accessibility
 
@@ -128,44 +144,87 @@ that class is for.
 **Each label names its project, hidden.** Two entries offering nothing but
 "Read more" are two identically named controls in a controls list, with no way
 to tell which is which. A `visually-hidden` tail inside each label fixes that
-per state: "Read more about Loopland", "Close Loopland's role and
-architecture". This is the idiom the file already had — the same tail rides
-inside Yrco's live link to say "mobile only".
+per state: "Read more about Loopland", "Read less about Loopland". This is the
+idiom the file already had — the same tail rides inside Yrco's live link to say
+"mobile only".
 
 **The chevron says nothing.** `aria-hidden`, no `<title>`, like `phone.svg` and
 `brand/github.svg`. The summary's own text is the accessible name, and the
 browser supplies the expanded state.
 
+**`min-height: 2.75rem` on the summary.** The label is 1rem on a single line,
+which would leave the target well under 44px. The height is set on the control
+rather than padded in, so the text sits where it sits and only the hit area
+grows.
+
+**The keyboard path survives the script.** The enhancement calls
+`preventDefault()` on the summary's click and drives `details.open` itself, and
+Enter and Space on a focused `<summary>` dispatch that same click — so keyboard
+operation runs through the same path as the pointer, with the browser still
+supplying the expanded state from `[open]`.
+
+**Focus is drawn clear of the mark.** `outline: 2px solid $projects-accent`
+with `outline-offset: 3px`, so the ring never sits on the disc's own border.
+
 ## Motion
 
-`::details-content` transitions `block-size` from `0` to `auto`. `auto` is only
-interpolable because the reset sets `interpolate-size: allow-keywords` on
-`<html>`, and it sets it behind `prefers-reduced-motion: no-preference` — so
-that preference is already honoured without this file asking a second time.
+The panel animates its measured height. `.project-details-content` wraps the
+two paragraphs and carries `overflow: hidden`, which clips them while the
+wrapper grows and also contains their margins, so `scrollHeight` is an accurate
+endpoint rather than a number that stops short by one margin.
 
-The transition is still turned off explicitly under `reduce`, for the discrete
-half of it: `content-visibility` with `allow-discrete` flips at the halfway
-mark, so a snapped-open panel would sit invisible for 125ms after arriving at
-full height.
+`_projects.js` drives it with the Web Animations API: read the current height,
+open the element if it is shut (a closed `<details>` cannot be measured), read
+`scrollHeight`, and animate between the two over 250ms. The animation is
+installed in the same frame the element opens in, so the natural-height state is
+never painted.
 
-Browsers with no `::details-content` drop the rule as an unknown selector and
-snap open, which is the behaviour being improved on rather than a fallback that
-needed designing.
+Three things the straightforward version gets wrong, all handled:
+
+- **`[open]` cannot come off at the start of a close.** A shut `<details>` has
+  nothing left to animate, so the attribute has to survive until the collapse
+  finishes. Left alone, that meant opening turned the label and chevron
+  immediately while closing left them 250ms behind the panel, and a label
+  changing after the motion has stopped reads as lag. `.is-closing` marks that
+  window and the CSS keys off `[open]:not(.is-closing)`, so both directions turn
+  at the same moment. The class only ever exists while the script is running,
+  which is why the rule still reads correctly as plain `[open]` without it.
+- **Firefox reports the natural rectangle of descendants inside a closed
+  `<details>`.** They are not painted, but they measure, so the closed endpoint
+  is taken from the semantic state rather than from a rect.
+- **The browser can open a disclosure on its own**, most obviously while
+  revealing a find-in-page match. A `toggle` listener resyncs the script's
+  target whenever no animation is in flight, so the next click goes the right
+  way.
+
+Reduced motion is honoured at the top of the click handler: the animation is
+skipped entirely and the panel jumps to its end state. Anything without
+`Element.animate` — or without JavaScript at all — falls through to the native
+element, which opens and closes at once. The transitions on the disc are
+themselves cancelled under `prefers-reduced-motion: reduce`.
+
+A previous version used `::details-content` with `interpolate-size:
+allow-keywords`, which is fewer lines but only animates in browsers that
+implement the pseudo-element. The measured-height version behaves the same
+everywhere.
 
 ## Changes
 
 ### `src/_includes/_sections/projects.njk`
 
-The two guarded paragraphs move inside one guarded `<details>`, and everything
-below the description moves inside one wrapper:
+The two guarded paragraphs move inside one guarded `<details>` under a
+measurable wrapper, and everything below the description moves inside one
+wrapper of its own:
 
 ```njk
 <div class="project-body">
     {% if project.role or project.architecture %}
     <details class="project-details">
-        <summary>…Read more…Close…{% include "icons/chevron.svg" %}</summary>
-        {% if project.role %}<p class="project-role">…</p>{% endif %}
-        {% if project.architecture %}<p class="project-architecture">…</p>{% endif %}
+        <summary>…Read more…Read less…{% include "icons/chevron.svg" %}</summary>
+        <div class="project-details-content">
+            {% if project.role %}<p class="project-role">…</p>{% endif %}
+            {% if project.architecture %}<p class="project-architecture">…</p>{% endif %}
+        </div>
     </details>
     {% endif %}
     <ul class="project-tech">…</ul>
@@ -179,8 +238,8 @@ An entry renders three children where it rendered six.
 
 A filled chevron on the set's 24-unit grid, `aria-hidden`, no `<title>`.
 Filled rather than stroked for `phone.svg`'s reason: a fill needs no rule of its
-own beyond the `fill` the summary already sets, and an outline would read a
-weight lighter than the marks it sits above in the same column.
+own beyond the `fill` the summary already sets, and a stroked mark would need
+its own width to survive being inset in a 1.75rem disc.
 
 ### `src/assets/styles/includes/sections/_projects.scss`
 
@@ -196,16 +255,34 @@ weight lighter than the marks it sits above in the same column.
   against the description, so the gap under the description is the same open or
   shut. `.project-role`'s own `1.75rem` now measures from the summary, which
   leaves the rhythm inside an open entry exactly as it was before the fold.
-- `summary` is a filled block: `$projects-accent` behind white text,
-  `0.75rem 1.25rem` of padding, `border-radius: 2px`, `width: fit-content`, and
-  `$projects-accent-hover` (`#342d4c`) on hover. It kills the native marker
-  twice: `list-style` for Firefox and current Chrome,
-  `::-webkit-details-marker` for older WebKit.
-- `:focus-visible` gets an explicit ring with `outline-offset: 3px`. The
-  browser default is drawn against the fill, where it is nearly invisible;
-  offset, it lands on white.
-- The chevron's `fill` is white rather than the accent, since it now sits on
-  the accent.
+- `summary` is `inline-flex`, `width: fit-content`, `min-height: 2.75rem`, with
+  the label at 1rem / 1.75px / 500 uppercase in the accent and a `0.625rem` gap
+  to the disc. It kills the native marker twice: `list-style` for Firefox and
+  current Chrome, `::-webkit-details-marker` for older WebKit.
+- The chevron's `svg` is the disc: `1.75rem` square, `0.4rem` of padding,
+  `border-radius: 50%`, `1px solid #928da1`, accent fill, `box-sizing:
+  border-box` so the border does not push it past 1.75rem.
+- Hover is gated on `@media (hover: hover)`. A tap leaves `:hover` applied until
+  the next tap lands elsewhere, so on a phone the disc stayed filled after the
+  panel had shut — the control showing a state the section was no longer in.
+  It reads worse here than on the dashed links below, because filling the disc
+  is the same emphasis the control uses to say it is being acted on. Nothing
+  replaces it for touch: the panel moving is the feedback, and it arrives on the
+  same tap.
+- `.project-details-content` is `overflow: hidden`, for the enhancement to
+  measure against.
+- The label swap and the chevron's rotation hang off `[open]:not(.is-closing)`.
+
+### `src/assets/js/includes/partials/sections/_projects.js`
+
+New. Exports `initializeProjectDetails`, which gives every `.project-details`
+the measured height transition described under Motion. It bails out per element
+if the summary, the content wrapper or `Element.animate` is missing, leaving
+that disclosure entirely native.
+
+### `src/assets/js/app.js`
+
+One import and one call, alongside the nav and the typewriter.
 
 ## Known, not fixed
 
@@ -223,9 +300,10 @@ it.
    three `auto` rows.
 3. The compiled CSS carries `grid-row:span 3` and three `auto` rows.
 4. Each summary's accessible name is "Read more about &lt;project&gt;" closed
-   and "Close &lt;project&gt;'s role and architecture" open.
-5. Both `transition: none` rules sit inside
-   `@media (prefers-reduced-motion: reduce)`.
+   and "Read less about &lt;project&gt;" open.
+5. Every `transition: none` rule sits inside
+   `@media (prefers-reduced-motion: reduce)`, and the hover block sits inside
+   `@media (hover: hover)`.
 6. At ≥ the `desktop` breakpoint, with both entries shut, the two wordmarks sit
    on a shared baseline, the two Read more controls sit on one line, and the two
    link rows finish level.
@@ -233,6 +311,9 @@ it.
    packed directly under its description, and the leftover height falls below
    its links rather than above them.
 8. With JavaScript disabled, both controls still open and close.
-9. The control is a filled accent block sized to its own label, white text and
-   white chevron, deepening on hover, with a visible focus ring sitting clear
-   of the fill.
+9. The control is accent caps beside an outlined disc, the disc filling with the
+   accent on hover on a pointer device only, with a focus ring standing clear of
+   the disc's border.
+10. Opening and closing animate over 250ms, and the label and chevron turn at
+    the same moment in both directions.
+11. Under `prefers-reduced-motion: reduce`, both directions are instant.
