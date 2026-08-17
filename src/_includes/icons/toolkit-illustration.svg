@@ -23,8 +23,56 @@
         </g>
     </g>
 
-    <svg x="20" y="85" width="60" height="60">{% include "icons/brand/nextjs.svg" %}</svg>
-    <svg x="400" y="120" width="60" height="60">{% include "icons/brand/laravel.svg" %}</svg>
-    <svg x="31" y="316" width="58" height="58">{% include "icons/brand/claude.svg" %}</svg>
-    <svg x="401" y="261" width="58" height="58">{% include "icons/brand/typescript.svg" %}</svg>
+    <!-- Four marks for the workflow, not the stack. The languages and
+         frameworks are named in the three labelled lists directly below this,
+         so repeating Next.js, Laravel and TypeScript here spent the only four
+         slots on things the page already says twice over.
+
+         What the heading claims - "A modern, AI-assisted toolkit" - had no
+         picture attached to it until now. Claude is the agent, MCP is the
+         protocol every editor now speaks, Context7 is what puts current
+         library documentation in front of it, and Figma is the design half
+         the intro sentence beside this illustration promises.
+
+         Sorted into columns rather than scattered: the two things you work in
+         are on the left, the two that work underneath them on the right, so
+         each side reads as a pair instead of four loose objects.
+
+         Weight runs on the diagonal. The two solid marks - Figma's colour
+         shapes and Context7's filled badge - sit opposite each other, as do the
+         two open ones, Claude's sunburst and MCP's line glyph. Putting either
+         pair in the same row or column loads one half of the illustration and
+         leaves the other floating.
+
+         Two boxes are bigger than the 58 the others sit at, for two unrelated
+         reasons, and both are corrections for the same thing: equal boxes do
+         not make equal presence.
+
+         Figma at 72 is about proportion. Its mark is the only one that is not
+         square - 256x384, a 2:3 ratio - so in a 60 box it fits to the height
+         and renders 40 wide, which reads as a smaller, floatier object than
+         the squares around it. 72 puts it at 48x72.
+
+         MCP at 70 is about ink. It is line art - thin outlines around mostly
+         empty space, perhaps a sixth of its box actually covered - next to a
+         badge that fills its box completely and two marks that are solid
+         throughout. At a matched 60 it was the lightest thing in the drawing
+         while holding the corner that most needs to sit still. Scaling cannot
+         reach real parity with a filled square, and is not trying to: it buys
+         legibility for those nested curves, which is the larger half of the
+         problem. It is deliberately the largest footprint and the lightest
+         mark at once.
+
+         The four centres are fixed at (50,115), (430,150), (60,345) and
+         (430,320); each box is written from its centre outwards, so a mark can
+         be resized or swapped without moving the composition.
+
+         The two columns are deliberately not level. Left runs 115 to 345,
+         right 150 to 320, so no mark lines up with the one beside it and the
+         four read as an arrangement rather than a grid. -->
+
+    <svg x="21" y="86" width="58" height="58">{% include "icons/brand/claude.svg" %}</svg>
+    <svg x="401" y="121" width="58" height="58">{% include "icons/brand/context7.svg" %}</svg>
+    <svg x="24" y="309" width="72" height="72">{% include "icons/brand/figma.svg" %}</svg>
+    <svg x="395" y="285" width="70" height="70">{% include "icons/brand/mcp.svg" %}</svg>
 </svg>
