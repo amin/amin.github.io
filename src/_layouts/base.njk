@@ -7,6 +7,9 @@
            apart. A page may still override with its own `title` front matter. #}
         <title>{{ title or site.ogTitle }}</title>
         <meta name="description" content="{{ site.description }}">
+        {# site.url carries no trailing slash and page.url always opens with
+           one, so the two concatenate into exactly one origin and path. #}
+        <link rel="canonical" href="{{ site.url }}{{ page.url }}">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         <meta property="og:type" content="website">
