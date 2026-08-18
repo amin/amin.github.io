@@ -8,6 +8,7 @@ export default [
     // its sampled colours. Replace it if a clean export ever comes out of the
     // Affinity source.
     logo: "icons/brand/loopland.svg",
+    logoAlt: "Loopland logo",
     description:
       "A digital amusement park bringing together games developed independently by groups in our class, all connected through a central API our team built. Players earn stamps, trade matching sets for currency, vote for their favourites, and compete on one shared leaderboard.",
     role: "In a team of three developers, I was responsible for the Centralbank API: the Laravel service, its OpenAPI contract, and its Railway deployment.",
@@ -32,6 +33,7 @@ export default [
   {
     name: "Yrco",
     logo: "icons/brand/yrco.svg",
+    logoAlt: "Yrco logo",
     description:
       "A mobile-only networking app designed for an in-person event where Yrgo’s design and web development students meet people from the industry. Attendees choose seven traits that form a personal colour palette, making it easier to find complementary people and meaningful connections.",
     role: "Built in a team of four: two digital designers and two developers. As one of the developers, I owned the architecture and most of the implementation, and deployed the app on Railway.",

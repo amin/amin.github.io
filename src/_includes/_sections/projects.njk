@@ -5,19 +5,15 @@
         <ul class="projects-list">
             {% for project in projects %}
             <li>
-                {# The wordmark is the heading, so the heading had no text: a
-                   parser that strips SVG saw an empty <h3>, and the outline of
-                   the page lost both project names. The name is spelled out
-                   here and hidden visually.
-
-                   Both wordmarks are aria-hidden, like brand/github.svg beside
-                   its own label. Left announceable they would pair with the
-                   span and read the name twice — the same fault the decorative
-                   filter exists to prevent in the skills list. #}
+                {# The logo is the heading, so its accessible label also names
+                   the project in the document outline. Inline marks keep their
+                   internal SVG hidden and expose one data-driven image label on
+                   the wrapper, avoiding duplicate announcements. Raster logos
+                   carry the same label through their native alt attribute. #}
                 {% if project.logo %}
-                <h3 class="project-logo">{% include project.logo %}<span class="visually-hidden">{{ project.name }}</span></h3>
+                <h3 class="project-logo"><span role="img" aria-label="{{ project.logoAlt or project.name }}">{% include project.logo %}</span></h3>
                 {% elif project.logoImage %}
-                <h3 class="project-logo"><img src="{{ project.logoImage }}" alt="" eleventy:widths="180,360,540"><span class="visually-hidden">{{ project.name }}</span></h3>
+                <h3 class="project-logo"><img src="{{ project.logoImage }}" alt="{{ project.logoAlt or project.name }}" eleventy:widths="180,360,540"></h3>
                 {% else %}
                 <h3 class="project-name">{{ project.name }}</h3>
                 {% endif %}
