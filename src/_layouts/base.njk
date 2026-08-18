@@ -8,12 +8,15 @@
         <title>{{ title or site.ogTitle }}</title>
         <meta name="description" content="{{ site.description }}">
         {# site.url carries no trailing slash and page.url always opens with
-           one, so the two concatenate into exactly one origin and path. #}
+           one, so the two concatenate into exactly one origin and path. og:url
+           below is built from the same pair on purpose: a share card claiming a
+           different address than the canonical is the drift worth preventing.
+           og:image stays a fixed path, since the card art does not vary. #}
         <link rel="canonical" href="{{ site.url }}{{ page.url }}">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ site.url }}/">
+        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
         <meta property="og:title" content="{{ site.ogTitle }}">
         <meta property="og:description" content="{{ site.description }}">
         <meta property="og:image" content="{{ site.url }}/og.png">
