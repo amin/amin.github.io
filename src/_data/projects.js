@@ -19,7 +19,7 @@ export default [
       "icons/react.svg",
       "icons/typescript.svg",
       "icons/tailwind.svg",
-      "icons/sql.svg",
+      "icons/postgresql.svg",
       "icons/turborepo.svg",
       "icons/pnpm.svg",
       "icons/railway.svg",
