@@ -1,6 +1,5 @@
 {# Each icon here sits beside a text label that already names it, so the SVG's
-   own <title> is stripped — see the "decorative" filter in .eleventy.js. The
-   projects tech row keeps its titles, because there the icons stand alone. #}
+   own <title> is stripped — see the "decorative" filter in .eleventy.js. #}
 {% macro icon(path) %}{% set svg %}{% include path %}{% endset %}{{ svg | decorative | safe }}{% endmacro %}
 <section class="section" data-link-id="4" id="skills">
     <div class="wrapper">
@@ -20,9 +19,8 @@
             {# Grouped by relationship, not by layer. Four earlier splits
                partitioned this list by where a thing sits in the stack, and each
                one broke on the same rock: real tools span layers. TypeScript and
-               JavaScript run on both sides. Next.js renders pages and serves
-               routes. Every attempt needed a footnote excusing an entry, which is
-               the reliable sign of a wrong taxonomy.
+               JavaScript run on both sides. Every attempt needed a footnote
+               excusing an entry, which is the reliable sign of a wrong taxonomy.
 
                These three ask a question each item can answer on its own — do
                you write it, work with it, or run on it? Nothing has to be
@@ -33,10 +31,14 @@
                above. This says what is in the toolbox; Projects says what has
                been built with it.
 
-               Three judgment calls, none of them exceptions to the rule. Node.js
-               is a runtime, filed under Code because readers expect it beside
-               Express. Linux is on Infrastructure as a host, though it is
-               also the daily driver. Docker is Tooling, though it ships as well. #}
+               Two judgment calls, neither an exception to the rule. Node.js is
+               a runtime, filed under Code because readers expect it beside
+               Express. Linux is on Infrastructure as a host, though it is also
+               the daily driver.
+
+               Next.js, Docker and CI/CD were cut because nothing on the page
+               shows them, and SQL because PostgreSQL already says it more
+               precisely. #}
 
             <div class="skills-group">
                 <span class="skills-group-label">Code</span>
@@ -49,9 +51,7 @@
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/laravel.svg") }}</span>Laravel</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/react.svg") }}</span>React</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/tailwind.svg") }}</span>Tailwind</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/nextjs.svg") }}</span>Next.js</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/eleventy.svg") }}</span>11ty</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/sql.svg") }}</span>SQL</li>
                 </ul>
             </div>
             <div class="skills-group">
@@ -71,10 +71,8 @@
                        footer and project links that use it; here it would paint
                        black among teal. Both stay. #}
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/github.svg") }}</span>GitHub</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/docker.svg") }}</span>Docker</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/turborepo.svg") }}</span>Turborepo</li>
                     <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/pnpm.svg") }}</span>pnpm</li>
-                    <li><span class="skill-icon" aria-hidden="true">{{ icon("icons/cicd.svg") }}</span>CI/CD</li>
                 </ul>
             </div>
             <div class="skills-group">

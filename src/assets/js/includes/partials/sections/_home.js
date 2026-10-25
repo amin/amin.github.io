@@ -6,7 +6,6 @@ const WORDS = [
   "JavaScript",
   "HTML",
   "Laravel",
-  "Next.js",
   "CSS",
 ];
 
