@@ -47,7 +47,7 @@ amin.github.io/
 │   │   └── base.njk      <head>, landmarks, skip link
 │   ├── _includes/
 │   │   ├── _sections/    home, about, skills, projects, connect
-│   │   ├── partials/     nav, topbar
+│   │   ├── partials/     nav, new-tab label
 │   │   ├── icons/        Inlined SVG — brand/ holds logotypes, the rest are tech marks
 │   │   ├── header.njk
 │   │   └── footer.njk

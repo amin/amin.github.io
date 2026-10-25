@@ -4,33 +4,6 @@
 header {
     letter-spacing: 0.075rem;
     background-color: #fff;
-    &.topbar {
-        background-color: transparent;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-
-        @include mq.mq($until: desktop) {
-            padding: 0 1.5rem;
-        }
-
-        .topbar-list {
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-            display: flex;
-
-            a {
-                color: #abaaaa;
-                text-transform: uppercase;
-                &:hover {
-                    color: #000;
-                }
-            }
-        }
-    }
     &.primary {
         position: sticky;
         top: 0;
