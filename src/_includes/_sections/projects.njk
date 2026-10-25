@@ -1,7 +1,9 @@
 <section class="section" data-link-id="3" id="projects">
     <div class="wrapper">
         <span class="section-label">Projects</span>
-        <h2>A few things that shipped.</h2>
+        {# Counts what is here. "A few things that shipped" promised more
+           than two entries can deliver. #}
+        <h2>Two things I’ve built.</h2>
         <ul class="projects-list">
             {% for project in projects %}
             <li>
@@ -26,10 +28,12 @@
                    so a block is one element and the two read as one column of
                    text under two headings rather than four stacked boxes. #}
                 <p class="project-description">{{ project.description }}</p>
-                {# Role and Architecture start folded away. The description is
-                   what the entry is selling; the two blocks under it are
-                   engineering detail a reader should be able to ask for rather
-                   than scroll past.
+                {# Role stays on the card. It is the one line that says what I
+                   did rather than what the team made, and folded away with
+                   Architecture it was the line most readers never saw.
+
+                   Architecture starts folded away. It is engineering detail a
+                   reader should be able to ask for rather than scroll past.
 
                    A native <details> and no script. It works with JS off, the
                    browser owns the keyboard handling and the expanded state,
@@ -47,30 +51,26 @@
                    together when the fold opens. The desktop subgrid gives an
                    entry three rows — logo, description, this — so the wordmarks
                    and the descriptions stay aligned across the columns while
-                   the stack row and links follow their own entry's fold rather
-                   than the taller neighbour's. #}
+                   the role, fold and links follow their own entry rather than
+                   the taller neighbour.
+
+                   There is no row of tech icons. It repeated Skills without
+                   labels, and Architecture names the stack in words. #}
                 <div class="project-body">
-                    {% if project.role or project.architecture %}
+                    {% if project.role %}
+                    <p class="project-role"><span class="project-label">Role</span>{{ project.role }}</p>
+                    {% endif %}
+                    {% if project.architecture %}
                     <details class="project-details">
                         <summary><span class="project-details-open">Read more<span class="visually-hidden"> about {{ project.name }}</span></span><span class="project-details-close">Read less<span class="visually-hidden"> about {{ project.name }}</span></span>{% include "icons/chevron.svg" %}</summary>
                         {# A single measurable wrapper lets the enhancement
                            animate explicit pixel heights consistently while
                            native <details> remains the no-script fallback. #}
                         <div class="project-details-content">
-                            {% if project.role %}
-                            <p class="project-role"><span class="project-label">Role</span>{{ project.role }}</p>
-                            {% endif %}
-                            {% if project.architecture %}
                             <p class="project-architecture"><span class="project-label">Architecture</span>{{ project.architecture }}</p>
-                            {% endif %}
                         </div>
                     </details>
                     {% endif %}
-                    <ul class="project-tech">
-                        {% for icon in project.tech %}
-                        <li>{% include icon %}</li>
-                        {% endfor %}
-                    </ul>
                     <div class="project-links">
                         {# The scope cue is the mark itself, prefixing the link the
                            same way GitHub's octicon prefixes its own — no

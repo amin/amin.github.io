@@ -37,11 +37,11 @@ section#projects {
             // Three rows, not one per element: logo, description, and
             // everything below it. The third is still shared and still sized to
             // whichever entry is taller, but it holds a block rather than a
-            // single element, so a shut entry packs its control, stack row and
-            // links together at the top of it and lets the leftover height fall
-            // away underneath, off the end of the column where nobody reads it.
+            // single element, so a shut entry packs its role, control and links
+            // together at the top of it and lets the leftover height fall away
+            // underneath, off the end of the column where nobody reads it.
             //
-            // Giving the stack row and the links rows of their own aligns them
+            // Giving the role and the links rows of their own aligns them
             // across the columns, which sounds better and looks like a fault:
             // open one entry and the other's links are stranded most of a
             // screen below the control they belong to, under empty space.
@@ -98,8 +98,8 @@ section#projects {
         line-height: 1.65;
     }
 
-    // The fold, the stack row and the links, in the one element the desktop
-    // subgrid hands its third row to.
+    // The role, the fold and the links, in the one element the desktop subgrid
+    // hands its third row to.
     //
     // Flex rather than a plain block for two reasons. It packs its children at
     // the top when the row it sits in is taller than they are, which is the
@@ -111,11 +111,10 @@ section#projects {
         flex-direction: column;
     }
 
-    // Holds Role and Architecture folded away.
+    // Holds Architecture folded away. Role sits above it, on the card.
     //
-    // The margin is the one .project-role used to carry, moved out to the
-    // wrapper so the gap under the description is unchanged whether the entry
-    // is open or shut.
+    // The margin matches the gap between the description and Role, so the
+    // control sits in the same rhythm whether the entry is open or shut.
     .project-details {
         margin-top: 1.75rem;
 
@@ -275,25 +274,10 @@ section#projects {
         // block reads as its own labelled unit rather than one column broken up
         // by headings — the two numbers have to move together.
         //
-        // Role's measures from the summary now rather than from the
-        // description, and is the same number it always was, so the rhythm
-        // inside an open entry is the rhythm the entry had before it folded.
+        // Role measures from the description, Architecture from the summary
+        // inside the fold, and both use the same number, so an open entry
+        // keeps one rhythm all the way down.
         margin-top: 1.75rem;
-    }
-
-    .project-tech {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1.25rem;
-        margin-top: 2rem;
-
-        svg {
-            width: 1.75rem;
-            height: 1.75rem;
-        }
     }
 
     .project-links {

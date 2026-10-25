@@ -29,14 +29,13 @@ export default async function (eleventyConfig) {
       decoding: "async",
     },
   });
-  // Every icon in _includes/icons carries a <title>, because the projects tech
-  // row shows those icons with no visible label and the title is their only
-  // accessible name. Skills shows the same icons beside a text label, where the
-  // title is a duplicate: aria-hidden on the wrapper keeps it out of the
-  // accessibility tree, but not out of textContent, so each item read as
-  // "JavaScriptJavaScript" to anything working from text. Stripping the title
-  // is the inline-SVG equivalent of alt="" — the label beside it already names
-  // the icon.
+  // Every icon in _includes/icons carries a <title>, which would be its only
+  // accessible name anywhere it stood alone. Skills shows the icons beside a
+  // text label, where the title is a duplicate: aria-hidden on the wrapper
+  // keeps it out of the accessibility tree, but not out of textContent, so
+  // each item read as "JavaScriptJavaScript" to anything working from text.
+  // Stripping the title is the inline-SVG equivalent of alt="" — the label
+  // beside it already names the icon.
   eleventyConfig.addFilter("decorative", (svg) =>
     String(svg).replace(/<title>[\s\S]*?<\/title>/g, ""),
   );
