@@ -61,8 +61,8 @@ section#about {
     // are 1.25rem, and a sub-label at that size stops being subordinate to the
     // content it introduces.
     //
-    // The spacing below stays tighter than the other two: three of these stack
-    // in a 360px sidebar, where their 0.875/1.25 would push the last fact down
+    // The spacing below stays tighter than the other two: these stack in a
+    // 360px sidebar, where their 0.875/1.25 would push the last fact down
     // past the bio it sits beside.
     .about-fact-label {
         display: block;
@@ -79,28 +79,6 @@ section#about {
     .about-fact p {
         font-size: 1.25rem;
         line-height: 1.55;
-    }
-
-    // The range sits on its own line and never splits, so the dash can't end up
-    // stranded at a line break. Abbreviated months keep it inside the 360px
-    // column with room to spare.
-    .about-fact-dates {
-        display: block;
-        margin-top: 0.5rem;
-        font-size: 1.1rem;
-        // Full white rather than dimmed: 0.75 was 2.73:1 and even 0.9 only
-        // reaches 4.11:1. The smaller size still sets the range apart.
-        color: #fff;
-
-        // Nowrap moved off the range and onto each date. Spelling the month
-        // out to match Connect added five characters to a line held in a 36%
-        // column, which at the tablet breakpoint leaves only a few pixels
-        // spare — and nowrap on the whole range turns a near miss into an
-        // overflow rather than a second line. Per date, the range may break
-        // at the dash while "23 November 2026" never splits across it.
-        time {
-            white-space: nowrap;
-        }
     }
 
     // Dashed underline, matching the project and footer links, so an outbound
